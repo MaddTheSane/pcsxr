@@ -219,6 +219,7 @@
 		55E15994184564D4007983CB /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55E15993184564D4007983CB /* GLKit.framework */; };
 		55E15996184567D5007983CB /* GL2Code.m in Sources */ = {isa = PBXBuildFile; fileRef = 55E15995184567D5007983CB /* GL2Code.m */; };
 		55E15998184567F4007983CB /* GL3Code.m in Sources */ = {isa = PBXBuildFile; fileRef = 55E15997184567F4007983CB /* GL3Code.m */; };
+		55E80E471A10136A009C98F6 /* PcsxrMemoryObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E80E461A10136A009C98F6 /* PcsxrMemoryObject.swift */; };
 		55EC05FB1788B1230053AC23 /* PcsxrMemCardArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 55EC05FA1788B1230053AC23 /* PcsxrMemCardArray.m */; };
 		55EC05FE178916E80053AC23 /* MemBadgeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 55EC05FD178916E70053AC23 /* MemBadgeView.m */; };
 		712FD1E81093096F00575A92 /* debug.c in Sources */ = {isa = PBXBuildFile; fileRef = 712FD1E51093096F00575A92 /* debug.c */; };
@@ -801,6 +802,8 @@
 		55E159BD1845BAED007983CB /* hu */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hu; path = hu.lproj/NetSfPeopsSoftGPUConfig.strings; sourceTree = "<group>"; };
 		55E159BF1845BB4C007983CB /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/NetSfPeopsOpenGLConfig.strings; sourceTree = "<group>"; };
 		55E159C11845BB4F007983CB /* hu */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hu; path = hu.lproj/NetSfPeopsOpenGLConfig.strings; sourceTree = "<group>"; };
+		55E80E451A101368009C98F6 /* PCSXR-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PCSXR-Bridging-Header.h"; sourceTree = "<group>"; };
+		55E80E461A10136A009C98F6 /* PcsxrMemoryObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PcsxrMemoryObject.swift; sourceTree = "<group>"; };
 		55EC05F91788B1230053AC23 /* PcsxrMemCardArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PcsxrMemCardArray.h; sourceTree = "<group>"; };
 		55EC05FA1788B1230053AC23 /* PcsxrMemCardArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PcsxrMemCardArray.m; sourceTree = "<group>"; usesTabs = 1; };
 		55EC05FC178916E70053AC23 /* MemBadgeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MemBadgeView.h; sourceTree = "<group>"; };
@@ -1754,8 +1757,10 @@
 		55E0ACE1178B850B0005C945 /* Helper Classes */ = {
 			isa = PBXGroup;
 			children = (
+				55E80E451A101368009C98F6 /* PCSXR-Bridging-Header.h */,
 				2BBB1791051E113B00B84448 /* EmuThread.h */,
 				2BBB1792051E113B00B84448 /* EmuThread.m */,
+				55E80E461A10136A009C98F6 /* PcsxrMemoryObject.swift */,
 				55A90227147D89380037E18F /* PcsxrMemoryObject.h */,
 				55A90228147D89380037E18F /* PcsxrMemoryObject.m */,
 				55EC05F91788B1230053AC23 /* PcsxrMemCardArray.h */,
@@ -2266,6 +2271,7 @@
 				71F4C5A20FDED12800529849 /* psxdma.c in Sources */,
 				71F4C5A40FDED12800529849 /* psxhle.c in Sources */,
 				71F4C5A60FDED12800529849 /* psxhw.c in Sources */,
+				55E80E471A10136A009C98F6 /* PcsxrMemoryObject.swift in Sources */,
 				71F4C5A80FDED12800529849 /* psxinterpreter.c in Sources */,
 				71F4C5A90FDED12800529849 /* psxmem.c in Sources */,
 				71F4C5AB0FDED12800529849 /* r3000a.c in Sources */,
@@ -3487,7 +3493,7 @@
 					../macosx,
 				);
 				INFOPLIST_FILE = "plugins/$(TARGET_NAME)/Info.plist";
-				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
@@ -3500,7 +3506,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = PCSXR;
-				CLANG_ENABLE_MODULES = NO;
+				CLANG_ENABLE_MODULES = YES;
 				GCC_ENABLE_CPP_EXCEPTIONS = NO;
 				GCC_OPTIMIZATION_LEVEL = 3;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -3517,6 +3523,7 @@
 				OTHER_CFLAGS = "$(inherited)";
 				PRODUCT_NAME = PCSXR;
 				SKIP_INSTALL = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "Source/PCSXR-Bridging-Header.h";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Instrument;
@@ -3675,7 +3682,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = PCSXR;
-				CLANG_ENABLE_MODULES = NO;
+				CLANG_ENABLE_MODULES = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEBUG_PREPROCESSOR_DEFINITIONS = "$(inherited) EMU_LOG=__Log";
 				GCC_ENABLE_CPP_EXCEPTIONS = NO;
@@ -3693,6 +3700,8 @@
 				OTHER_CFLAGS = "$(inherited)";
 				PRODUCT_NAME = PCSXR;
 				SKIP_INSTALL = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "Source/PCSXR-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -3701,7 +3710,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = PCSXR;
-				CLANG_ENABLE_MODULES = NO;
+				CLANG_ENABLE_MODULES = YES;
 				GCC_ENABLE_CPP_EXCEPTIONS = NO;
 				GCC_OPTIMIZATION_LEVEL = 3;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -3721,6 +3730,7 @@
 				);
 				PRODUCT_NAME = PCSXR;
 				SKIP_INSTALL = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "Source/PCSXR-Bridging-Header.h";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -3770,7 +3780,7 @@
 					../macosx,
 				);
 				INFOPLIST_FILE = "plugins/$(TARGET_NAME)/Info.plist";
-				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
@@ -3826,7 +3836,7 @@
 				);
 				INFOPLIST_FILE = "plugins/$(TARGET_NAME)/Info.plist";
 				LLVM_LTO = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
