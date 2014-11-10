@@ -48,59 +48,39 @@ class SPUPluginController: NSWindowController {
 		let defaults = NSUserDefaults.standardUserDefaults()
 		ReadConfig();
 		
+		/* load from preferences */
 		self.keyValues = defaults.dictionaryForKey(PrefsKey)!
 		
 		hiCompBox.integerValue = (keyValues[kHighCompMode] as NSNumber).boolValue ? NSOnState : NSOffState
 		irqWaitBox.integerValue = (keyValues[kSPUIRQWait] as NSNumber).boolValue ? NSOnState : NSOffState
 		monoSoundBox.integerValue = (keyValues[kMonoSoundOut] as NSNumber).boolValue ? NSOnState : NSOffState
 		xaSpeedBox.integerValue = (keyValues[kXAPitch] as NSNumber).boolValue ? NSOnState : NSOffState
-
-		/*
-		[hiCompBox setIntValue:[keyValues[@"High Compatibility Mode"] boolValue]];
-		[irqWaitBox setIntValue:[keyValues[@"SPU IRQ Wait"] boolValue]];
-		[monoSoundBox setIntValue:[keyValues[@"Mono Sound Output"] boolValue]];
-		[xaSpeedBox setIntValue:[keyValues[@"XA Pitch"] boolValue]];
-
-*/
 		
-		interpolValue.intValue = (keyValues[kInterpolQual] as NSNumber).intValue
-		reverbValue.intValue = (keyValues[kReverbQual] as NSNumber).intValue
-		volumeValue.intValue = (keyValues[kVolume] as NSNumber).intValue
-		
-		
+		interpolValue.integerValue = (keyValues[kInterpolQual] as NSNumber).integerValue
+		reverbValue.integerValue = (keyValues[kReverbQual] as NSNumber).integerValue
+		volumeValue.integerValue = (keyValues[kVolume] as NSNumber).integerValue
 	}
 	
 	@IBAction func ok(sender: AnyObject?) {
 		let defaults = NSUserDefaults.standardUserDefaults()
 		
+		var writeDic = NSMutableDictionary(dictionary: self.keyValues)
 		
-		//var writeDic = NSMutableDictionary(dictionary: self.keyValues)
-		
-		
-		/*
-		NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-		
-		NSMutableDictionary *writeDic = [NSMutableDictionary dictionaryWithDictionary:self.keyValues];
-		writeDic[@"High Compatibility Mode"] = ([hiCompBox intValue] ? @YES : @NO);
-		writeDic[@"SPU IRQ Wait"] = ([irqWaitBox intValue] ? @YES : @NO);
-		writeDic[@"Mono Sound Output"] = ([monoSoundBox intValue] ? @YES : @NO);
-		writeDic[@"XA Pitch"] = ([xaSpeedBox intValue] ? @YES : @NO);
-		
-		writeDic[@"Interpolation Quality"] = @([interpolValue intValue]);
-		writeDic[@"Reverb Quality"] = @([reverbValue intValue]);
-		
-		writeDic[@"Volume"] = @([volumeValue intValue]);
+		writeDic[kHighCompMode] = hiCompBox.integerValue == NSOnState ? true : false
+		writeDic[kSPUIRQWait] = irqWaitBox.integerValue == NSOnState ? true : false
+		writeDic[kMonoSoundOut] = monoSoundBox.integerValue == NSOnState ? true : false
+		writeDic[kXAPitch] = xaSpeedBox.integerValue == NSOnState ? true : false
+
+		writeDic[kInterpolQual] = interpolValue.integerValue
+		writeDic[kReverbQual] = reverbValue.integerValue
+		writeDic[kVolume] = volumeValue.integerValue
 		
 		// write to defaults
-		[defaults setObject:writeDic forKey:PrefsKey];
-		[defaults synchronize];
+		defaults.setObject(writeDic, forKey: PrefsKey)
+		defaults.synchronize()
 		
 		// and set global values accordingly
-		ReadConfig();
-		
-		[self close];
-
-*/
+		ReadConfig()
 		
 		self.close()
 	}

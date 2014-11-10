@@ -6,4 +6,3 @@
 #import "PluginController.h"
 
 #define APP_ID @"net.sf.peops.SPUSDLPlugin"
-

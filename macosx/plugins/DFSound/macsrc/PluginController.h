@@ -4,7 +4,7 @@
 
 @class SPUPluginController;
 
-void ReadConfig(void);
+void ReadConfig() __private_extern __attribute__((visibility("hidden")));
 
 #define kHighCompMode @"High Compatibility Mode"
 #define kSPUIRQWait @"SPU IRQ Wait"
