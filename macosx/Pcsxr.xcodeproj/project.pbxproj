@@ -3128,7 +3128,6 @@
 		551A76E0178696BD0052D185 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				EXPORTED_SYMBOLS_FILE = plugins/DFSound/Resorces/Shared/DFSound.exp;
 				FRAMEWORK_SEARCH_PATHS = /Library/Frameworks;
@@ -3154,7 +3153,6 @@
 		551A76E1178696BD0052D185 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				EXPORTED_SYMBOLS_FILE = plugins/DFSound/Resorces/Shared/DFSound.exp;
 				FRAMEWORK_SEARCH_PATHS = /Library/Frameworks;
@@ -3178,7 +3176,6 @@
 		551A771D178698C60052D185 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				EXPORTED_SYMBOLS_FILE = plugins/DFSound/Resorces/Shared/DFSound.exp;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -3199,7 +3196,6 @@
 		551A771E178698C60052D185 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				EXPORTED_SYMBOLS_FILE = plugins/DFSound/Resorces/Shared/DFSound.exp;
 				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = (
@@ -3451,7 +3447,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = PCSXR;
-				CLANG_ENABLE_MODULES = YES;
 				GCC_ENABLE_CPP_EXCEPTIONS = NO;
 				GCC_OPTIMIZATION_LEVEL = 3;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -3541,7 +3536,6 @@
 		557649C11786B09E007C4457 /* Instrument */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				EXPORTED_SYMBOLS_FILE = plugins/DFSound/Resorces/Shared/DFSound.exp;
 				FRAMEWORK_SEARCH_PATHS = /Library/Frameworks;
@@ -3565,7 +3559,6 @@
 		557649C21786B09E007C4457 /* Instrument */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				EXPORTED_SYMBOLS_FILE = plugins/DFSound/Resorces/Shared/DFSound.exp;
 				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = (
@@ -3607,7 +3600,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = PCSXR;
-				CLANG_ENABLE_MODULES = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEBUG_PREPROCESSOR_DEFINITIONS = "$(inherited) EMU_LOG=__Log";
 				GCC_ENABLE_CPP_EXCEPTIONS = NO;
@@ -3635,7 +3627,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = PCSXR;
-				CLANG_ENABLE_MODULES = YES;
 				GCC_ENABLE_CPP_EXCEPTIONS = NO;
 				GCC_OPTIMIZATION_LEVEL = 3;
 				GCC_PREPROCESSOR_DEFINITIONS = (
