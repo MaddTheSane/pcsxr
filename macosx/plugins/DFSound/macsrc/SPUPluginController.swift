@@ -21,7 +21,7 @@ class SPUPluginController: NSWindowController {
 	@IBOutlet var xaSpeedBox: NSCell!
 	@IBOutlet var volumeValue: NamedSlider!
 	
-	var keyValues = [NSObject: AnyObject]()
+	var keyValues = NSMutableDictionary()
 	
 	override func awakeFromNib() {
 		super.awakeFromNib()
@@ -49,7 +49,7 @@ class SPUPluginController: NSWindowController {
 		ReadConfig();
 		
 		/* load from preferences */
-		self.keyValues = defaults.dictionaryForKey(PrefsKey)!
+		self.keyValues = NSMutableDictionary(dictionary: defaults.dictionaryForKey(PrefsKey)!)
 		
 		hiCompBox.integerValue = (keyValues[kHighCompMode] as NSNumber).boolValue ? NSOnState : NSOffState
 		irqWaitBox.integerValue = (keyValues[kSPUIRQWait] as NSNumber).boolValue ? NSOnState : NSOffState
