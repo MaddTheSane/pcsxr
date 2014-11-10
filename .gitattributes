@@ -1,0 +1,6 @@
+*.h text=auto
+*.c text=auto
+*.cpp text=auto
+*.m text=lf
+*.swift text=lf
+*.rc text=crlf
