@@ -3,6 +3,6 @@
 //
 
 #define __private_extern __attribute__((visibility("hidden")))
-#include "sio.h"
-#import "PcsxrMemoryObject.h"
-#import "PcsxrFileHandle.h"
+#import "PluginController.h"
+
+#define APP_ID @"net.sf.peops.SPUALPlugin"

@@ -3,6 +3,8 @@
 #include "externals.h"
 #include "maccfg.h"
 
+
+
 #ifdef ENABLE_NLS
 #include <libintl.h>
 #include <locale.h>
@@ -36,8 +38,10 @@ __private_extern char* PLUGLOC(char* toloc);
 
 #ifdef USEOPENAL
 #define APP_ID @"net.sf.peops.SPUALPlugin"
+#import "PeopsSpuAL-Swift.h"
 #else
 #define APP_ID @"net.sf.peops.SPUSDLPlugin"
+#import "PeopsSpuSDL-Swift.h"
 #endif
 #define PrefsKey APP_ID @" Settings"
 
@@ -92,7 +96,7 @@ long DoConfiguration()
 		NSWindow *window;
 		
 		if (pluginController == nil) {
-			pluginController = [[PluginController alloc] initWithWindowNibName:@"NetSfPeopsSpuPluginMain"];
+			pluginController = [[SPUPluginController alloc] initWithWindowNibName:@"NetSfPeopsSpuPluginMain"];
 		}
 		window = [pluginController window];
 		
@@ -111,27 +115,28 @@ void ReadConfig(void)
 	NSDictionary *keyValues;
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 	[defaults registerDefaults:
-	 @{PrefsKey: @{@"High Compatibility Mode": @YES,
-				   @"SPU IRQ Wait": @YES,
-				   @"XA Pitch": @NO,
-				   @"Mono Sound Output": @NO,
-				   @"Interpolation Quality": @0,
-				   @"Reverb Quality": @1,
-				   @"Volume": @3}}];
+	 @{PrefsKey: @{kHighCompMode: @YES,
+				   kSPUIRQWait: @YES,
+				   kXAPitch: @NO,
+				   kMonoSoundOut: @NO,
+				   kInterpolQual: @0,
+				   kReverbQual: @1,
+				   kVolume: @3}}];
 	
 	keyValues = [defaults dictionaryForKey:PrefsKey];
 	
-	iUseTimer = [keyValues[@"High Compatibility Mode"] boolValue] ? 2 : 0;
-	iSPUIRQWait = [keyValues[@"SPU IRQ Wait"] boolValue];
-	iDisStereo = [keyValues[@"Mono Sound Output"] boolValue];
-	iXAPitch = [keyValues[@"XA Pitch"] boolValue];
+	iUseTimer = [keyValues[kHighCompMode] boolValue] ? 2 : 0;
+	iSPUIRQWait = [keyValues[kSPUIRQWait] boolValue];
+	iDisStereo = [keyValues[kMonoSoundOut] boolValue];
+	iXAPitch = [keyValues[kXAPitch] boolValue];
 	
-	iUseInterpolation = [keyValues[@"Interpolation Quality"] intValue];
-	iUseReverb = [keyValues[@"Reverb Quality"] intValue];
+	iUseInterpolation = [keyValues[kInterpolQual] intValue];
+	iUseReverb = [keyValues[kReverbQual] intValue];
 	
-	iVolume = 5 - [keyValues[@"Volume"] intValue];
+	iVolume = 5 - [keyValues[kVolume] intValue];
 }
 
+#if 0
 @implementation PluginController
 
 - (IBAction)cancel:(id)sender
@@ -219,6 +224,7 @@ void ReadConfig(void)
 }
 
 @end
+#endif
 
 #import "OSXPlugLocalization.h"
-PLUGLOCIMP([PluginController class]);
+PLUGLOCIMP([SPUPluginController class]);
