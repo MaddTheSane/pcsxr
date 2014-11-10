@@ -687,7 +687,6 @@
 		553FED0518DF5B0000C7B007 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/PCSXR.strings"; sourceTree = "<group>"; };
 		553FED0618DF5B0200C7B007 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/PCSXR.strings; sourceTree = "<group>"; };
 		553FED0718DF5B0500C7B007 /* hu */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hu; path = hu.lproj/PCSXR.strings; sourceTree = "<group>"; };
-		554572F217CBC69600FB7D19 /* SPUShared-info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "SPUShared-info.plist"; sourceTree = "<group>"; };
 		554B391418EB4C66000ADF68 /* DFInput.exp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.exports; name = DFInput.exp; path = Resources/DFInput.exp; sourceTree = "<group>"; };
 		554FD70817C6A13E0056CF66 /* SDL2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2.framework; path = /Library/Frameworks/SDL2.framework; sourceTree = "<absolute>"; };
 		5550D2711683C923006C56B5 /* RecentItemsMenu.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RecentItemsMenu.h; sourceTree = "<group>"; };
@@ -1356,7 +1355,6 @@
 			isa = PBXGroup;
 			children = (
 				550FFAEE17CEB8780003A2F3 /* DFSound.exp */,
-				554572F217CBC69600FB7D19 /* SPUShared-info.plist */,
 				551A756017868BEC0052D185 /* Credits.rtf */,
 				551A756217868BEC0052D185 /* Localizable.strings */,
 				551A756417868BEC0052D185 /* NetSfPeopsSpuPluginMain.xib */,
