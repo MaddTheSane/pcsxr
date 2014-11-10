@@ -16,6 +16,7 @@
 #include "misc.h"
 #include "cdrom.h"
 #include "ExtendedKeys.h"
+#import "PCSXR-Swift.h"
 
 NSDictionary *prefStringKeys = nil;
 NSDictionary *prefByteKeys = nil;
