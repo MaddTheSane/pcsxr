@@ -191,7 +191,6 @@
 		55534AF518183BFB006D6BCB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 55534AF418183BFB006D6BCB /* main.m */; };
 		5557769A17EBE7D60019D008 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5557769917EBE7D60019D008 /* Media.xcassets */; };
 		556C37A9197C815C001A4265 /* PSXMemEnumerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 556C37A8197C815C001A4265 /* PSXMemEnumerator.m */; };
-		556C37AB197C9C59001A4265 /* PcsxrMemoryObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 55A90228147D89380037E18F /* PcsxrMemoryObject.m */; };
 		556C37AD197D94C8001A4265 /* SDL2.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 554FD70817C6A13E0056CF66 /* SDL2.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		556C37AE197D94D6001A4265 /* libSPUSharedCode.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 551A76E71786971B0052D185 /* libSPUSharedCode.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		556C37B2197DBFD1001A4265 /* template.html in Resources */ = {isa = PBXBuildFile; fileRef = 556C37B1197DBFD1001A4265 /* template.html */; };
@@ -203,7 +202,6 @@
 		559366CF12B694DF004ACC1E /* ix86_mmx.c in Sources */ = {isa = PBXBuildFile; fileRef = 559366C712B694DF004ACC1E /* ix86_mmx.c */; };
 		559366D012B694DF004ACC1E /* ix86_sse.c in Sources */ = {isa = PBXBuildFile; fileRef = 559366C812B694DF004ACC1E /* ix86_sse.c */; };
 		55A90220147D7C380037E18F /* PcsxrMemCardController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55A9021F147D7C380037E18F /* PcsxrMemCardController.m */; };
-		55A90229147D89380037E18F /* PcsxrMemoryObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 55A90228147D89380037E18F /* PcsxrMemoryObject.m */; };
 		55AF2A69197DF6A700EB2560 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5557769917EBE7D60019D008 /* Media.xcassets */; };
 		55B13FBD18C4F9CC00ACD9AC /* SPUPluginController.h in Headers */ = {isa = PBXBuildFile; fileRef = 551A755317868BEC0052D185 /* SPUPluginController.h */; };
 		55B13FBE18C4F9D800ACD9AC /* NamedSlider.h in Headers */ = {isa = PBXBuildFile; fileRef = 551A754F17868BEC0052D185 /* NamedSlider.h */; };
@@ -220,6 +218,8 @@
 		55E15996184567D5007983CB /* GL2Code.m in Sources */ = {isa = PBXBuildFile; fileRef = 55E15995184567D5007983CB /* GL2Code.m */; };
 		55E15998184567F4007983CB /* GL3Code.m in Sources */ = {isa = PBXBuildFile; fileRef = 55E15997184567F4007983CB /* GL3Code.m */; };
 		55E80E471A10136A009C98F6 /* PcsxrMemoryObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E80E461A10136A009C98F6 /* PcsxrMemoryObject.swift */; };
+		55E80E571A1018A5009C98F6 /* SwiftAdditions.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 55E80E4E1A101873009C98F6 /* SwiftAdditions.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		55E80E581A103446009C98F6 /* PcsxrMemoryObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E80E461A10136A009C98F6 /* PcsxrMemoryObject.swift */; };
 		55EC05FB1788B1230053AC23 /* PcsxrMemCardArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 55EC05FA1788B1230053AC23 /* PcsxrMemCardArray.m */; };
 		55EC05FE178916E80053AC23 /* MemBadgeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 55EC05FD178916E70053AC23 /* MemBadgeView.m */; };
 		712FD1E81093096F00575A92 /* debug.c in Sources */ = {isa = PBXBuildFile; fileRef = 712FD1E51093096F00575A92 /* debug.c */; };
@@ -364,6 +364,27 @@
 			remoteGlobalIDString = 55534AEF18183BFA006D6BCB;
 			remoteInfo = updateInfoPlist;
 		};
+		55E80E4D1A101873009C98F6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 55E80E481A101872009C98F6 /* SwiftAdditions.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 550FBABE19A7ADC500EFBD3D;
+			remoteInfo = SwiftAdditions;
+		};
+		55E80E4F1A101873009C98F6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 55E80E481A101872009C98F6 /* SwiftAdditions.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 550FBAC919A7ADC500EFBD3D;
+			remoteInfo = SwiftAdditionsTests;
+		};
+		55E80E551A10189B009C98F6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 55E80E481A101872009C98F6 /* SwiftAdditions.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 550FBABD19A7ADC500EFBD3D;
+			remoteInfo = SwiftAdditions;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -395,6 +416,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				55E80E571A1018A5009C98F6 /* SwiftAdditions.framework in Copy Frameworks */,
 				556C37AE197D94D6001A4265 /* libSPUSharedCode.dylib in Copy Frameworks */,
 				556C37AD197D94C8001A4265 /* SDL2.framework in Copy Frameworks */,
 			);
@@ -766,7 +788,6 @@
 		55A9021E147D7C380037E18F /* PcsxrMemCardController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PcsxrMemCardController.h; sourceTree = "<group>"; };
 		55A9021F147D7C380037E18F /* PcsxrMemCardController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PcsxrMemCardController.m; sourceTree = "<group>"; usesTabs = 1; };
 		55A90227147D89380037E18F /* PcsxrMemoryObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = PcsxrMemoryObject.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		55A90228147D89380037E18F /* PcsxrMemoryObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = PcsxrMemoryObject.m; sourceTree = "<group>"; usesTabs = 1; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		55B13FBF18C4FAC600ACD9AC /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		55BBA690149454DE003B2CEC /* PcsxrFileHandle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PcsxrFileHandle.h; sourceTree = "<group>"; };
 		55BBA691149455E1003B2CEC /* PcsxrMemCardHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PcsxrMemCardHandler.h; sourceTree = "<group>"; };
@@ -804,6 +825,7 @@
 		55E159C11845BB4F007983CB /* hu */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hu; path = hu.lproj/NetSfPeopsOpenGLConfig.strings; sourceTree = "<group>"; };
 		55E80E451A101368009C98F6 /* PCSXR-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PCSXR-Bridging-Header.h"; sourceTree = "<group>"; };
 		55E80E461A10136A009C98F6 /* PcsxrMemoryObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PcsxrMemoryObject.swift; sourceTree = "<group>"; };
+		55E80E481A101872009C98F6 /* SwiftAdditions.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SwiftAdditions.xcodeproj; path = SwiftAdditions/SwiftAdditions.xcodeproj; sourceTree = "<group>"; };
 		55EC05F91788B1230053AC23 /* PcsxrMemCardArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PcsxrMemCardArray.h; sourceTree = "<group>"; };
 		55EC05FA1788B1230053AC23 /* PcsxrMemCardArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PcsxrMemCardArray.m; sourceTree = "<group>"; usesTabs = 1; };
 		55EC05FC178916E70053AC23 /* MemBadgeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MemBadgeView.h; sourceTree = "<group>"; };
@@ -1002,6 +1024,7 @@
 		08FB7794FE84155DC02AAC07 /* Pcsxr */ = {
 			isa = PBXGroup;
 			children = (
+				55E80E481A101872009C98F6 /* SwiftAdditions.xcodeproj */,
 				55F41A2017EF774500605DF8 /* version.sh */,
 				08FB7795FE84155DC02AAC07 /* PCSXR */,
 				551A74AF17868BE90052D185 /* plugins */,
@@ -1762,7 +1785,6 @@
 				2BBB1792051E113B00B84448 /* EmuThread.m */,
 				55E80E461A10136A009C98F6 /* PcsxrMemoryObject.swift */,
 				55A90227147D89380037E18F /* PcsxrMemoryObject.h */,
-				55A90228147D89380037E18F /* PcsxrMemoryObject.m */,
 				55EC05F91788B1230053AC23 /* PcsxrMemCardArray.h */,
 				55EC05FA1788B1230053AC23 /* PcsxrMemCardArray.m */,
 				55E0ACDE178B695F0005C945 /* LaunchArg.h */,
@@ -1775,6 +1797,15 @@
 				550F023C17BFFD97002594DF /* PcsxrHexadecimalFormatter.m */,
 			);
 			name = "Helper Classes";
+			sourceTree = "<group>";
+		};
+		55E80E491A101872009C98F6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				55E80E4E1A101873009C98F6 /* SwiftAdditions.framework */,
+				55E80E501A101873009C98F6 /* SwiftAdditionsTests.xctest */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1816,6 +1847,7 @@
 				2BB3D6D005427FE200831ACB /* PBXBuildRule */,
 			);
 			dependencies = (
+				55E80E561A10189B009C98F6 /* PBXTargetDependency */,
 				5525BC7619421A810018AF2F /* PBXTargetDependency */,
 				55534B0018183E5B006D6BCB /* PBXTargetDependency */,
 				551A778517869F4B0052D185 /* PBXTargetDependency */,
@@ -2073,6 +2105,12 @@
 			);
 			mainGroup = 08FB7794FE84155DC02AAC07 /* Pcsxr */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 55E80E491A101872009C98F6 /* Products */;
+					ProjectRef = 55E80E481A101872009C98F6 /* SwiftAdditions.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				2BB3D68205427FE200831ACB /* PCSXR */,
@@ -2091,6 +2129,23 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		55E80E4E1A101873009C98F6 /* SwiftAdditions.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SwiftAdditions.framework;
+			remoteRef = 55E80E4D1A101873009C98F6 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		55E80E501A101873009C98F6 /* SwiftAdditionsTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = SwiftAdditionsTests.xctest;
+			remoteRef = 55E80E4F1A101873009C98F6 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		2BB3D6A205427FE200831ACB /* Resources */ = {
@@ -2289,7 +2344,6 @@
 				559366CF12B694DF004ACC1E /* ix86_mmx.c in Sources */,
 				559366D012B694DF004ACC1E /* ix86_sse.c in Sources */,
 				55A90220147D7C380037E18F /* PcsxrMemCardController.m in Sources */,
-				55A90229147D89380037E18F /* PcsxrMemoryObject.m in Sources */,
 				55BBA693149455E1003B2CEC /* PcsxrMemCardHandler.m in Sources */,
 				55BBA69614945628003B2CEC /* PcsxrPluginHandler.m in Sources */,
 				55BBA69914953887003B2CEC /* PcsxrDiscHandler.m in Sources */,
@@ -2312,9 +2366,9 @@
 			files = (
 				550E344418E6293D00A1AD21 /* GenerateThumbnailForURL.m in Sources */,
 				550E344618E6293D00A1AD21 /* GeneratePreviewForURL.m in Sources */,
-				556C37AB197C9C59001A4265 /* PcsxrMemoryObject.m in Sources */,
 				550E344818E6293D00A1AD21 /* main.c in Sources */,
 				556C37A9197C815C001A4265 /* PSXMemEnumerator.m in Sources */,
+				55E80E581A103446009C98F6 /* PcsxrMemoryObject.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2540,6 +2594,11 @@
 			isa = PBXTargetDependency;
 			target = 55534AEF18183BFA006D6BCB /* updateInfoPlist */;
 			targetProxy = 55534AFF18183E5B006D6BCB /* PBXContainerItemProxy */;
+		};
+		55E80E561A10189B009C98F6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SwiftAdditions;
+			targetProxy = 55E80E551A10189B009C98F6 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -2981,6 +3040,7 @@
 				INSTALL_PATH = /Library/QuickLook;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRINGS_FILE_OUTPUT_ENCODING = "UTF-16";
+				SWIFT_OBJC_BRIDGING_HEADER = "Source/PCSXR-Bridging-Header.h";
 				WRAPPER_EXTENSION = qlgenerator;
 			};
 			name = Debug;
@@ -2999,6 +3059,7 @@
 				INSTALL_PATH = /Library/QuickLook;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRINGS_FILE_OUTPUT_ENCODING = "UTF-16";
+				SWIFT_OBJC_BRIDGING_HEADER = "Source/PCSXR-Bridging-Header.h";
 				WRAPPER_EXTENSION = qlgenerator;
 			};
 			name = Release;
@@ -3017,6 +3078,7 @@
 				INSTALL_PATH = /Library/QuickLook;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRINGS_FILE_OUTPUT_ENCODING = "UTF-16";
+				SWIFT_OBJC_BRIDGING_HEADER = "Source/PCSXR-Bridging-Header.h";
 				WRAPPER_EXTENSION = qlgenerator;
 			};
 			name = Instrument;

@@ -8,6 +8,7 @@
 
 #include <stdio.h>
 #import "PSXMemEnumerator.h"
+#import "Pcsxr_QL-Swift.h"
 
 #define MAX_MEMCARD_BLOCKS 15
 

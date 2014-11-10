@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "PcsxrMemoryObject.h"
+//#import "PcsxrMemoryObject.h"
 
 @interface PcsxrMemCardArray : NSObject
 

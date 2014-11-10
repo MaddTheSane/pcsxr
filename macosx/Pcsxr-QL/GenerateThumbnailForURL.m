@@ -6,6 +6,7 @@
 #import <Cocoa/Cocoa.h>
 //#include "nopic.h"
 #import "PSXMemEnumerator.h"
+#import "Pcsxr_QL-Swift.h"
 
 /* -----------------------------------------------------------------------------
     Generate a thumbnail for file

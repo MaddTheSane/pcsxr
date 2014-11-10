@@ -1,0 +1,3 @@
+[submodule "macosx/SwiftAdditions"]
+	path = macosx/SwiftAdditions
+	url = https://github.com/MaddTheSane/SwiftMacTypes.git

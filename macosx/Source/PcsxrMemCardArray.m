@@ -9,6 +9,7 @@
 #import "PcsxrMemCardArray.h"
 #import "ConfigurationController.h"
 #include "sio.h"
+#import "PCSXR-Swift.h"
 
 #define MAX_MEMCARD_BLOCKS 15
 
