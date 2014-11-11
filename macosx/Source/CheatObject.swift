@@ -30,6 +30,18 @@ class CheatObject: NSObject, Hashable, Printable {
 		super.init()
 	}
 	
+	init(name: String) {
+		cheatName = name
+		enabled = false
+		values = [CheatValue]()
+		
+		super.init()
+	}
+	
+	override convenience init() {
+		self.init(name: "")
+	}
+	
 	override var hashValue: Int {
 		return cheatName.hashValue ^ values.count
 	}
