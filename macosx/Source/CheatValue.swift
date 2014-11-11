@@ -44,6 +44,10 @@ class CheatValue: NSObject, Hashable, NSCopying, Printable {
 	}
 	
 	override func isEqual(object: AnyObject?) -> Bool {
+		if object == nil {
+			return false
+		}
+		
 		if let unwrapped = object as? CheatValue {
 			return self == unwrapped
 		} else {

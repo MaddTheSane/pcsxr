@@ -46,6 +46,18 @@ class CheatObject: NSObject, Hashable, Printable {
 		return cheatName.hashValue ^ values.count
 	}
 	
+	override func isEqual(object: AnyObject?) -> Bool {
+		if object == nil {
+			return false
+		}
+		
+		if let unwrapped = object as? CheatObject {
+			return self == unwrapped
+		} else {
+			return false
+		}
+	}
+	
 	override var hash: Int {
 		return self.hashValue
 	}
