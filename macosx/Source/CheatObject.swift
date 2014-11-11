@@ -10,7 +10,7 @@ import Cocoa
 import SwiftAdditions
 
 func ==(rhs: CheatObject, lhs: CheatObject) -> Bool {
-	return false
+	return rhs.cheatName == lhs.cheatName && rhs.values == lhs.values
 }
 
 class CheatObject: NSObject, Hashable, Printable {
@@ -30,10 +30,10 @@ class CheatObject: NSObject, Hashable, Printable {
 		super.init()
 	}
 	
-	init(name: String) {
+	init(name: String, enabled: Bool = false) {
 		cheatName = name
-		enabled = false
-		values = [CheatValue]()
+		self.enabled = enabled
+		values = [CheatValue()]
 		
 		super.init()
 	}
