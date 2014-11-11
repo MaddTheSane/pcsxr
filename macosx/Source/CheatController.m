@@ -8,6 +8,8 @@
 #import "PcsxrCheatHandler.h"
 #import "PcsxrHexadecimalFormatter.h"
 
+#import "PCSXR-Swift.h"
+
 #define kTempCheatCodesName @"tempCheatCodes"
 #define kCheatsName @"cheats"
 

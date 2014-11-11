@@ -38,6 +38,8 @@
 		550F023D17BFFD97002594DF /* PcsxrHexadecimalFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 550F023C17BFFD97002594DF /* PcsxrHexadecimalFormatter.m */; };
 		550FFAEF17CEE37D0003A2F3 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 551A76B2178693EA0052D185 /* CoreFoundation.framework */; };
 		550FFAF117CEEECA0003A2F3 /* cfgHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 550FFAF017CEEEC90003A2F3 /* cfgHelper.m */; };
+		55107BB61A11C9620031E40E /* CheatObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55107BB51A11C9620031E40E /* CheatObject.swift */; };
+		55107BB81A11C9720031E40E /* CheatValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55107BB71A11C9720031E40E /* CheatValue.swift */; };
 		55112F701A10814C008C6175 /* LaunchArg.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55112F6F1A10814C008C6175 /* LaunchArg.swift */; };
 		551A75C917868C4E0052D185 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 551A749E17868B110052D185 /* Cocoa.framework */; };
 		551A75CF17868C860052D185 /* Bladesio1PluginConfig.xib in Resources */ = {isa = PBXBuildFile; fileRef = 551A74B417868BEA0052D185 /* Bladesio1PluginConfig.xib */; };
@@ -481,6 +483,8 @@
 		550F023C17BFFD97002594DF /* PcsxrHexadecimalFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PcsxrHexadecimalFormatter.m; sourceTree = "<group>"; };
 		550FFAEE17CEB8780003A2F3 /* DFSound.exp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.exports; path = DFSound.exp; sourceTree = "<group>"; };
 		550FFAF017CEEEC90003A2F3 /* cfgHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = cfgHelper.m; sourceTree = "<group>"; };
+		55107BB51A11C9620031E40E /* CheatObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheatObject.swift; sourceTree = "<group>"; };
+		55107BB71A11C9720031E40E /* CheatValue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheatValue.swift; sourceTree = "<group>"; };
 		55112F6F1A10814C008C6175 /* LaunchArg.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchArg.swift; sourceTree = "<group>"; };
 		551A749E17868B110052D185 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		551A74A117868B110052D185 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -1720,6 +1724,8 @@
 				2B75FD4B051C8A7400D12034 /* ConfigurationController.m */,
 				55A9021E147D7C380037E18F /* PcsxrMemCardController.h */,
 				55A9021F147D7C380037E18F /* PcsxrMemCardController.m */,
+				55107BB71A11C9720031E40E /* CheatValue.swift */,
+				55107BB51A11C9620031E40E /* CheatObject.swift */,
 				D422E67816DC495800526DCF /* CheatController.h */,
 				D422E67916DC495800526DCF /* CheatController.m */,
 				0280B7AB16764CC3007B8001 /* HotkeyController.h */,
@@ -2268,6 +2274,7 @@
 				71F4C5A80FDED12800529849 /* psxinterpreter.c in Sources */,
 				71F4C5A90FDED12800529849 /* psxmem.c in Sources */,
 				71F4C5AB0FDED12800529849 /* r3000a.c in Sources */,
+				55107BB61A11C9620031E40E /* CheatObject.swift in Sources */,
 				71F4C5AD0FDED12800529849 /* sio.c in Sources */,
 				71F4C5AF0FDED12800529849 /* spu.c in Sources */,
 				712FD1E81093096F00575A92 /* debug.c in Sources */,
@@ -2282,6 +2289,7 @@
 				55112F701A10814C008C6175 /* LaunchArg.swift in Sources */,
 				559366CF12B694DF004ACC1E /* ix86_mmx.c in Sources */,
 				559366D012B694DF004ACC1E /* ix86_sse.c in Sources */,
+				55107BB81A11C9720031E40E /* CheatValue.swift in Sources */,
 				55A90220147D7C380037E18F /* PcsxrMemCardController.m in Sources */,
 				55BBA693149455E1003B2CEC /* PcsxrMemCardHandler.m in Sources */,
 				55BBA69614945628003B2CEC /* PcsxrPluginHandler.m in Sources */,
