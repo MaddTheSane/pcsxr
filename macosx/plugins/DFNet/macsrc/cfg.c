@@ -25,10 +25,6 @@ long NETconfigure() {
 	return 0;
 }
 
-void SaveConf() {
-
-}
-
 void LoadConf() {
 	ReadConfig();
 }

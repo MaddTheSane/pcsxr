@@ -32,6 +32,10 @@ static pthread_cond_t eventCond;
 static pthread_mutex_t eventMutex;
 
 @implementation EmuThread
+{
+	BOOL wasPaused;
+	jmp_buf  restartJmp;
+}
 
 - (void)setUpThread
 {
