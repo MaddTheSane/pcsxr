@@ -32,6 +32,7 @@ class NamedSlider: NSSlider {
 			sendAction(self.action, to: self.target)
 		}
 	}
+	
 	override var integerValue: Int {
 		didSet {
 			sendAction(self.action, to: self.target)

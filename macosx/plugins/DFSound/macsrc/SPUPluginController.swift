@@ -10,7 +10,6 @@ import Cocoa
 
 private let PrefsKey = APP_ID + " Settings"
 
-
 class SPUPluginController: NSWindowController {
 	@IBOutlet var hiCompBox: NSCell!
 	@IBOutlet var interpolValue: NamedSlider!
@@ -41,7 +40,6 @@ class SPUPluginController: NSWindowController {
 			NSLocalizedString("(Medium)", bundle: spuBundle, comment: "(Medium)"),
 			NSLocalizedString("(Loud)", bundle: spuBundle, comment: "(Loud)"),
 			NSLocalizedString("(Loudest)", bundle: spuBundle, comment: "(Loudest)")]
-		
 	}
 	
 	func loadValues() {
