@@ -13,7 +13,7 @@ func ==(rhs: CheatObject, lhs: CheatObject) -> Bool {
 	return rhs.cheatName == lhs.cheatName && rhs.values == lhs.values
 }
 
-class CheatObject: NSObject, Hashable, Printable {
+class CheatObject: NSObject, Hashable, Printable, SequenceType {
 	var cheatName: String
 	var values: [CheatValue]
 	var enabled: Bool
@@ -28,6 +28,23 @@ class CheatObject: NSObject, Hashable, Printable {
 		}
 		
 		super.init()
+	}
+	
+	func addValue(aVal: CheatValue) {
+		values.append(aVal)
+	}
+	
+	subscript(index: Int) -> CheatValue {
+		get {
+			return values[index]
+		}
+		set {
+			values[index] = newValue
+		}
+	}
+	
+	func generate() -> IndexingGenerator<[CheatValue]> {
+		return values.generate()
 	}
 	
 	init(name: String, enabled: Bool = false) {
@@ -46,6 +63,10 @@ class CheatObject: NSObject, Hashable, Printable {
 		return cheatName.hashValue ^ values.count
 	}
 	
+	override var hash: Int {
+		return self.hashValue
+	}
+	
 	override func isEqual(object: AnyObject?) -> Bool {
 		if object == nil {
 			return false
@@ -58,10 +79,6 @@ class CheatObject: NSObject, Hashable, Printable {
 		}
 	}
 	
-	override var hash: Int {
-		return self.hashValue
-	}
-	
 	override var description: String {
 		let asterisk = "*"
 		let blank = ""
@@ -71,5 +88,4 @@ class CheatObject: NSObject, Hashable, Printable {
 		}
 		return "\(enabled ? asterisk : blank)\(cheatName)\n" + valueString
 	}
-	
 }
