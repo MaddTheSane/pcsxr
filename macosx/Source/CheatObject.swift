@@ -30,8 +30,16 @@ class CheatObject: NSObject, Hashable, Printable, SequenceType {
 		super.init()
 	}
 	
-	func addValue(aVal: CheatValue) {
+	func addValuesObject(aVal: CheatValue) {
 		values.append(aVal)
+	}
+	
+	func addValueObject(aVal: CheatValue) {
+		addValuesObject(aVal)
+	}
+	
+	var countOfValues: Int {
+		return values.count
 	}
 	
 	subscript(index: Int) -> CheatValue {
