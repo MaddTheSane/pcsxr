@@ -37,7 +37,7 @@ private func ImagesFromMcd(theBlock: UnsafePointer<McdBlock>) -> [NSImage] {
 	return toRet
 }
 
-private func MemoryLabelFromFlag(flagNameIndex: PCSXRMemFlags) -> String {
+private func MemoryLabelFromFlag(flagNameIndex: PCSXRMemFlag) -> String {
 	switch (flagNameIndex) {
 	case .memFlagEndLink:
 		return MemLabelEndLink;
@@ -84,7 +84,7 @@ private func BlankImage() -> NSImage {
 	return imageBlank!.copy() as NSImage
 }
 
-func MemFlagsFromBlockFlags(blockFlags: UInt8) -> PCSXRMemFlags {
+func MemFlagsFromBlockFlags(blockFlags: UInt8) -> PCSXRMemFlag {
 	if ((blockFlags & 0xF0) == 0xA0) {
 		if ((blockFlags & 0xF) >= 1 && (blockFlags & 0xF) <= 3) {
 			return .memFlagDeleted;
@@ -109,11 +109,11 @@ func MemFlagsFromBlockFlags(blockFlags: UInt8) -> PCSXRMemFlags {
 }
 
 class PcsxrMemoryObject: NSObject {
+	let title: String
 	let name: String
-	let memName: String
-	let memID: String
-	let memoryCardImages: [NSImage]
-	let flagNameIndex: PCSXRMemFlags
+	let identifier: String
+	let imageArray: [NSImage]
+	let flag: PCSXRMemFlag
 	let startingIndex: Int
 	let blockSize: Int
 	let hasImages: Bool
@@ -122,45 +122,45 @@ class PcsxrMemoryObject: NSObject {
 		startingIndex = startIdx
 		blockSize = memSize
 		let unwrapped = infoBlock.memory
-		flagNameIndex = MemFlagsFromBlockFlags(unwrapped.Flags)
-		if flagNameIndex == .memFlagFree {
-			memoryCardImages = []
+		flag = MemFlagsFromBlockFlags(unwrapped.Flags)
+		if flag == .memFlagFree {
+			imageArray = []
 			hasImages = false
-			name = "Free block"
-			memID = ""
-			memName = ""
+			title = "Free block"
+			identifier = ""
+			name = ""
 		} else {
 			let sjisName: [CChar] = GetArrayFromMirror(reflect(unwrapped.sTitle), appendLastObject: 0)
 			if let aname = String(CString: sjisName, encoding:NSShiftJISStringEncoding) {
-				name = aname
+				title = aname
 			} else {
 				let usName: [CChar] = GetArrayFromMirror(reflect(unwrapped.Title), appendLastObject: 0)
-				name = String(CString: usName, encoding: NSASCIIStringEncoding)!
+				title = String(CString: usName, encoding: NSASCIIStringEncoding)!
 			}
-			memoryCardImages = ImagesFromMcd(infoBlock)
-			if memoryCardImages.count == 0 {
+			imageArray = ImagesFromMcd(infoBlock)
+			if imageArray.count == 0 {
 				hasImages = false
 			} else {
 				hasImages = true
 			}
 			let memNameCArray: [CChar] = GetArrayFromMirror(reflect(unwrapped.Name), appendLastObject: 0)
 			let memIDCArray: [CChar] = GetArrayFromMirror(reflect(unwrapped.ID), appendLastObject: 0)
-			memName = String(UTF8String: memNameCArray)!
-			memID = String(UTF8String: memIDCArray)!
+			name = String(UTF8String: memNameCArray)!
+			identifier = String(UTF8String: memIDCArray)!
 		}
 		
 		super.init()
 	}
 	
-	var memIconCount: Int {
-		return memoryCardImages.count
+	var iconCount: Int {
+		return imageArray.count
 	}
 
-	class func memFlagsFromBlockFlags(blockFlags: UInt8) -> PCSXRMemFlags {
+	class func memFlagsFromBlockFlags(blockFlags: UInt8) -> PCSXRMemFlag {
 		return MemFlagsFromBlockFlags(blockFlags)
 	}
 	
-	private(set) lazy var memImage: NSImage = {
+	private(set) lazy var image: NSImage = {
 		if (self.hasImages == false) {
 			let tmpBlank = BlankImage()
 			tmpBlank.size = NSMakeSize(32, 32);
@@ -169,9 +169,9 @@ class PcsxrMemoryObject: NSObject {
 		
 		var gifData = NSMutableData()
 		
-		var dst = CGImageDestinationCreateWithData(gifData, kUTTypeGIF, UInt(self.memIconCount), nil);
+		var dst = CGImageDestinationCreateWithData(gifData, kUTTypeGIF, UInt(self.iconCount), nil);
 		let gifPrep: NSDictionary = [kCGImagePropertyGIFDictionary as String: [kCGImagePropertyGIFDelayTime as String: Float(0.30)]];
-		for theImage in self.memoryCardImages {
+		for theImage in self.imageArray {
 			let imageRef = theImage.CGImageForProposedRect(nil, context: nil, hints: nil)?.takeUnretainedValue()
 			CGImageDestinationAddImage(dst, imageRef, gifPrep)
 		}
@@ -222,7 +222,7 @@ class PcsxrMemoryObject: NSObject {
 			SetupAttrStr(tmpStr, NSColor.redColor())
 			attribMemLabelDeleted = tmpStr.copy() as NSAttributedString
 		})
-		switch (flagNameIndex) {
+		switch (flag) {
 		case .memFlagEndLink:
 			return attribMemLabelEndLink;
 			
@@ -241,27 +241,27 @@ class PcsxrMemoryObject: NSObject {
 
 	}
 	
-	var firstMemImage: NSImage {
+	var firstImage: NSImage {
 		if hasImages == false {
 			return BlankImage()
 		}
-		return memoryCardImages[0]
+		return imageArray[0]
 	}
 	
-	class func memoryLabelFromFlag(flagNameIdx: PCSXRMemFlags) -> String {
+	class func memoryLabelFromFlag(flagNameIdx: PCSXRMemFlag) -> String {
 		return MemoryLabelFromFlag(flagNameIdx)
 	}
 	
 	var flagName: String {
-		return MemoryLabelFromFlag(flagNameIndex)
+		return MemoryLabelFromFlag(flag)
 	}
 
 	override var description: String {
-		return "\(name): Name: \(memName) ID: \(memID), type: \(flagName), start: \(startingIndex) size: \(blockSize)"
+		return "\(title): Name: \(name) ID: \(identifier), type: \(flagName), start: \(startingIndex) size: \(blockSize)"
 	}
 	
-	@objc(isBiggerThanOne) var biggerThanOne: Bool {
-		if (flagNameIndex == .memFlagFree) {
+	var showCount: Bool {
+		if (flag == .memFlagFree) {
 			//Always show the size of the free blocks
 			return true;
 		} else {

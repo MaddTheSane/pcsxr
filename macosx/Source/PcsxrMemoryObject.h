@@ -9,7 +9,7 @@
 #import <Cocoa/Cocoa.h>
 #include "sio.h"
 
-typedef NS_ENUM(char, PCSXRMemFlags) {
+typedef NS_ENUM(char, PCSXRMemFlag) {
 	memFlagDeleted,
 	memFlagFree,
 	memFlagUsed,
