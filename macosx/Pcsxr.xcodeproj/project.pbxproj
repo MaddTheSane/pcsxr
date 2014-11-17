@@ -177,6 +177,7 @@
 		5525BC8119423FA90018AF2F /* Psx-Memcard.mdimporter in Copy Spotlight Plug-Ins */ = {isa = PBXBuildFile; fileRef = 5525BC5D19421A750018AF2F /* Psx-Memcard.mdimporter */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		55268A5A1876244E00A82269 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 551A74A317868B110052D185 /* Foundation.framework */; };
 		5529EA11169CBE3400BAA2A5 /* RecentItemsMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 5550D2721683C923006C56B5 /* RecentItemsMenu.m */; };
+		552B4D851A1312B800C2F820 /* CheatController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552B4D841A1312B800C2F820 /* CheatController.swift */; };
 		553FECEE18DF5A8300C7B007 /* AddPluginSheet.xib in Resources */ = {isa = PBXBuildFile; fileRef = 553FECB818DF5A8300C7B007 /* AddPluginSheet.xib */; };
 		553FECF018DF5A8300C7B007 /* Configuration.xib in Resources */ = {isa = PBXBuildFile; fileRef = 553FECBC18DF5A8300C7B007 /* Configuration.xib */; };
 		553FECF118DF5A8300C7B007 /* PCSXR.xib in Resources */ = {isa = PBXBuildFile; fileRef = 553FECBE18DF5A8300C7B007 /* PCSXR.xib */; };
@@ -243,7 +244,6 @@
 		71F4C5AD0FDED12800529849 /* sio.c in Sources */ = {isa = PBXBuildFile; fileRef = 71F4C5840FDED12800529849 /* sio.c */; };
 		71F4C5AF0FDED12800529849 /* spu.c in Sources */ = {isa = PBXBuildFile; fileRef = 71F4C5860FDED12800529849 /* spu.c */; };
 		D422E66E16DC48D000526DCF /* CheatWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = D422E66C16DC48D000526DCF /* CheatWindow.xib */; };
-		D422E67A16DC495800526DCF /* CheatController.m in Sources */ = {isa = PBXBuildFile; fileRef = D422E67916DC495800526DCF /* CheatController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXBuildRule section */
@@ -658,6 +658,7 @@
 		5525BC7719421D4F0018AF2F /* schema.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = schema.xml; sourceTree = "<group>"; };
 		5525BC7B19421DDC0018AF2F /* GetMetadataForFile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GetMetadataForFile.h; sourceTree = "<group>"; };
 		5525BC7D194221EC0018AF2F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/schema.strings; sourceTree = "<group>"; };
+		552B4D841A1312B800C2F820 /* CheatController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheatController.swift; sourceTree = "<group>"; };
 		5539965D178BB1B100859644 /* OSXPlugLocalization.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OSXPlugLocalization.h; sourceTree = "<group>"; };
 		553FECB918DF5A8300C7B007 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/AddPluginSheet.xib; sourceTree = "<group>"; };
 		553FECBD18DF5A8300C7B007 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/Configuration.xib; sourceTree = "<group>"; };
@@ -1720,6 +1721,7 @@
 				55A9021F147D7C380037E18F /* PcsxrMemCardController.m */,
 				55107BB71A11C9720031E40E /* CheatValue.swift */,
 				55107BB51A11C9620031E40E /* CheatObject.swift */,
+				552B4D841A1312B800C2F820 /* CheatController.swift */,
 				D422E67816DC495800526DCF /* CheatController.h */,
 				D422E67916DC495800526DCF /* CheatController.m */,
 				0280B7AB16764CC3007B8001 /* HotkeyController.h */,
@@ -2243,6 +2245,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2BB3D6BE05427FE200831ACB /* main.m in Sources */,
+				552B4D851A1312B800C2F820 /* CheatController.swift in Sources */,
 				2BB3D6BF05427FE200831ACB /* PcsxrController.m in Sources */,
 				2BB3D6C005427FE200831ACB /* ConfigurationController.m in Sources */,
 				2BB3D6C105427FE200831ACB /* PluginList.m in Sources */,
@@ -2292,7 +2295,6 @@
 				0280B7AD16764CC5007B8001 /* HotkeyController.m in Sources */,
 				02717968167884C9004AED62 /* hotkeys.m in Sources */,
 				5529EA11169CBE3400BAA2A5 /* RecentItemsMenu.m in Sources */,
-				D422E67A16DC495800526DCF /* CheatController.m in Sources */,
 				55EC05FB1788B1230053AC23 /* PcsxrMemCardArray.m in Sources */,
 				55EC05FE178916E80053AC23 /* MemBadgeView.m in Sources */,
 				5581463917AABCD100862DBF /* PcsxrCheatHandler.m in Sources */,

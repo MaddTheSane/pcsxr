@@ -18,12 +18,12 @@ class CheatObject: NSObject, Hashable, Printable, SequenceType {
 	var values: [CheatValue]
 	var enabled: Bool
 	
-	init(cheat: UnsafePointer<Cheat>) {
-		cheatName = String(UTF8String: cheat.memory.Descr)!
-		enabled = cheat.memory.Enabled == 0 ? false : true
+	init(cheat: Cheat) {
+		cheatName = String(UTF8String: cheat.Descr)!
+		enabled = cheat.Enabled == 0 ? false : true
 		values = [CheatValue]()
-		for i in 0..<cheat.memory.n {
-			let aCheat = CheatValue(cheatCode: CheatCodes[Int(i + cheat.memory.First)])
+		for i in 0..<cheat.n {
+			let aCheat = CheatValue(cheatCode: CheatCodes[Int(i + cheat.First)])
 			values.append(aCheat)
 		}
 		

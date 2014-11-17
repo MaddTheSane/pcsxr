@@ -1,7 +1,6 @@
 #import <Cocoa/Cocoa.h>
 #import "PcsxrController.h"
 #import "ConfigurationController.h"
-#import "CheatController.h"
 #import "EmuThread.h"
 #import "PcsxrMemCardHandler.h"
 #import "PcsxrPluginHandler.h"

@@ -8,3 +8,4 @@
 #include "cheat.h"
 #import "PcsxrMemoryObject.h"
 #import "PcsxrFileHandle.h"
+#import "PcsxrHexadecimalFormatter.h"
