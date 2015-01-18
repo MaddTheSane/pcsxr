@@ -12,7 +12,7 @@ import SwiftAdditions
 private func ImagesFromMcd(theBlock: UnsafePointer<McdBlock>) -> [NSImage] {
 	var toRet = [NSImage]()
 	let unwrapped = theBlock.memory
-	let iconArray: [Int16] = GetArrayFromMirror(reflect(unwrapped.Icon))
+	let iconArray: [Int16] = GetArrayFromMirror(reflect(unwrapped.Icon))!
 	for i in 0..<unwrapped.IconCount {
 		var memImage: NSImage
 		autoreleasepool({ () -> () in
@@ -130,11 +130,11 @@ class PcsxrMemoryObject: NSObject {
 			identifier = ""
 			name = ""
 		} else {
-			let sjisName: [CChar] = GetArrayFromMirror(reflect(unwrapped.sTitle), appendLastObject: 0)
+			let sjisName: [CChar] = GetArrayFromMirror(reflect(unwrapped.sTitle), appendLastObject: 0)!
 			if let aname = String(CString: sjisName, encoding:NSShiftJISStringEncoding) {
 				title = aname
 			} else {
-				let usName: [CChar] = GetArrayFromMirror(reflect(unwrapped.Title), appendLastObject: 0)
+				let usName: [CChar] = GetArrayFromMirror(reflect(unwrapped.Title), appendLastObject: 0)!
 				title = String(CString: usName, encoding: NSASCIIStringEncoding)!
 			}
 			imageArray = ImagesFromMcd(infoBlock)
@@ -143,8 +143,8 @@ class PcsxrMemoryObject: NSObject {
 			} else {
 				hasImages = true
 			}
-			let memNameCArray: [CChar] = GetArrayFromMirror(reflect(unwrapped.Name), appendLastObject: 0)
-			let memIDCArray: [CChar] = GetArrayFromMirror(reflect(unwrapped.ID), appendLastObject: 0)
+			let memNameCArray: [CChar] = GetArrayFromMirror(reflect(unwrapped.Name), appendLastObject: 0)!
+			let memIDCArray: [CChar] = GetArrayFromMirror(reflect(unwrapped.ID), appendLastObject: 0)!
 			name = String(UTF8String: memNameCArray)!
 			identifier = String(UTF8String: memIDCArray)!
 		}
