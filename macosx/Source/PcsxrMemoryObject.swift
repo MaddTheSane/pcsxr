@@ -14,8 +14,7 @@ private func ImagesFromMcd(theBlock: UnsafePointer<McdBlock>) -> [NSImage] {
 	let unwrapped = theBlock.memory
 	let iconArray: [Int16] = GetArrayFromMirror(reflect(unwrapped.Icon))!
 	for i in 0..<unwrapped.IconCount {
-		var memImage: NSImage
-		autoreleasepool({ () -> () in
+		autoreleasepool() {
 			if let imageRep = NSBitmapImageRep(bitmapDataPlanes: nil, pixelsWide: 16, pixelsHigh: 16, bitsPerSample: 8, samplesPerPixel: 3, hasAlpha: false, isPlanar: false, colorSpaceName: NSCalibratedRGBColorSpace, bytesPerRow: 0, bitsPerPixel: 0) {
 				for v in 0..<256 {
 					let x = v % 16
@@ -31,8 +30,7 @@ private func ImagesFromMcd(theBlock: UnsafePointer<McdBlock>) -> [NSImage] {
 				memImage.size = NSSize(width: 32, height: 32)
 				toRet.append(memImage)
 			}
-			
-		})
+		}
 	}
 	return toRet
 }
@@ -183,7 +181,7 @@ class PcsxrMemoryObject: NSObject {
 		}()
 	
 	var attributedFlagName: NSAttributedString {
-		dispatch_once(&attribsInit, { () -> Void in
+		dispatch_once(&attribsInit) {
 			func SetupAttrStr(mutStr: NSMutableAttributedString, txtclr: NSColor) {
 				let wholeStrRange = NSMakeRange(0, countElements(mutStr.string));
 				let ourAttrs: [String: AnyObject] = [NSFontAttributeName : NSFont.systemFontOfSize(NSFont.systemFontSizeForControlSize(.SmallControlSize)),
@@ -194,24 +192,24 @@ class PcsxrMemoryObject: NSObject {
 			
 			var tmpStr = NSMutableAttributedString(string: MemLabelFree)
 			SetupAttrStr(tmpStr, NSColor.greenColor())
-			attribMemLabelFree = tmpStr.copy() as NSAttributedString
+			attribMemLabelFree = NSAttributedString(attributedString: tmpStr)
 			
 			#if DEBUG
 				tmpStr = NSMutableAttributedString(string: MemLabelEndLink)
 				SetupAttrStr(tmpStr, NSColor.blueColor())
-				attribMemLabelEndLink = tmpStr.copy() as NSAttributedString
+				attribMemLabelEndLink = NSAttributedString(attributedString: tmpStr)
 				
 				tmpStr = NSMutableAttributedString(string: MemLabelLink)
 				SetupAttrStr(tmpStr, NSColor.blueColor())
-				attribMemLabelLink = tmpStr.copy() as NSAttributedString
+				attribMemLabelLink = NSAttributedString(attributedString: tmpStr)
 				
 				tmpStr = NSMutableAttributedString(string: MemLabelUsed)
 				SetupAttrStr(tmpStr, NSColor.controlTextColor())
-				attribMemLabelUsed = tmpStr.copy() as NSAttributedString
+				attribMemLabelUsed = NSAttributedString(attributedString: tmpStr)
 				#else
 				tmpStr = NSMutableAttributedString(string: "Multi-save")
 				SetupAttrStr(tmpStr, NSColor.blueColor())
-				attribMemLabelEndLink = tmpStr.copy() as NSAttributedString
+				attribMemLabelEndLink = NSAttributedString(attributedString: tmpStr)
 				attribMemLabelLink = attribMemLabelEndLink;
 
 				//display nothing
@@ -220,8 +218,8 @@ class PcsxrMemoryObject: NSObject {
 				#endif
 			tmpStr = NSMutableAttributedString(string: MemLabelDeleted)
 			SetupAttrStr(tmpStr, NSColor.redColor())
-			attribMemLabelDeleted = tmpStr.copy() as NSAttributedString
-		})
+			attribMemLabelDeleted = NSAttributedString(attributedString: tmpStr)
+		}
 		switch (flag) {
 		case .memFlagEndLink:
 			return attribMemLabelEndLink;
