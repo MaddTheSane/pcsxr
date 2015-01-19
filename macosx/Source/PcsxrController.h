@@ -3,10 +3,10 @@
 #import <Cocoa/Cocoa.h>
 #import "EmuThread.h"
 #import "PluginList.h"
-#import "RecentItemsMenu.h"
 
 @class ConfigurationController;
 @class CheatController;
+@class RecentItemsMenu;
 
 __private_extern void ShowHelpAndExit(FILE* output, int exitCode);
 extern BOOL wasFinderLaunch;

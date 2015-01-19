@@ -9,3 +9,4 @@
 #import "PcsxrMemoryObject.h"
 #import "PcsxrFileHandle.h"
 #import "PcsxrHexadecimalFormatter.h"
+#import "PcsxrController.h"
