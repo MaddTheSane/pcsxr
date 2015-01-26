@@ -5,7 +5,6 @@
 #import "PcsxrMemCardHandler.h"
 #import "PcsxrPluginHandler.h"
 #import "PcsxrDiscHandler.h"
-#import "PcsxrFreezeStateHandler.h"
 #import "PcsxrCheatHandler.h"
 #import "LaunchArg.h"
 #include <DiskArbitration/DiskArbitration.h>

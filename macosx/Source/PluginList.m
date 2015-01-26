@@ -30,7 +30,7 @@ const static int typeList[] = {PSE_LT_GPU, PSE_LT_SPU, PSE_LT_CDR, PSE_LT_PAD, P
 @implementation PluginList
 @synthesize missingPlugins;
 
-+ (PluginList *)list
++ (PluginList *)sharedList
 {
 	return sPluginList;
 }

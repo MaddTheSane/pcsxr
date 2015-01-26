@@ -203,10 +203,10 @@
 		55BBA693149455E1003B2CEC /* PcsxrMemCardHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 55BBA692149455E1003B2CEC /* PcsxrMemCardHandler.m */; };
 		55BBA69614945628003B2CEC /* PcsxrPluginHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 55BBA69514945628003B2CEC /* PcsxrPluginHandler.m */; };
 		55BBA69914953887003B2CEC /* PcsxrDiscHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 55BBA69814953887003B2CEC /* PcsxrDiscHandler.m */; };
-		55BBA69C1495839A003B2CEC /* PcsxrFreezeStateHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 55BBA69B1495839A003B2CEC /* PcsxrFreezeStateHandler.m */; };
 		55C7A214148B2B3800C22ABC /* PcsxrMemCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55C7A216148B2B3800C22ABC /* PcsxrMemCard.xib */; };
 		55CA586B17E799E6007424D5 /* DiskArbitration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55CA586A17E799E6007424D5 /* DiskArbitration.framework */; };
 		55D086E51A6C7EC000E0A00A /* RecentItemsMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D086E41A6C7EC000E0A00A /* RecentItemsMenu.swift */; };
+		55D086EF1A6C9E7400E0A00A /* PcsxrFreezeStateHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D086EE1A6C9E7400E0A00A /* PcsxrFreezeStateHandler.swift */; };
 		55DA3723189440C800B44951 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 551A76B2178693EA0052D185 /* CoreFoundation.framework */; };
 		55DFBAAF197B8CCD00620084 /* Pcsxr-QL.qlgenerator in Copy QuickLook Plug-In */ = {isa = PBXBuildFile; fileRef = 550E343718E6293D00A1AD21 /* Pcsxr-QL.qlgenerator */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		55E15994184564D4007983CB /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55E15993184564D4007983CB /* GLKit.framework */; };
@@ -787,10 +787,9 @@
 		55BBA69514945628003B2CEC /* PcsxrPluginHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PcsxrPluginHandler.m; sourceTree = "<group>"; usesTabs = 1; };
 		55BBA69714953887003B2CEC /* PcsxrDiscHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PcsxrDiscHandler.h; sourceTree = "<group>"; };
 		55BBA69814953887003B2CEC /* PcsxrDiscHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PcsxrDiscHandler.m; sourceTree = "<group>"; usesTabs = 1; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		55BBA69A14958399003B2CEC /* PcsxrFreezeStateHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PcsxrFreezeStateHandler.h; sourceTree = "<group>"; };
-		55BBA69B1495839A003B2CEC /* PcsxrFreezeStateHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PcsxrFreezeStateHandler.m; sourceTree = "<group>"; usesTabs = 1; };
 		55CA586A17E799E6007424D5 /* DiskArbitration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DiskArbitration.framework; path = System/Library/Frameworks/DiskArbitration.framework; sourceTree = SDKROOT; };
 		55D086E41A6C7EC000E0A00A /* RecentItemsMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentItemsMenu.swift; sourceTree = "<group>"; };
+		55D086EE1A6C9E7400E0A00A /* PcsxrFreezeStateHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PcsxrFreezeStateHandler.swift; sourceTree = "<group>"; };
 		55DA37241894419000B44951 /* pcsxr.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = pcsxr.pch; sourceTree = SOURCE_ROOT; };
 		55E0ACDE178B695F0005C945 /* LaunchArg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LaunchArg.h; sourceTree = "<group>"; };
 		55E1598C18455C60007983CB /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/CheatWindow.strings; sourceTree = "<group>"; };
@@ -1702,8 +1701,7 @@
 				55BBA69514945628003B2CEC /* PcsxrPluginHandler.m */,
 				55BBA69714953887003B2CEC /* PcsxrDiscHandler.h */,
 				55BBA69814953887003B2CEC /* PcsxrDiscHandler.m */,
-				55BBA69A14958399003B2CEC /* PcsxrFreezeStateHandler.h */,
-				55BBA69B1495839A003B2CEC /* PcsxrFreezeStateHandler.m */,
+				55D086EE1A6C9E7400E0A00A /* PcsxrFreezeStateHandler.swift */,
 				5581463717AABCD100862DBF /* PcsxrCheatHandler.h */,
 				5581463817AABCD100862DBF /* PcsxrCheatHandler.m */,
 			);
@@ -2280,6 +2278,7 @@
 				2BB3D6C105427FE200831ACB /* PluginList.m in Sources */,
 				2BB3D6C205427FE200831ACB /* EmuThread.m in Sources */,
 				2BB3D6C305427FE200831ACB /* Plugin.c in Sources */,
+				55D086EF1A6C9E7400E0A00A /* PcsxrFreezeStateHandler.swift in Sources */,
 				2BB3D6C405427FE200831ACB /* PcsxrPlugin.m in Sources */,
 				2B4DE99205FF9307003EFEF0 /* PluginController.m in Sources */,
 				71F4C5890FDED12800529849 /* cdriso.c in Sources */,
@@ -2320,7 +2319,6 @@
 				55BBA693149455E1003B2CEC /* PcsxrMemCardHandler.m in Sources */,
 				55BBA69614945628003B2CEC /* PcsxrPluginHandler.m in Sources */,
 				55BBA69914953887003B2CEC /* PcsxrDiscHandler.m in Sources */,
-				55BBA69C1495839A003B2CEC /* PcsxrFreezeStateHandler.m in Sources */,
 				0280B7AD16764CC5007B8001 /* HotkeyController.m in Sources */,
 				02717968167884C9004AED62 /* hotkeys.m in Sources */,
 				55EC05FB1788B1230053AC23 /* PcsxrMemCardArray.m in Sources */,

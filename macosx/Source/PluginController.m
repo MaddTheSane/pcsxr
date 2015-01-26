@@ -32,7 +32,7 @@
 		if (index != -1) {
 			PcsxrPlugin *plugin = (self.plugins)[index];
 
-			if (![[PluginList list] setActivePlugin:plugin forType:self.pluginType]) {
+			if (![[PluginList sharedList] setActivePlugin:plugin forType:self.pluginType]) {
 				/* plugin won't initialize */
 			}
 

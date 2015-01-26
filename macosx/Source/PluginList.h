@@ -14,7 +14,7 @@
 
 @interface PluginList : NSObject <NSFastEnumeration>
 
-+ (PluginList *)list;
++ (PluginList *)sharedList;
 
 - (void)refreshPlugins;
 - (NSArray *)pluginsForType:(int)typeMask;

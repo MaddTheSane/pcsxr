@@ -251,7 +251,7 @@ NSString *const memCardChangeNumberKey = @"PcsxrMemoryCardThatChangedKey";
 	}
 
 	// setup plugin lists
-	PluginList *list = [PluginList list];
+	PluginList *list = [PluginList sharedList];
 
 	[list refreshPlugins];
 	[graphicsPlugin setPluginsTo:[list pluginsForType:PSE_LT_GPU] withType: PSE_LT_GPU];
