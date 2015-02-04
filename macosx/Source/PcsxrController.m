@@ -203,10 +203,9 @@ static void PSXDiscAppearedCallback(DADiskRef disk, void *context)
 			[ejectTask waitUntilExit];
 		}
 		DASessionRef tmpSession = DASessionCreate(kCFAllocatorDefault);
-		CFDictionaryRef match = CFBridgingRetain(@{(NSString*)kDADiskDescriptionMediaKindKey : @(kIOCDMediaClass),
-												 (NSString*)kDADiskDescriptionMediaWholeKey : @YES});
-		DARegisterDiskAppearedCallback(tmpSession, match, PSXDiscAppearedCallback, (__bridge void*)self);
-		CFRelease(match);
+		NSDictionary *match = @{(NSString*)kDADiskDescriptionMediaKindKey : @(kIOCDMediaClass),
+								(NSString*)kDADiskDescriptionMediaWholeKey : @YES};
+		DARegisterDiskAppearedCallback(tmpSession, (__bridge CFDictionaryRef)(match), PSXDiscAppearedCallback, (__bridge void*)self);
 		
 		DASessionScheduleWithRunLoop(tmpSession, CFRunLoopGetMain(), kCFRunLoopCommonModes);
 		
@@ -476,7 +475,7 @@ otherblock();\
 {
 	[[NSNotificationCenter defaultCenter]
 	 addObserver:self selector:@selector(emuWindowDidClose:)
-	 name:@"emuWindowDidClose" object:nil];
+	 name:kEmuWindowDidClose object:nil];
 	
 	pluginList = [[PluginList alloc] init];
 	if (![pluginList configured] /*!Config.Gpu[0] || !Config.Spu[0] || !Config.Pad1[0] || !Config.Cdr[0]*/) {
