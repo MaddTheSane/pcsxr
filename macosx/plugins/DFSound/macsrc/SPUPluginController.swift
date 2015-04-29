@@ -49,14 +49,14 @@ class SPUPluginController: NSWindowController {
 		/* load from preferences */
 		self.keyValues = NSMutableDictionary(dictionary: defaults.dictionaryForKey(PrefsKey)!)
 		
-		hiCompBox.integerValue = (keyValues[kHighCompMode] as NSNumber).boolValue ? NSOnState : NSOffState
-		irqWaitBox.integerValue = (keyValues[kSPUIRQWait] as NSNumber).boolValue ? NSOnState : NSOffState
-		monoSoundBox.integerValue = (keyValues[kMonoSoundOut] as NSNumber).boolValue ? NSOnState : NSOffState
-		xaSpeedBox.integerValue = (keyValues[kXAPitch] as NSNumber).boolValue ? NSOnState : NSOffState
+		hiCompBox.integerValue = (keyValues[kHighCompMode] as! Bool) ? NSOnState : NSOffState
+		irqWaitBox.integerValue = (keyValues[kSPUIRQWait] as! Bool) ? NSOnState : NSOffState
+		monoSoundBox.integerValue = (keyValues[kMonoSoundOut] as! Bool) ? NSOnState : NSOffState
+		xaSpeedBox.integerValue = (keyValues[kXAPitch] as! Bool) ? NSOnState : NSOffState
 		
-		interpolValue.integerValue = (keyValues[kInterpolQual] as NSNumber).integerValue
-		reverbValue.integerValue = (keyValues[kReverbQual] as NSNumber).integerValue
-		volumeValue.integerValue = (keyValues[kVolume] as NSNumber).integerValue
+		interpolValue.integerValue = (keyValues[kInterpolQual] as! Int)
+		reverbValue.integerValue = (keyValues[kReverbQual] as! Int)
+		volumeValue.integerValue = (keyValues[kVolume] as! Int)
 	}
 	
 	@IBAction func ok(sender: AnyObject?) {

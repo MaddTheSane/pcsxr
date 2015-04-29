@@ -6,7 +6,6 @@
 #import "PcsxrPluginHandler.h"
 #import "PcsxrDiscHandler.h"
 #import "PcsxrCheatHandler.h"
-#import "LaunchArg.h"
 #include <DiskArbitration/DiskArbitration.h>
 #include <IOKit/storage/IOCDMedia.h>
 #include "psxcommon.h"
@@ -518,7 +517,7 @@ otherblock();\
 		
 		dispatch_block_t cdromBlock = ^{
 			hasParsedAnArgument = YES;
-			LaunchArg *larg = [[LaunchArg alloc] initWithLaunchOrder:LaunchArgRun argument:kPCSXRArgumentCDROM block:^{
+			LaunchArg *larg = [[LaunchArg alloc] initWithLaunchOrder:LaunchArgOrderRun argument:kPCSXRArgumentCDROM block:^{
 				[self runCD:nil];
 			}];
 			[larg addToDictionary:argDict];
@@ -526,7 +525,7 @@ otherblock();\
 		
 		dispatch_block_t biosBlock = ^{
 			hasParsedAnArgument = YES;
-			LaunchArg *larg = [[LaunchArg alloc] initWithLaunchOrder:LaunchArgRun argument:kPCSXRArgumentBIOS block:^{
+			LaunchArg *larg = [[LaunchArg alloc] initWithLaunchOrder:LaunchArgOrderRun argument:kPCSXRArgumentBIOS block:^{
 				[self runBios:nil];
 			}];
 			[larg addToDictionary:argDict];
@@ -535,7 +534,7 @@ otherblock();\
 		// This block/argument does not need to be sorted
 		dispatch_block_t emuCloseAtEnd = ^{
 			hasParsedAnArgument = YES;
-			LaunchArg *larg = [[LaunchArg alloc] initWithLaunchOrder:LaunchArgPreRun argument:kPCSXRArgumentExitAtClose block:^{
+			LaunchArg *larg = [[LaunchArg alloc] initWithLaunchOrder:LaunchArgOrderPreRun argument:kPCSXRArgumentExitAtClose block:^{
 				self.endAtEmuClose = YES;
 			}];
 			[larg addToDictionary:argDict];
@@ -543,7 +542,7 @@ otherblock();\
 		
 		dispatch_block_t psxOut = ^{
 			hasParsedAnArgument = YES;
-			LaunchArg *larg = [[LaunchArg alloc] initWithLaunchOrder:LaunchArgPreRun argument:kPCSXRArgumentLogOutput block:^{
+			LaunchArg *larg = [[LaunchArg alloc] initWithLaunchOrder:LaunchArgOrderPreRun argument:kPCSXRArgumentLogOutput block:^{
 				Config.PsxOut = true;
 			}];
 			[larg addToDictionary:argDict];
@@ -551,7 +550,7 @@ otherblock();\
 		
 		dispatch_block_t slowBoot = ^{
 			hasParsedAnArgument = YES;
-			LaunchArg *larg = [[LaunchArg alloc] initWithLaunchOrder:LaunchArgPreRun argument:kPCSXRArgumentSlowBoot block:^{
+			LaunchArg *larg = [[LaunchArg alloc] initWithLaunchOrder:LaunchArgOrderPreRun argument:kPCSXRArgumentSlowBoot block:^{
 				Config.SlowBoot = true;
 			}];
 			[larg addToDictionary:argDict];
@@ -560,7 +559,7 @@ otherblock();\
 		dispatch_block_t isoBlock = ^{
 			hasParsedAnArgument = YES;
 			NSString *path = FileTestBlock();
-			LaunchArg *larg = [[LaunchArg alloc] initWithLaunchOrder:LaunchArgRun argument:kPCSXRArgumentISO block:^{
+			LaunchArg *larg = [[LaunchArg alloc] initWithLaunchOrder:LaunchArgOrderRun argument:kPCSXRArgumentISO block:^{
 				[self runURL:[NSURL fileURLWithPath:path isDirectory:NO]];
 			}];
 			[larg addToDictionary:argDict];
@@ -576,7 +575,7 @@ otherblock();\
 			
 			NSString *path = FileTestBlock();
 			NSString *mcdArg = [kPCSXRArgumentMcd stringByAppendingFormat:@"%i", mcdnumber];
-			LaunchArg *larg = [[LaunchArg alloc] initWithLaunchOrder:LaunchArgPreRun argument:mcdArg block:^{
+			LaunchArg *larg = [[LaunchArg alloc] initWithLaunchOrder:LaunchArgOrderPreRun argument:mcdArg block:^{
 				LoadMcd(mcdnumber, (char*)[path fileSystemRepresentation]);
 			}];
 			[larg addToDictionary:argDict];
@@ -585,7 +584,7 @@ otherblock();\
 		dispatch_block_t freezeBlock = ^{
 			hasParsedAnArgument = YES;
 			NSString *path = FileTestBlock();
-			LaunchArg *larg = [[LaunchArg alloc] initWithLaunchOrder:LaunchArgPostRun argument:kPCSXRArgumentFreeze block:^{
+			LaunchArg *larg = [[LaunchArg alloc] initWithLaunchOrder:LaunchArgOrderPostRun argument:kPCSXRArgumentFreeze block:^{
 				if (![EmuThread isRunBios]) {
 					dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_global_queue(0, 0), ^{
 						[EmuThread defrostAt:path];

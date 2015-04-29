@@ -12,7 +12,7 @@ import SwiftAdditions
 private func ImagesFromMcd(theBlock: UnsafePointer<McdBlock>) -> [NSImage] {
 	var toRet = [NSImage]()
 	let unwrapped = theBlock.memory
-	let iconArray: [Int16] = GetArrayFromMirror(reflect(unwrapped.Icon))!
+	let iconArray: [Int16] = getArrayFromMirror(reflect(unwrapped.Icon))
 	for i in 0..<unwrapped.IconCount {
 		autoreleasepool() {
 			if let imageRep = NSBitmapImageRep(bitmapDataPlanes: nil, pixelsWide: 16, pixelsHigh: 16, bitsPerSample: 8, samplesPerPixel: 3, hasAlpha: false, isPlanar: false, colorSpaceName: NSCalibratedRGBColorSpace, bytesPerRow: 0, bitsPerPixel: 0) {
@@ -79,7 +79,7 @@ private func BlankImage() -> NSImage {
 		anImg.unlockFocus()
 		imageBlank = anImg
 	}
-	return imageBlank!.copy() as NSImage
+	return imageBlank!.copy() as! NSImage
 }
 
 func MemFlagsFromBlockFlags(blockFlags: UInt8) -> PCSXRMemFlag {
@@ -128,11 +128,11 @@ class PcsxrMemoryObject: NSObject {
 			identifier = ""
 			name = ""
 		} else {
-			let sjisName: [CChar] = GetArrayFromMirror(reflect(unwrapped.sTitle), appendLastObject: 0)!
+			let sjisName: [CChar] = getArrayFromMirror(reflect(unwrapped.sTitle), appendLastObject: 0)
 			if let aname = String(CString: sjisName, encoding:NSShiftJISStringEncoding) {
 				title = aname
 			} else {
-				let usName: [CChar] = GetArrayFromMirror(reflect(unwrapped.Title), appendLastObject: 0)!
+				let usName: [CChar] = getArrayFromMirror(reflect(unwrapped.Title), appendLastObject: 0)
 				title = String(CString: usName, encoding: NSASCIIStringEncoding)!
 			}
 			imageArray = ImagesFromMcd(infoBlock)
@@ -141,8 +141,8 @@ class PcsxrMemoryObject: NSObject {
 			} else {
 				hasImages = true
 			}
-			let memNameCArray: [CChar] = GetArrayFromMirror(reflect(unwrapped.Name), appendLastObject: 0)!
-			let memIDCArray: [CChar] = GetArrayFromMirror(reflect(unwrapped.ID), appendLastObject: 0)!
+			let memNameCArray: [CChar] = getArrayFromMirror(reflect(unwrapped.Name), appendLastObject: 0)
+			let memIDCArray: [CChar] = getArrayFromMirror(reflect(unwrapped.ID), appendLastObject: 0)
 			name = String(UTF8String: memNameCArray)!
 			identifier = String(UTF8String: memIDCArray)!
 		}
@@ -167,7 +167,7 @@ class PcsxrMemoryObject: NSObject {
 		
 		var gifData = NSMutableData()
 		
-		var dst = CGImageDestinationCreateWithData(gifData, kUTTypeGIF, UInt(self.iconCount), nil);
+		var dst = CGImageDestinationCreateWithData(gifData, kUTTypeGIF, self.iconCount, nil);
 		let gifPrep: NSDictionary = [kCGImagePropertyGIFDictionary as String: [kCGImagePropertyGIFDelayTime as String: Float(0.30)]];
 		for theImage in self.imageArray {
 			let imageRef = theImage.CGImageForProposedRect(nil, context: nil, hints: nil)?.takeUnretainedValue()
@@ -183,7 +183,7 @@ class PcsxrMemoryObject: NSObject {
 	var attributedFlagName: NSAttributedString {
 		dispatch_once(&attribsInit) {
 			func SetupAttrStr(mutStr: NSMutableAttributedString, txtclr: NSColor) {
-				let wholeStrRange = NSMakeRange(0, countElements(mutStr.string));
+				let wholeStrRange = NSMakeRange(0, count(mutStr.string));
 				let ourAttrs: [String: AnyObject] = [NSFontAttributeName : NSFont.systemFontOfSize(NSFont.systemFontSizeForControlSize(.SmallControlSize)),
 					NSForegroundColorAttributeName: txtclr]
 				mutStr.addAttributes(ourAttrs, range: wholeStrRange)

@@ -8,6 +8,12 @@
 
 import Cocoa
 
+@objc enum LaunchArgOrder: UInt32 {
+	case PreRun = 0
+	case Run = 200
+	case PostRun = 400
+}
+
 class LaunchArg: NSObject {
 	let launchOrder: UInt32
 	let theBlock: dispatch_block_t

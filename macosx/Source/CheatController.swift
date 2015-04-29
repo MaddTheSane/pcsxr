@@ -31,8 +31,10 @@ class CheatController: NSWindowController {
 		super.init(window: window)
 	}
 	
-	override convenience init() {
-		self.init(windowNibName: "CheatWindow")
+	class func newController() -> CheatController {
+		let toRet = CheatController(windowNibName: "CheatWindow")
+		
+		return toRet
 	}
 	
 	override var windowNibName: String {

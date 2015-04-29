@@ -40,7 +40,7 @@ class CheatValue: NSObject, Hashable, NSCopying, Printable {
 	}
 
 	override var description: String {
-		return NSString(format: "%08x %04x", cheatAddress, cheatValue)
+		return String(format: "%08x %04x", cheatAddress, cheatValue)
 	}
 	
 	override func isEqual(object: AnyObject?) -> Bool {

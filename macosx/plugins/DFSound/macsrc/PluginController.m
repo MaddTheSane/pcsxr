@@ -113,14 +113,17 @@ void ReadConfig(void)
 {
 	NSDictionary *keyValues;
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-	[defaults registerDefaults:
-	 @{PrefsKey: @{kHighCompMode: @YES,
-				   kSPUIRQWait: @YES,
-				   kXAPitch: @NO,
-				   kMonoSoundOut: @NO,
-				   kInterpolQual: @0,
-				   kReverbQual: @1,
-				   kVolume: @3}}];
+	static dispatch_once_t onceToken;
+	dispatch_once(&onceToken, ^{
+		[defaults registerDefaults:
+		 @{PrefsKey: @{kHighCompMode: @YES,
+					   kSPUIRQWait: @YES,
+					   kXAPitch: @NO,
+					   kMonoSoundOut: @NO,
+					   kInterpolQual: @0,
+					   kReverbQual: @1,
+					   kVolume: @3}}];
+	});
 	
 	keyValues = [defaults dictionaryForKey:PrefsKey];
 	

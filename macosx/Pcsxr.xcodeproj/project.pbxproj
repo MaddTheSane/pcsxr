@@ -345,6 +345,34 @@
 			remoteGlobalIDString = 55534AEF18183BFA006D6BCB;
 			remoteInfo = updateInfoPlist;
 		};
+		5554C8251AF1462F00CEA242 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 55E80E481A101872009C98F6 /* SwiftAdditions.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 55403A011A745003007A488E;
+			remoteInfo = ForceFeedbackAdditions;
+		};
+		5554C8271AF1462F00CEA242 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 55E80E481A101872009C98F6 /* SwiftAdditions.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 55403A0B1A745003007A488E;
+			remoteInfo = ForceFeedbackAdditionsTests;
+		};
+		5554C8291AF1462F00CEA242 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 55E80E481A101872009C98F6 /* SwiftAdditions.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 55E11DE11AE7114000815555;
+			remoteInfo = SwiftAudioAdditions;
+		};
+		5554C82B1AF1462F00CEA242 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 55E80E481A101872009C98F6 /* SwiftAdditions.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 55E11DEB1AE7114000815555;
+			remoteInfo = SwiftAudioAdditionsTests;
+		};
 		55D086E91A6C7EC100E0A00A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 55E80E481A101872009C98F6 /* SwiftAdditions.xcodeproj */;
@@ -795,7 +823,6 @@
 		55D086E41A6C7EC000E0A00A /* RecentItemsMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentItemsMenu.swift; sourceTree = "<group>"; };
 		55D086EE1A6C9E7400E0A00A /* PcsxrFreezeStateHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PcsxrFreezeStateHandler.swift; sourceTree = "<group>"; };
 		55DA37241894419000B44951 /* pcsxr.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = pcsxr.pch; sourceTree = SOURCE_ROOT; };
-		55E0ACDE178B695F0005C945 /* LaunchArg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LaunchArg.h; sourceTree = "<group>"; };
 		55E1598C18455C60007983CB /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/CheatWindow.strings; sourceTree = "<group>"; };
 		55E1598E18455C78007983CB /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/PcsxrMemCard.strings; sourceTree = "<group>"; };
 		55E15993184564D4007983CB /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
@@ -1775,7 +1802,6 @@
 				55E80E461A10136A009C98F6 /* PcsxrMemoryObject.swift */,
 				55EC05F91788B1230053AC23 /* PcsxrMemCardArray.h */,
 				55EC05FA1788B1230053AC23 /* PcsxrMemCardArray.m */,
-				55E0ACDE178B695F0005C945 /* LaunchArg.h */,
 				55112F6F1A10814C008C6175 /* LaunchArg.swift */,
 				55EC05FC178916E70053AC23 /* MemBadgeView.h */,
 				55EC05FD178916E70053AC23 /* MemBadgeView.m */,
@@ -1793,6 +1819,10 @@
 				55E80E501A101873009C98F6 /* SwiftAdditionsTests.xctest */,
 				55D086EA1A6C7EC100E0A00A /* SwiftIOKitAdditions.framework */,
 				55D086EC1A6C7EC100E0A00A /* SwiftIOKitAdditionsTests.xctest */,
+				5554C8261AF1462F00CEA242 /* ForceFeedbackAdditions.framework */,
+				5554C8281AF1462F00CEA242 /* ForceFeedbackAdditionsTests.xctest */,
+				5554C82A1AF1462F00CEA242 /* SwiftAudioAdditions.framework */,
+				5554C82C1AF1462F00CEA242 /* SwiftAudioAdditionsTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -2091,6 +2121,34 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		5554C8261AF1462F00CEA242 /* ForceFeedbackAdditions.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = ForceFeedbackAdditions.framework;
+			remoteRef = 5554C8251AF1462F00CEA242 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		5554C8281AF1462F00CEA242 /* ForceFeedbackAdditionsTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = ForceFeedbackAdditionsTests.xctest;
+			remoteRef = 5554C8271AF1462F00CEA242 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		5554C82A1AF1462F00CEA242 /* SwiftAudioAdditions.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SwiftAudioAdditions.framework;
+			remoteRef = 5554C8291AF1462F00CEA242 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		5554C82C1AF1462F00CEA242 /* SwiftAudioAdditionsTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = SwiftAudioAdditionsTests.xctest;
+			remoteRef = 5554C82B1AF1462F00CEA242 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		55D086EA1A6C7EC100E0A00A /* SwiftIOKitAdditions.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;

@@ -62,8 +62,8 @@ class RecentItemsMenu: NSMenu {
 	}
 	
 	private func findMenuItemByURL(url: NSURL) -> NSMenuItem? {
-		for item in itemArray as [NSMenuItem] {
-			if item.representedObject as NSURL == url {
+		for item in itemArray as! [NSMenuItem] {
+			if item.representedObject as! NSURL == url {
 				return item
 			}
 		}
@@ -86,7 +86,7 @@ class RecentItemsMenu: NSMenu {
 	// Document items are menu items with tag 0
 	private func removeDocumentItems() {
 		var removeItemsArray = [NSMenuItem]()
-		for item in itemArray as [NSMenuItem] {
+		for item in itemArray as! [NSMenuItem] {
 			if item.tag == 0 {
 				removeItemsArray.append(item)
 			}
