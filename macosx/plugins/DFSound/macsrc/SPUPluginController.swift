@@ -80,11 +80,11 @@ class SPUPluginController: NSWindowController {
 		// and set global values accordingly
 		ReadConfig()
 		
-		self.close()
+		close()
 	}
 	
 	@IBAction func cancel(sender: AnyObject?) {
-		self.close()
+		close()
 	}
 	
 	@IBAction func reset(sender: AnyObject?) {

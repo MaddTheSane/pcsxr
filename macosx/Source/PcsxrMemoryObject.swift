@@ -17,8 +17,7 @@ import SwiftAdditions
 	case EndLink
 };
 
-
-private func ImagesFromMcd(theBlock: UnsafePointer<McdBlock>) -> [NSImage] {
+private func imagesFromMcd(theBlock: UnsafePointer<McdBlock>) -> [NSImage] {
 	var toRet = [NSImage]()
 	let unwrapped = theBlock.memory
 	let iconArray: [Int16] = getArrayFromMirror(reflect(unwrapped.Icon))
@@ -32,7 +31,7 @@ private func ImagesFromMcd(theBlock: UnsafePointer<McdBlock>) -> [NSImage] {
 					let r: Int32 = Int32(c & 0x001F) << 3
 					let g: Int32 = (Int32(c & 0x03E0) >> 5) << 3
 					let b: Int32 = (Int32(c & 0x7C00) >> 10) << 3
-					imageRep.setColor(NSColor(calibratedRed: CGFloat(r) / 255.0, green: CGFloat(g) / 255.0, blue: CGFloat(b) / 255.0, alpha: 1), atX: Int(x), y: Int(y))
+					imageRep.setColor(NSColor(calibratedRed: CGFloat(r) / 255.0, green: CGFloat(g) / 255.0, blue: CGFloat(b) / 255.0, alpha: 1), atX: x, y: y)
 				}
 				let memImage = NSImage()
 				memImage.addRepresentation(imageRep)
@@ -44,7 +43,7 @@ private func ImagesFromMcd(theBlock: UnsafePointer<McdBlock>) -> [NSImage] {
 	return toRet
 }
 
-private func MemoryLabelFromFlag(flagNameIndex: PCSXRMemFlag) -> String {
+private func memoryLabelFromFlag(flagNameIndex: PCSXRMemFlag) -> String {
 	switch (flagNameIndex) {
 	case .EndLink:
 		return MemLabelEndLink;
@@ -63,22 +62,20 @@ private func MemoryLabelFromFlag(flagNameIndex: PCSXRMemFlag) -> String {
 	}
 }
 
-private let MemLabelDeleted = NSLocalizedString("MemCard_Deleted", comment: "MemCard_Deleted")
-private let MemLabelFree = NSLocalizedString("MemCard_Free", comment: "MemCard_Free")
-private let MemLabelUsed = NSLocalizedString("MemCard_Used", comment: "MemCard_Used")
-private let MemLabelLink = NSLocalizedString("MemCard_Link", comment: "MemCard_Link")
-private let MemLabelEndLink = NSLocalizedString("MemCard_EndLink", comment: "MemCard_EndLink")
+private let MemLabelDeleted		= NSLocalizedString("MemCard_Deleted", comment: "MemCard_Deleted")
+private let MemLabelFree		= NSLocalizedString("MemCard_Free", comment: "MemCard_Free")
+private let MemLabelUsed		= NSLocalizedString("MemCard_Used", comment: "MemCard_Used")
+private let MemLabelLink		= NSLocalizedString("MemCard_Link", comment: "MemCard_Link")
+private let MemLabelEndLink		= NSLocalizedString("MemCard_EndLink", comment: "MemCard_EndLink")
 
-private var attribMemLabelDeleted = NSAttributedString()
-private var attribMemLabelFree = NSAttributedString()
-private var attribMemLabelUsed = NSAttributedString()
-private var attribMemLabelLink = NSAttributedString()
-private var attribMemLabelEndLink = NSAttributedString()
-
-private var attribsInit: dispatch_once_t = 0
+private var attribMemLabelDeleted	= NSAttributedString()
+private var attribMemLabelFree		= NSAttributedString()
+private var attribMemLabelUsed		= NSAttributedString()
+private var attribMemLabelLink		= NSAttributedString()
+private var attribMemLabelEndLink	= NSAttributedString()
 
 private var imageBlank: NSImage? = nil
-private func BlankImage() -> NSImage {
+private func blankImage() -> NSImage {
 	if imageBlank == nil {
 		let imageRect = NSRect(x: 0, y: 0, width: 16, height: 16)
 		let anImg = NSImage(size: imageRect.size)
@@ -115,7 +112,7 @@ func MemFlagsFromBlockFlags(blockFlags: UInt8) -> PCSXRMemFlag {
 	return .Free;
 }
 
-class PcsxrMemoryObject: NSObject {
+final class PcsxrMemoryObject: NSObject {
 	let title: String
 	let name: String
 	let identifier: String
@@ -144,7 +141,7 @@ class PcsxrMemoryObject: NSObject {
 				let usName: [CChar] = getArrayFromMirror(reflect(unwrapped.Title), appendLastObject: 0)
 				title = String(CString: usName, encoding: NSASCIIStringEncoding)!
 			}
-			imageArray = ImagesFromMcd(infoBlock)
+			imageArray = imagesFromMcd(infoBlock)
 			if imageArray.count == 0 {
 				hasImages = false
 			} else {
@@ -169,7 +166,7 @@ class PcsxrMemoryObject: NSObject {
 	
 	private(set) lazy var image: NSImage = {
 		if (self.hasImages == false) {
-			let tmpBlank = BlankImage()
+			let tmpBlank = blankImage()
 			tmpBlank.size = NSMakeSize(32, 32);
 			return tmpBlank;
 		}
@@ -189,8 +186,9 @@ class PcsxrMemoryObject: NSObject {
 		return _memImage
 		}()
 	
+	private static var attribsInit: dispatch_once_t = 0
 	var attributedFlagName: NSAttributedString {
-		dispatch_once(&attribsInit) {
+		dispatch_once(&PcsxrMemoryObject.attribsInit) {
 			func SetupAttrStr(mutStr: NSMutableAttributedString, txtclr: NSColor) {
 				let wholeStrRange = NSMakeRange(0, count(mutStr.string));
 				let ourAttrs: [String: AnyObject] = [NSFontAttributeName : NSFont.systemFontOfSize(NSFont.systemFontSizeForControlSize(.SmallControlSize)),
@@ -229,6 +227,7 @@ class PcsxrMemoryObject: NSObject {
 			SetupAttrStr(tmpStr, NSColor.redColor())
 			attribMemLabelDeleted = NSAttributedString(attributedString: tmpStr)
 		}
+		
 		switch (flag) {
 		case .EndLink:
 			return attribMemLabelEndLink;
@@ -245,22 +244,21 @@ class PcsxrMemoryObject: NSObject {
 		default:
 			return attribMemLabelFree;
 		}
-
 	}
 	
 	var firstImage: NSImage {
 		if hasImages == false {
-			return BlankImage()
+			return blankImage()
 		}
 		return imageArray[0]
 	}
 	
 	class func memoryLabelFromFlag(flagNameIdx: PCSXRMemFlag) -> String {
-		return MemoryLabelFromFlag(flagNameIdx)
+		return memoryLabelFromFlag(flagNameIdx)
 	}
 	
 	var flagName: String {
-		return MemoryLabelFromFlag(flag)
+		return memoryLabelFromFlag(flag)
 	}
 
 	override var description: String {

@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class PcsxrFreezeStateHandler: NSObject, PcsxrFileHandle {
+final class PcsxrFreezeStateHandler: NSObject, PcsxrFileHandle {
 	class func supportedUTIs() -> [AnyObject] {
 		return ["com.codeplex.pcsxr.freeze"]
 	}

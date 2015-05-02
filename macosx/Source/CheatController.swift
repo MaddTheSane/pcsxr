@@ -10,7 +10,7 @@ import Cocoa
 
 let kCheatsName = "cheats"
 
-class CheatController: NSWindowController {
+final class CheatController: NSWindowController {
 	var cheats: [CheatObject]
 	var cheatValues = [CheatValue]()
 	@IBOutlet weak var cheatView: NSTableView!
@@ -81,5 +81,4 @@ class CheatController: NSWindowController {
 		LoadCheats(tmpURL.fileSystemRepresentation)
 		manager.removeItemAtURL(tmpURL, error: nil)
 	}
-	
 }

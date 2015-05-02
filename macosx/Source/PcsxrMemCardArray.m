@@ -261,7 +261,7 @@ static inline void ClearMemcardData(char *to, int dsti, char *str)
 		return [self freeBlocks];
 	}
 
-	return [rawArray[idx] blockSize];
+	return (int)[rawArray[idx] blockSize];
 }
 
 - (void)compactMemory

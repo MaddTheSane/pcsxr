@@ -11,7 +11,7 @@ import Foundation
 private weak var sPluginList: PluginList? = nil
 private let typeList = [PSE_LT_GPU, PSE_LT_SPU, PSE_LT_CDR, PSE_LT_PAD, PSE_LT_NET, PSE_LT_SIO1]
 
-class PluginList: NSObject {
+final class PluginList: NSObject {
 	private var pluginList: [PcsxrPlugin]
 	private var missingPlugins = false
 	private var activeGpuPlugin: PcsxrPlugin?

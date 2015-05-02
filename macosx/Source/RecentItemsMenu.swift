@@ -8,7 +8,11 @@
 
 import Cocoa
 
-class RecentItemsMenu: NSMenu {
+private func NSDocumentSharedController() -> NSDocumentController {
+	return (NSDocumentController.sharedDocumentController() as! NSDocumentController)
+}
+
+final class RecentItemsMenu: NSMenu {
 	@IBOutlet weak var pcsxr: PcsxrController! = nil
 	
 	/// Initialization
@@ -18,7 +22,7 @@ class RecentItemsMenu: NSMenu {
 		autoenablesItems = true
 		
 		// Populate the menu
-		if let recentDocuments = NSDocumentController.sharedDocumentController().recentDocumentURLs as? [NSURL] {
+		if let recentDocuments = NSDocumentSharedController().recentDocumentURLs as? [NSURL] {
 			for (i, url) in enumerate(recentDocuments) {
 				let tempItem = newMenuItem(url)
 				addMenuItem(tempItem, index: i)
@@ -30,7 +34,7 @@ class RecentItemsMenu: NSMenu {
 		insertItem(item, atIndex: index)
 		
 		// Prevent menu from overflowing; the -2 accounts for the "Clear..." and the separator items
-		let maxNumItems = NSDocumentController.sharedDocumentController().maximumRecentDocumentCount
+		let maxNumItems = NSDocumentSharedController().maximumRecentDocumentCount
 		if numberOfItems - 2 > maxNumItems {
 			removeItemAtIndex(maxNumItems)
 		}
@@ -51,7 +55,7 @@ class RecentItemsMenu: NSMenu {
 	}
 	
 	func addRecentItem(documentURL: NSURL) {
-		NSDocumentController.sharedDocumentController().noteNewRecentDocumentURL(documentURL)
+		NSDocumentSharedController().noteNewRecentDocumentURL(documentURL)
 		
 		if let item = findMenuItemByURL(documentURL) {
 			removeItem(item)
@@ -71,7 +75,7 @@ class RecentItemsMenu: NSMenu {
 		return nil
 	}
 	
-	@objc func openRecentItem(sender: NSMenuItem) {
+	@objc private func openRecentItem(sender: NSMenuItem) {
 		if let url = sender.representedObject as? NSURL {
 			addRecentItem(url)
 			pcsxr.runURL(url)
@@ -80,7 +84,7 @@ class RecentItemsMenu: NSMenu {
 	
 	@IBAction func clearRecentDocuments(sender: AnyObject?) {
 		removeDocumentItems()
-		NSDocumentController.sharedDocumentController().clearRecentDocuments(sender)
+		NSDocumentSharedController().clearRecentDocuments(sender)
 	}
 	
 	// Document items are menu items with tag 0

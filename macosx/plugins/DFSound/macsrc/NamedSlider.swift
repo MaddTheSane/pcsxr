@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class NamedSlider: NSSlider {
+final class NamedSlider: NSSlider {
 	var strings: [String]? = nil
 	
 	override var stringValue: String {
