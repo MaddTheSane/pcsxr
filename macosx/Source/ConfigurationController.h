@@ -3,7 +3,6 @@
 #import <Cocoa/Cocoa.h>
 #import "PluginController.h"
 #import "HotkeyController.h"
-#import "PluginList.h"
 
 extern NSString *const __nonnull memChangeNotifier;
 extern NSString *const __nonnull memCardChangeNumberKey;

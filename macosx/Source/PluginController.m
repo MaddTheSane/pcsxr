@@ -1,6 +1,7 @@
 #import "PluginController.h"
 #import "PcsxrPlugin.h"
 #import "PcsxrController.h"
+#import "PCSXR-Swift.h"
 
 @interface PluginController ()
 @property (strong) NSArray *plugins;

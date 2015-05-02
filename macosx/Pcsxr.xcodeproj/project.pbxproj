@@ -13,7 +13,6 @@
 		2BB3D6BE05427FE200831ACB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BA178A505148D9D0026D74D /* main.m */; };
 		2BB3D6BF05427FE200831ACB /* PcsxrController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B75FD3D051C56D200D12034 /* PcsxrController.m */; };
 		2BB3D6C005427FE200831ACB /* ConfigurationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B75FD4B051C8A7400D12034 /* ConfigurationController.m */; };
-		2BB3D6C105427FE200831ACB /* PluginList.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BBB1127051DC00500B84448 /* PluginList.m */; };
 		2BB3D6C205427FE200831ACB /* EmuThread.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BBB1792051E113B00B84448 /* EmuThread.m */; };
 		2BB3D6C305427FE200831ACB /* Plugin.c in Sources */ = {isa = PBXBuildFile; fileRef = 2BBB17DA051E4D0F00B84448 /* Plugin.c */; };
 		2BB3D6C405427FE200831ACB /* PcsxrPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BA44361052DB2EA00E21DDD /* PcsxrPlugin.m */; };
@@ -211,6 +210,7 @@
 		55DFBAAF197B8CCD00620084 /* Pcsxr-QL.qlgenerator in Copy QuickLook Plug-In */ = {isa = PBXBuildFile; fileRef = 550E343718E6293D00A1AD21 /* Pcsxr-QL.qlgenerator */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		55E5AD9F1AF53866000471C5 /* libarchive.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 55E5AD9E1AF53865000471C5 /* libarchive.dylib */; };
 		55E5ADA41AF53A0F000471C5 /* fmemopen.c in Sources */ = {isa = PBXBuildFile; fileRef = 55E5ADA11AF53A0F000471C5 /* fmemopen.c */; };
+		55E5ADAE1AF54932000471C5 /* PluginList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E5ADAD1AF54932000471C5 /* PluginList.swift */; };
 		55E80E471A10136A009C98F6 /* PcsxrMemoryObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E80E461A10136A009C98F6 /* PcsxrMemoryObject.swift */; };
 		55E80E571A1018A5009C98F6 /* SwiftAdditions.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 55E80E4E1A101873009C98F6 /* SwiftAdditions.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		55E80E581A103446009C98F6 /* PcsxrMemoryObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E80E461A10136A009C98F6 /* PcsxrMemoryObject.swift */; };
@@ -484,8 +484,6 @@
 		2BA44361052DB2EA00E21DDD /* PcsxrPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.c.objc; path = PcsxrPlugin.m; sourceTree = "<group>"; tabWidth = 4; usesTabs = 1; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		2BB3D6CF05427FE200831ACB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../Info.plist; sourceTree = "<group>"; };
 		2BB3D6D105427FE200831ACB /* PCSXR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PCSXR.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		2BBB1126051DC00500B84448 /* PluginList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PluginList.h; sourceTree = "<group>"; };
-		2BBB1127051DC00500B84448 /* PluginList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PluginList.m; sourceTree = "<group>"; usesTabs = 1; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		2BBB1791051E113B00B84448 /* EmuThread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmuThread.h; sourceTree = "<group>"; };
 		2BBB1792051E113B00B84448 /* EmuThread.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmuThread.m; sourceTree = "<group>"; usesTabs = 1; };
 		2BBB17DA051E4D0F00B84448 /* Plugin.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Plugin.c; sourceTree = "<group>"; usesTabs = 1; };
@@ -849,6 +847,7 @@
 		55E5ADA11AF53A0F000471C5 /* fmemopen.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = fmemopen.c; sourceTree = "<group>"; };
 		55E5ADA21AF53A0F000471C5 /* fmemopen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fmemopen.h; sourceTree = "<group>"; };
 		55E5ADA31AF53A0F000471C5 /* NimbusMemoryMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NimbusMemoryMapping.h; sourceTree = "<group>"; };
+		55E5ADAD1AF54932000471C5 /* PluginList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PluginList.swift; path = "Plug-in handling/PluginList.swift"; sourceTree = "<group>"; };
 		55E80E451A101368009C98F6 /* PCSXR-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PCSXR-Bridging-Header.h"; sourceTree = "<group>"; };
 		55E80E461A10136A009C98F6 /* PcsxrMemoryObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PcsxrMemoryObject.swift; sourceTree = "<group>"; };
 		55E80E481A101872009C98F6 /* SwiftAdditions.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SwiftAdditions.xcodeproj; path = SwiftAdditions/SwiftAdditions.xcodeproj; sourceTree = "<group>"; };
@@ -1755,8 +1754,7 @@
 		557649B71786AF92007C4457 /* Plug-in handling */ = {
 			isa = PBXGroup;
 			children = (
-				2BBB1126051DC00500B84448 /* PluginList.h */,
-				2BBB1127051DC00500B84448 /* PluginList.m */,
+				55E5ADAD1AF54932000471C5 /* PluginList.swift */,
 				2BA44360052DB2EA00E21DDD /* PcsxrPlugin.h */,
 				2BA44361052DB2EA00E21DDD /* PcsxrPlugin.m */,
 			);
@@ -2380,7 +2378,6 @@
 				552B4D851A1312B800C2F820 /* CheatController.swift in Sources */,
 				2BB3D6BF05427FE200831ACB /* PcsxrController.m in Sources */,
 				2BB3D6C005427FE200831ACB /* ConfigurationController.m in Sources */,
-				2BB3D6C105427FE200831ACB /* PluginList.m in Sources */,
 				2BB3D6C205427FE200831ACB /* EmuThread.m in Sources */,
 				2BB3D6C305427FE200831ACB /* Plugin.c in Sources */,
 				55D086EF1A6C9E7400E0A00A /* PcsxrFreezeStateHandler.swift in Sources */,
@@ -2406,6 +2403,7 @@
 				71F4C5AB0FDED12800529849 /* r3000a.c in Sources */,
 				55107BB61A11C9620031E40E /* CheatObject.swift in Sources */,
 				71F4C5AD0FDED12800529849 /* sio.c in Sources */,
+				55E5ADAE1AF54932000471C5 /* PluginList.swift in Sources */,
 				71F4C5AF0FDED12800529849 /* spu.c in Sources */,
 				712FD1E81093096F00575A92 /* debug.c in Sources */,
 				712FD1E91093096F00575A92 /* socket.c in Sources */,

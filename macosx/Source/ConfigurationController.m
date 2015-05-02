@@ -1,11 +1,11 @@
 #import "ConfigurationController.h"
 #import "PcsxrController.h"
-#import "PluginList.h"
 #import "PcsxrPlugin.h"
 #import "PcsxrMemCardController.h"
 #import "PcsxrMemCardHandler.h"
 #include "psxcommon.h"
 #include "plugins.h"
+#import "PCSXR-Swift.h"
 
 NSString *const memChangeNotifier = @"PcsxrMemoryCardDidChangeNotifier";
 NSString *const memCardChangeNumberKey = @"PcsxrMemoryCardThatChangedKey";

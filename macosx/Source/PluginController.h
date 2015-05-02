@@ -1,7 +1,6 @@
 /* PluginController */
 
 #import <Cocoa/Cocoa.h>
-#import "PluginList.h"
 
 @interface PluginController : NSObject
 

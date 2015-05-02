@@ -2,7 +2,6 @@
 
 #import <Cocoa/Cocoa.h>
 #import "EmuThread.h"
-#import "PluginList.h"
 
 @class ConfigurationController;
 @class CheatController;
