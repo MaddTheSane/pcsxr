@@ -9,18 +9,18 @@
 #import <Foundation/Foundation.h>
 
 @interface PcsxrPlugin : NSObject
-@property (readonly, copy) NSString *path;
-@property (readonly, copy) NSString *name;
+@property (readonly, copy, nonnull) NSString *path;
+@property (readonly, copy, nullable) NSString *name;
 @property (readonly) int type;
 
-+ (NSString *)prefixForType:(int)type;
-+ (NSString *)defaultKeyForType:(int)type;
-+ (char **)configEntriesForType:(int)type;
-+ (NSArray *)pluginsPaths;
++ (nonnull NSString *)prefixForType:(int)type;
++ (nonnull NSString *)defaultKeyForType:(int)type;
++ (char *__nullable *__nonnull)configEntriesForType:(int)type;
++ (nonnull NSArray *)pluginsPaths;
 
-- (instancetype)initWithPath:(NSString *)aPath NS_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithPath:(nonnull NSString *)aPath NS_DESIGNATED_INITIALIZER;
 
-@property (readonly, copy) NSString *displayVersion;
+@property (readonly, copy, nonnull) NSString *displayVersion;
 - (BOOL)hasAboutAs:(int)type;
 - (BOOL)hasConfigureAs:(int)type;
 - (long)runAs:(int)aType;

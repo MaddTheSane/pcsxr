@@ -8,7 +8,6 @@
 #include "psxcommon.h"
 #include "sio.h"
 #include "cheat.h"
-#import "PcsxrMemoryObject.h"
 #import "PcsxrFileHandle.h"
 #import "PcsxrHexadecimalFormatter.h"
 #import "PcsxrController.h"

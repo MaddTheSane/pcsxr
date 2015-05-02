@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "PcsxrMemoryObject.h"
 #include "MyQuickLook.h"
 
 __private_extern NSArray *CreateArrayByEnumeratingMemoryCardAtURL(NSURL *location) NS_RETURNS_RETAINED;

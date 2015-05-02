@@ -812,7 +812,6 @@
 		5598AAFB17D2E9E90024F71D /* fr */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		55A9021E147D7C380037E18F /* PcsxrMemCardController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PcsxrMemCardController.h; sourceTree = "<group>"; };
 		55A9021F147D7C380037E18F /* PcsxrMemCardController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PcsxrMemCardController.m; sourceTree = "<group>"; usesTabs = 1; };
-		55A90227147D89380037E18F /* PcsxrMemoryObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PcsxrMemoryObject.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		55B13FBF18C4FAC600ACD9AC /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		55BBA690149454DE003B2CEC /* PcsxrFileHandle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PcsxrFileHandle.h; sourceTree = "<group>"; };
 		55BBA691149455E1003B2CEC /* PcsxrMemCardHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PcsxrMemCardHandler.h; sourceTree = "<group>"; };
@@ -1808,7 +1807,6 @@
 				55E80E451A101368009C98F6 /* PCSXR-Bridging-Header.h */,
 				2BBB1791051E113B00B84448 /* EmuThread.h */,
 				2BBB1792051E113B00B84448 /* EmuThread.m */,
-				55A90227147D89380037E18F /* PcsxrMemoryObject.h */,
 				55E80E461A10136A009C98F6 /* PcsxrMemoryObject.swift */,
 				55EC05F91788B1230053AC23 /* PcsxrMemCardArray.h */,
 				55EC05FA1788B1230053AC23 /* PcsxrMemCardArray.m */,

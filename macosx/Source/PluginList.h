@@ -14,19 +14,19 @@
 
 @interface PluginList : NSObject <NSFastEnumeration>
 
-+ (PluginList *)sharedList;
++ (nullable PluginList *)sharedList;
 
 - (void)refreshPlugins;
-- (NSArray *)pluginsForType:(int)typeMask;
-- (BOOL)hasPluginAtPath:(NSString *)path;
+- (nonnull NSArray *)pluginsForType:(int)typeMask;
+- (BOOL)hasPluginAtPath:(nonnull NSString *)path;
 @property (readonly) BOOL configured;
-- (PcsxrPlugin *)activePluginForType:(int)type;
-- (BOOL)setActivePlugin:(PcsxrPlugin *)plugin forType:(int)type;
+- (nullable PcsxrPlugin *)activePluginForType:(int)type;
+- (BOOL)setActivePlugin:(nonnull PcsxrPlugin *)plugin forType:(int)type;
 
 - (void)disableNetPlug;
 - (void)enableNetPlug;
 
-- (PcsxrPlugin*)objectAtIndexedSubscript:(NSInteger)index;
+- (nonnull PcsxrPlugin*)objectAtIndexedSubscript:(NSInteger)index;
 - (NSInteger)count;
 
 @end

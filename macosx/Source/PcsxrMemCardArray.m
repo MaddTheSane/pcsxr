@@ -104,7 +104,7 @@ static inline void ClearMemcardData(char *to, int dsti, char *str)
 			McdBlock memBlock;
 			GetMcdBlockInfo(carNum, i + 1, &memBlock);
 			
-			if ([PcsxrMemoryObject memFlagsFromBlockFlags:memBlock.Flags] == memFlagFree) {
+			if ([PcsxrMemoryObject memFlagsFromBlockFlags:memBlock.Flags] == PCSXRMemFlagFree) {
 				//Free space: ignore
 				i++;
 				continue;
@@ -184,7 +184,7 @@ static inline void ClearMemcardData(char *to, int dsti, char *str)
 	}
 	PcsxrMemoryObject *tmpObj = rawArray[idx];
 
-	int memSize = tmpObj.blockSize;
+	int memSize = (int)tmpObj.blockSize;
 	
 	if ([otherCard availableBlocks] < memSize) {
 		NSLog(@"Failing because the other card does not have enough space!");
@@ -200,7 +200,7 @@ static inline void ClearMemcardData(char *to, int dsti, char *str)
 		NSAssert(toCopy != -1, @"Compacting the card should have made space!");
 	}
 	
-	int memIdx = tmpObj.startingIndex;
+	int memIdx = (int)tmpObj.startingIndex;
 	for (int i = 0; i < memSize; i++) {
 		CopyMemcardData([self memDataPtr], [otherCard memDataPtr], memIdx + i, toCopy + i, (char*)otherCard.memCardCPath);
 	}
@@ -221,7 +221,7 @@ static inline void ClearMemcardData(char *to, int dsti, char *str)
 {
 	int memSize = MAX_MEMCARD_BLOCKS;
 	for (PcsxrMemoryObject *memObj in rawArray) {
-		if (memObj.flag != memFlagDeleted) {
+		if (memObj.flag != PCSXRMemFlagDeleted) {
 			memSize -= memObj.blockSize;
 		}
 	}
@@ -273,9 +273,9 @@ static inline void ClearMemcardData(char *to, int dsti, char *str)
 		GetMcdBlockInfo(cardNumber, i+1, &baseBlock);
 		PCSXRMemFlag theFlags = [PcsxrMemoryObject memFlagsFromBlockFlags:baseBlock.Flags];
 		
-		if (theFlags == memFlagDeleted || theFlags == memFlagFree) {
+		if (theFlags == PCSXRMemFlagDeleted || theFlags == PCSXRMemFlagFree) {
 			PCSXRMemFlag up1Flags = theFlags;
-			while ((up1Flags == memFlagDeleted || up1Flags == memFlagFree) && x < MAX_MEMCARD_BLOCKS) {
+			while ((up1Flags == PCSXRMemFlagDeleted || up1Flags == PCSXRMemFlagFree) && x < MAX_MEMCARD_BLOCKS) {
 				x++;
 				McdBlock up1Block;
 				GetMcdBlockInfo(cardNumber, x+1, &up1Block);
@@ -301,7 +301,7 @@ static inline void ClearMemcardData(char *to, int dsti, char *str)
 
 - (void)deleteMemoryBlocksAtIndex:(int)slotnum
 {
-	int xor = 0, i, j;
+	int j;
 	char *data, *ptr, *filename;
 	if (cardNumber == 1) {
 		filename = Config.Mcd1;
@@ -322,9 +322,10 @@ static inline void ClearMemcardData(char *to, int dsti, char *str)
 	
 	McdBlock flagBlock;
 	
-	for(i = theObj.startingIndex + 1; i < (theObj.startingIndex + theObj.blockSize + 1); i++)
+	for(NSInteger i = theObj.startingIndex + 1; i < (theObj.startingIndex + theObj.blockSize + 1); i++)
 	{
-		GetMcdBlockInfo(cardNumber, i, &flagBlock);
+		char xor = 0;
+		GetMcdBlockInfo(cardNumber, (int)i, &flagBlock);
 		ptr = data + i * 128;
 		
 		if ((flagBlock.Flags & 0xF0) == 0xA0) {
@@ -339,7 +340,7 @@ static inline void ClearMemcardData(char *to, int dsti, char *str)
 		for (j = 0; j < 127; j++) xor ^= *ptr++;
 		*ptr = xor;
 		
-		SaveMcd(filename, data, i * 128, 128);
+		SaveMcd(filename, data, (int)(i * 128), 128);
 	}
 }
 

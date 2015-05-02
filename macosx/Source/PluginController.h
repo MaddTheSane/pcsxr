@@ -5,14 +5,14 @@
 
 @interface PluginController : NSObject
 
-@property (weak) IBOutlet NSButton *aboutButton;
-@property (weak) IBOutlet NSButton *configureButton;
-@property (weak) IBOutlet NSPopUpButton *pluginMenu;
+@property (weak, null_unspecified) IBOutlet NSButton *aboutButton;
+@property (weak, null_unspecified) IBOutlet NSButton *configureButton;
+@property (weak, null_unspecified) IBOutlet NSPopUpButton *pluginMenu;
 
-- (IBAction)doAbout:(id)sender;
-- (IBAction)doConfigure:(id)sender;
-- (IBAction)selectPlugin:(id)sender;
+- (IBAction)doAbout:(nullable id)sender;
+- (IBAction)doConfigure:(nullable id)sender;
+- (IBAction)selectPlugin:(nullable id)sender;
 
-- (void)setPluginsTo:(NSArray *)list withType:(int)type;
+- (void)setPluginsTo:(nonnull NSArray *)list withType:(int)type;
 
 @end

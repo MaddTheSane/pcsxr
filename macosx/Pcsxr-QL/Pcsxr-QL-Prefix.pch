@@ -8,7 +8,6 @@
 
 #ifdef __OBJC__
 	#import <Cocoa/Cocoa.h>
-	#import "PcsxrMemoryObject.h"
 #endif
 
 #ifndef NS_DESIGNATED_INITIALIZER

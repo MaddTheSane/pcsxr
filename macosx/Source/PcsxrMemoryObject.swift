@@ -9,6 +9,15 @@
 import Cocoa
 import SwiftAdditions
 
+@objc enum PCSXRMemFlag: Int8 {
+	case Deleted
+	case Free
+	case Used
+	case Link
+	case EndLink
+};
+
+
 private func ImagesFromMcd(theBlock: UnsafePointer<McdBlock>) -> [NSImage] {
 	var toRet = [NSImage]()
 	let unwrapped = theBlock.memory
@@ -37,16 +46,16 @@ private func ImagesFromMcd(theBlock: UnsafePointer<McdBlock>) -> [NSImage] {
 
 private func MemoryLabelFromFlag(flagNameIndex: PCSXRMemFlag) -> String {
 	switch (flagNameIndex) {
-	case .memFlagEndLink:
+	case .EndLink:
 		return MemLabelEndLink;
 		
-	case .memFlagLink:
+	case .Link:
 		return MemLabelLink;
 		
-	case .memFlagUsed:
+	case .Used:
 		return MemLabelUsed;
 		
-	case .memFlagDeleted:
+	case .Deleted:
 		return MemLabelDeleted;
 		
 	default:
@@ -85,25 +94,25 @@ private func BlankImage() -> NSImage {
 func MemFlagsFromBlockFlags(blockFlags: UInt8) -> PCSXRMemFlag {
 	if ((blockFlags & 0xF0) == 0xA0) {
 		if ((blockFlags & 0xF) >= 1 && (blockFlags & 0xF) <= 3) {
-			return .memFlagDeleted;
+			return .Deleted;
 		} else {
-			return .memFlagFree;
+			return .Free
 		}
 	} else if ((blockFlags & 0xF0) == 0x50) {
 		if ((blockFlags & 0xF) == 0x1) {
-			return .memFlagUsed;
+			return .Used
 		} else if ((blockFlags & 0xF) == 0x2) {
-			return .memFlagLink;
+			return .Link
 		} else if ((blockFlags & 0xF) == 0x3) {
-			return .memFlagEndLink;
+			return .EndLink
 		}
 	} else {
-		return .memFlagFree;
+		return .Free;
 	}
 	
 	//Xcode complains unless we do this...
 	NSLog("Unknown flag %x", blockFlags);
-	return .memFlagFree;
+	return .Free;
 }
 
 class PcsxrMemoryObject: NSObject {
@@ -121,7 +130,7 @@ class PcsxrMemoryObject: NSObject {
 		blockSize = memSize
 		let unwrapped = infoBlock.memory
 		flag = MemFlagsFromBlockFlags(unwrapped.Flags)
-		if flag == .memFlagFree {
+		if flag == .Free {
 			imageArray = []
 			hasImages = false
 			title = "Free block"
@@ -221,16 +230,16 @@ class PcsxrMemoryObject: NSObject {
 			attribMemLabelDeleted = NSAttributedString(attributedString: tmpStr)
 		}
 		switch (flag) {
-		case .memFlagEndLink:
+		case .EndLink:
 			return attribMemLabelEndLink;
 			
-		case .memFlagLink:
+		case .Link:
 			return attribMemLabelLink;
 			
-		case .memFlagUsed:
+		case .Used:
 			return attribMemLabelUsed;
 			
-		case .memFlagDeleted:
+		case .Deleted:
 			return attribMemLabelDeleted;
 			
 		default:
@@ -259,7 +268,7 @@ class PcsxrMemoryObject: NSObject {
 	}
 	
 	var showCount: Bool {
-		if (flag == .memFlagFree) {
+		if flag == .Free {
 			//Always show the size of the free blocks
 			return true;
 		} else {
