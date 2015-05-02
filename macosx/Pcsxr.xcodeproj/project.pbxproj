@@ -209,6 +209,8 @@
 		55D086EF1A6C9E7400E0A00A /* PcsxrFreezeStateHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D086EE1A6C9E7400E0A00A /* PcsxrFreezeStateHandler.swift */; };
 		55DA3723189440C800B44951 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 551A76B2178693EA0052D185 /* CoreFoundation.framework */; };
 		55DFBAAF197B8CCD00620084 /* Pcsxr-QL.qlgenerator in Copy QuickLook Plug-In */ = {isa = PBXBuildFile; fileRef = 550E343718E6293D00A1AD21 /* Pcsxr-QL.qlgenerator */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		55E5AD9F1AF53866000471C5 /* libarchive.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 55E5AD9E1AF53865000471C5 /* libarchive.dylib */; };
+		55E5ADA41AF53A0F000471C5 /* fmemopen.c in Sources */ = {isa = PBXBuildFile; fileRef = 55E5ADA11AF53A0F000471C5 /* fmemopen.c */; };
 		55E80E471A10136A009C98F6 /* PcsxrMemoryObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E80E461A10136A009C98F6 /* PcsxrMemoryObject.swift */; };
 		55E80E571A1018A5009C98F6 /* SwiftAdditions.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 55E80E4E1A101873009C98F6 /* SwiftAdditions.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		55E80E581A103446009C98F6 /* PcsxrMemoryObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E80E461A10136A009C98F6 /* PcsxrMemoryObject.swift */; };
@@ -842,6 +844,12 @@
 		55E159BD1845BAED007983CB /* hu */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hu; path = hu.lproj/NetSfPeopsSoftGPUConfig.strings; sourceTree = "<group>"; };
 		55E159BF1845BB4C007983CB /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/NetSfPeopsOpenGLConfig.strings; sourceTree = "<group>"; };
 		55E159C11845BB4F007983CB /* hu */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hu; path = hu.lproj/NetSfPeopsOpenGLConfig.strings; sourceTree = "<group>"; };
+		55E5AD9C1AF537DD000471C5 /* archive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = archive.h; sourceTree = "<group>"; };
+		55E5AD9D1AF537DD000471C5 /* archive_entry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = archive_entry.h; sourceTree = "<group>"; };
+		55E5AD9E1AF53865000471C5 /* libarchive.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libarchive.dylib; path = usr/lib/libarchive.dylib; sourceTree = SDKROOT; };
+		55E5ADA11AF53A0F000471C5 /* fmemopen.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = fmemopen.c; sourceTree = "<group>"; };
+		55E5ADA21AF53A0F000471C5 /* fmemopen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fmemopen.h; sourceTree = "<group>"; };
+		55E5ADA31AF53A0F000471C5 /* NimbusMemoryMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NimbusMemoryMapping.h; sourceTree = "<group>"; };
 		55E80E451A101368009C98F6 /* PCSXR-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PCSXR-Bridging-Header.h"; sourceTree = "<group>"; };
 		55E80E461A10136A009C98F6 /* PcsxrMemoryObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PcsxrMemoryObject.swift; sourceTree = "<group>"; };
 		55E80E481A101872009C98F6 /* SwiftAdditions.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SwiftAdditions.xcodeproj; path = SwiftAdditions/SwiftAdditions.xcodeproj; sourceTree = "<group>"; };
@@ -917,6 +925,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55E5AD9F1AF53866000471C5 /* libarchive.dylib in Frameworks */,
 				551A76D9178696810052D185 /* libz.dylib in Frameworks */,
 				55DA3723189440C800B44951 /* CoreFoundation.framework in Frameworks */,
 				551A76D7178696110052D185 /* IOKit.framework in Frameworks */,
@@ -1036,8 +1045,8 @@
 		08FB7794FE84155DC02AAC07 /* Pcsxr */ = {
 			isa = PBXGroup;
 			children = (
-				55E80E481A101872009C98F6 /* SwiftAdditions.xcodeproj */,
 				55F41A2017EF774500605DF8 /* version.sh */,
+				55E5AD931AF537AD000471C5 /* Third-party */,
 				08FB7795FE84155DC02AAC07 /* PCSXR */,
 				551A74AF17868BE90052D185 /* plugins */,
 				55534AF318183BFA006D6BCB /* updateInfoPlist */,
@@ -1214,6 +1223,7 @@
 		551A749D17868B110052D185 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				55E5AD9E1AF53865000471C5 /* libarchive.dylib */,
 				55E15993184564D4007983CB /* GLKit.framework */,
 				554FD70817C6A13E0056CF66 /* SDL2.framework */,
 				55CA586A17E799E6007424D5 /* DiskArbitration.framework */,
@@ -1812,6 +1822,37 @@
 			name = "Helper Classes";
 			sourceTree = "<group>";
 		};
+		55E5AD931AF537AD000471C5 /* Third-party */ = {
+			isa = PBXGroup;
+			children = (
+				55E5ADA01AF53A0F000471C5 /* memorymapping */,
+				55E80E481A101872009C98F6 /* SwiftAdditions.xcodeproj */,
+				55E5AD9B1AF537DD000471C5 /* libarchive */,
+			);
+			name = "Third-party";
+			path = Vendor;
+			sourceTree = "<group>";
+		};
+		55E5AD9B1AF537DD000471C5 /* libarchive */ = {
+			isa = PBXGroup;
+			children = (
+				55E5AD9C1AF537DD000471C5 /* archive.h */,
+				55E5AD9D1AF537DD000471C5 /* archive_entry.h */,
+			);
+			path = libarchive;
+			sourceTree = "<group>";
+		};
+		55E5ADA01AF53A0F000471C5 /* memorymapping */ = {
+			isa = PBXGroup;
+			children = (
+				55E5ADA11AF53A0F000471C5 /* fmemopen.c */,
+				55E5ADA21AF53A0F000471C5 /* fmemopen.h */,
+				55E5ADA31AF53A0F000471C5 /* NimbusMemoryMapping.h */,
+			);
+			name = memorymapping;
+			path = memorymapping/src;
+			sourceTree = "<group>";
+		};
 		55E80E491A101872009C98F6 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -2386,6 +2427,7 @@
 				55BBA69614945628003B2CEC /* PcsxrPluginHandler.m in Sources */,
 				55BBA69914953887003B2CEC /* PcsxrDiscHandler.m in Sources */,
 				0280B7AD16764CC5007B8001 /* HotkeyController.m in Sources */,
+				55E5ADA41AF53A0F000471C5 /* fmemopen.c in Sources */,
 				02717968167884C9004AED62 /* hotkeys.m in Sources */,
 				55EC05FB1788B1230053AC23 /* PcsxrMemCardArray.m in Sources */,
 				55EC05FE178916E80053AC23 /* MemBadgeView.m in Sources */,
@@ -3562,9 +3604,16 @@
 					"XA_HACK=1",
 					"__MACOSX__=1",
 					"ENABLE_SIO1API=1",
+					"HAVE_LIBARCHIVE=1",
+					"ENABLE_ECM_FULL=1",
 					"$(inherited)",
+					"archive_read_free=archive_read_finish",
 				);
 				GCC_WARN_UNKNOWN_PRAGMAS = NO;
+				HEADER_SEARCH_PATHS = (
+					Vendor/libarchive,
+					"$(inherited)",
+				);
 				INFOPLIST_FILE = Info.plistvers.plist;
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks @executable_path/../Frameworks";
 				OTHER_CFLAGS = "$(inherited)";
@@ -3721,9 +3770,16 @@
 					"XA_HACK=1",
 					"__MACOSX__=1",
 					"ENABLE_SIO1API=1",
+					"HAVE_LIBARCHIVE=1",
+					"ENABLE_ECM_FULL=1",
 					"$(inherited)",
+					"archive_read_free=archive_read_finish",
 				);
 				GCC_WARN_UNKNOWN_PRAGMAS = NO;
+				HEADER_SEARCH_PATHS = (
+					Vendor/libarchive,
+					"$(inherited)",
+				);
 				INFOPLIST_FILE = Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks @executable_path/../Frameworks";
 				OTHER_CFLAGS = "$(inherited)";
@@ -3747,9 +3803,16 @@
 					"XA_HACK=1",
 					"__MACOSX__=1",
 					"ENABLE_SIO1API=1",
+					"HAVE_LIBARCHIVE=1",
+					"ENABLE_ECM_FULL=1",
 					"$(inherited)",
+					"archive_read_free=archive_read_finish",
 				);
 				GCC_WARN_UNKNOWN_PRAGMAS = NO;
+				HEADER_SEARCH_PATHS = (
+					Vendor/libarchive,
+					"$(inherited)",
+				);
 				INFOPLIST_FILE = Info.plistvers.plist;
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks @executable_path/../Frameworks";
 				OTHER_CFLAGS = (
