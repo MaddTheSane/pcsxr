@@ -168,7 +168,7 @@ final class PluginList: NSObject {
 			return true
 		}
 		
-		var active = (pluginPtr != nil) && EmuThread.active()
+		let active = (pluginPtr != nil) && EmuThread.active()
 		var wasPaused = false
 		if active {
 			//TODO: temporary freeze?
