@@ -47,7 +47,7 @@ class SPUPluginController: NSWindowController {
 		ReadConfig();
 		
 		/* load from preferences */
-		self.keyValues = NSMutableDictionary(dictionary: defaults.dictionaryForKey(PrefsKey)!)
+		keyValues = NSMutableDictionary(dictionary: defaults.dictionaryForKey(PrefsKey)!)
 		
 		hiCompBox.integerValue = (keyValues[kHighCompMode] as! Bool) ? NSOnState : NSOffState
 		irqWaitBox.integerValue = (keyValues[kSPUIRQWait] as! Bool) ? NSOnState : NSOffState
@@ -62,7 +62,7 @@ class SPUPluginController: NSWindowController {
 	@IBAction func ok(sender: AnyObject?) {
 		let defaults = NSUserDefaults.standardUserDefaults()
 		
-		var writeDic = NSMutableDictionary(dictionary: self.keyValues)
+		let writeDic = NSMutableDictionary(dictionary: self.keyValues)
 		
 		writeDic[kHighCompMode] = hiCompBox.integerValue == NSOnState ? true : false
 		writeDic[kSPUIRQWait] = irqWaitBox.integerValue == NSOnState ? true : false

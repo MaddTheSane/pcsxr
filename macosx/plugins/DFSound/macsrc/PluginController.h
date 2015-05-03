@@ -5,6 +5,7 @@
 @class SPUPluginController;
 
 __private_extern void ReadConfig();
+
 #define kHighCompMode @"High Compatibility Mode"
 #define kSPUIRQWait @"SPU IRQ Wait"
 #define kXAPitch @"XA Pitch"
