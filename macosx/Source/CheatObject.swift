@@ -13,7 +13,7 @@ func ==(rhs: CheatObject, lhs: CheatObject) -> Bool {
 	return rhs.cheatName == lhs.cheatName && rhs.values == lhs.values
 }
 
-final class CheatObject: NSObject, Hashable, Printable, SequenceType {
+class CheatObject: NSObject, Hashable, Printable, SequenceType {
 	var cheatName: String
 	var values: [CheatValue]
 	var enabled: Bool

@@ -1,13 +1,13 @@
 /* ConfigurationController */
 
 #import <Cocoa/Cocoa.h>
-#import "PluginController.h"
 #import "HotkeyController.h"
 
 extern NSString *const __nonnull memChangeNotifier;
 extern NSString *const __nonnull memCardChangeNumberKey;
 
 @class PcsxrMemCardController;
+@class PluginController;
 
 @interface ConfigurationController : NSWindowController <NSWindowDelegate, NSTabViewDelegate>
 @property (weak, null_unspecified) IBOutlet PluginController *cdromPlugin;

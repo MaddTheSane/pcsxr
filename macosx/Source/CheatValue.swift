@@ -12,7 +12,7 @@ func ==(rhs: CheatValue, lhs: CheatValue) -> Bool {
 	return rhs.cheatValue == lhs.cheatValue && rhs.cheatAddress == lhs.cheatAddress
 }
 
-final class CheatValue: NSObject, Hashable, NSCopying, Printable {
+class CheatValue: NSObject, Hashable, NSCopying, Printable {
 	var cheatAddress: UInt32
 	var cheatValue: UInt16
 	

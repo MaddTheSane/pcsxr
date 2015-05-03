@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		02717968167884C9004AED62 /* hotkeys.m in Sources */ = {isa = PBXBuildFile; fileRef = 02717967167884C9004AED62 /* hotkeys.m */; };
 		0280B7AD16764CC5007B8001 /* HotkeyController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0280B7AC16764CC3007B8001 /* HotkeyController.m */; };
-		2B4DE99205FF9307003EFEF0 /* PluginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B4DE98E05FF9307003EFEF0 /* PluginController.m */; };
 		2BB3D6BE05427FE200831ACB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BA178A505148D9D0026D74D /* main.m */; };
 		2BB3D6BF05427FE200831ACB /* PcsxrController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B75FD3D051C56D200D12034 /* PcsxrController.m */; };
 		2BB3D6C005427FE200831ACB /* ConfigurationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B75FD4B051C8A7400D12034 /* ConfigurationController.m */; };
@@ -211,6 +210,7 @@
 		55E5AD9F1AF53866000471C5 /* libarchive.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 55E5AD9E1AF53865000471C5 /* libarchive.dylib */; };
 		55E5ADA41AF53A0F000471C5 /* fmemopen.c in Sources */ = {isa = PBXBuildFile; fileRef = 55E5ADA11AF53A0F000471C5 /* fmemopen.c */; };
 		55E5ADAE1AF54932000471C5 /* PluginList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E5ADAD1AF54932000471C5 /* PluginList.swift */; };
+		55E5ADB81AF5B24A000471C5 /* PluginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E5ADB71AF5B24A000471C5 /* PluginController.swift */; };
 		55E80E471A10136A009C98F6 /* PcsxrMemoryObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E80E461A10136A009C98F6 /* PcsxrMemoryObject.swift */; };
 		55E80E571A1018A5009C98F6 /* SwiftAdditions.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 55E80E4E1A101873009C98F6 /* SwiftAdditions.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		55E80E581A103446009C98F6 /* PcsxrMemoryObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E80E461A10136A009C98F6 /* PcsxrMemoryObject.swift */; };
@@ -472,8 +472,6 @@
 		02717969167884DF004AED62 /* hotkeys.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = hotkeys.h; sourceTree = "<group>"; };
 		0280B7AB16764CC3007B8001 /* HotkeyController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HotkeyController.h; sourceTree = "<group>"; };
 		0280B7AC16764CC3007B8001 /* HotkeyController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotkeyController.m; sourceTree = "<group>"; usesTabs = 1; };
-		2B4DE98D05FF9307003EFEF0 /* PluginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PluginController.h; sourceTree = "<group>"; };
-		2B4DE98E05FF9307003EFEF0 /* PluginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PluginController.m; sourceTree = "<group>"; usesTabs = 1; };
 		2B75FD3C051C56D200D12034 /* PcsxrController.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = PcsxrController.h; sourceTree = "<group>"; };
 		2B75FD3D051C56D200D12034 /* PcsxrController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PcsxrController.m; sourceTree = "<group>"; usesTabs = 1; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		2B75FD4A051C8A7400D12034 /* ConfigurationController.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = ConfigurationController.h; sourceTree = "<group>"; };
@@ -848,6 +846,7 @@
 		55E5ADA21AF53A0F000471C5 /* fmemopen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fmemopen.h; sourceTree = "<group>"; };
 		55E5ADA31AF53A0F000471C5 /* NimbusMemoryMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NimbusMemoryMapping.h; sourceTree = "<group>"; };
 		55E5ADAD1AF54932000471C5 /* PluginList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PluginList.swift; path = "Plug-in handling/PluginList.swift"; sourceTree = "<group>"; };
+		55E5ADB71AF5B24A000471C5 /* PluginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PluginController.swift; sourceTree = "<group>"; };
 		55E80E451A101368009C98F6 /* PCSXR-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PCSXR-Bridging-Header.h"; sourceTree = "<group>"; };
 		55E80E461A10136A009C98F6 /* PcsxrMemoryObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PcsxrMemoryObject.swift; sourceTree = "<group>"; };
 		55E80E481A101872009C98F6 /* SwiftAdditions.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SwiftAdditions.xcodeproj; path = SwiftAdditions/SwiftAdditions.xcodeproj; sourceTree = "<group>"; };
@@ -1766,8 +1765,7 @@
 			children = (
 				2B75FD3C051C56D200D12034 /* PcsxrController.h */,
 				2B75FD3D051C56D200D12034 /* PcsxrController.m */,
-				2B4DE98D05FF9307003EFEF0 /* PluginController.h */,
-				2B4DE98E05FF9307003EFEF0 /* PluginController.m */,
+				55E5ADB71AF5B24A000471C5 /* PluginController.swift */,
 				2B75FD4A051C8A7400D12034 /* ConfigurationController.h */,
 				2B75FD4B051C8A7400D12034 /* ConfigurationController.m */,
 				55A9021E147D7C380037E18F /* PcsxrMemCardController.h */,
@@ -2382,7 +2380,6 @@
 				2BB3D6C305427FE200831ACB /* Plugin.c in Sources */,
 				55D086EF1A6C9E7400E0A00A /* PcsxrFreezeStateHandler.swift in Sources */,
 				2BB3D6C405427FE200831ACB /* PcsxrPlugin.m in Sources */,
-				2B4DE99205FF9307003EFEF0 /* PluginController.m in Sources */,
 				71F4C5890FDED12800529849 /* cdriso.c in Sources */,
 				71F4C58B0FDED12800529849 /* cdrom.c in Sources */,
 				71F4C58D0FDED12800529849 /* cheat.c in Sources */,
@@ -2425,6 +2422,7 @@
 				0280B7AD16764CC5007B8001 /* HotkeyController.m in Sources */,
 				55E5ADA41AF53A0F000471C5 /* fmemopen.c in Sources */,
 				02717968167884C9004AED62 /* hotkeys.m in Sources */,
+				55E5ADB81AF5B24A000471C5 /* PluginController.swift in Sources */,
 				55EC05FB1788B1230053AC23 /* PcsxrMemCardArray.m in Sources */,
 				55EC05FE178916E80053AC23 /* MemBadgeView.m in Sources */,
 				5581463917AABCD100862DBF /* PcsxrCheatHandler.m in Sources */,
@@ -3784,7 +3782,6 @@
 				SKIP_INSTALL = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "Source/PCSXR-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_WHOLE_MODULE_OPTIMIZATION = YES;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
