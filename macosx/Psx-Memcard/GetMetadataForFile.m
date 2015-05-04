@@ -28,7 +28,7 @@
 //
 //==============================================================================
 
-typedef NS_ENUM(NSInteger, PCSXRMemFlags) {
+typedef NS_ENUM(char, PCSXRMemFlags) {
 	memFlagDeleted,
 	memFlagFree,
 	memFlagUsed,
