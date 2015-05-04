@@ -285,7 +285,7 @@ static inline void ClearMemcardData(char *to, int dsti, char *str)
 				break;
 			}
 			
-			CopyMemcardData(self.memDataPtr, self.memDataPtr, x, i, (char*)[[self.memCardURL path] fileSystemRepresentation]);
+			CopyMemcardData(self.memDataPtr, self.memDataPtr, x, i, (char*)[self.memCardURL fileSystemRepresentation]);
 			ClearMemcardData(self.memDataPtr, x, (char*)self.memCardCPath);
 		}
 		i++;

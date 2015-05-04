@@ -171,7 +171,7 @@ static void PSXDiscAppearedCallback(DADiskRef disk, void *context)
 		
 		if ([openDlg runModal] == NSFileHandlingPanelOKButton) {
 			NSArray* files = [openDlg URLs];
-			SetIsoFile([[files[0] path] fileSystemRepresentation]);
+			SetIsoFile([files[0] fileSystemRepresentation]);
 			SetCdOpenCaseTime(time(NULL) + 2);
 			LidInterrupt();
 		}
@@ -300,7 +300,7 @@ static void PSXDiscAppearedCallback(DADiskRef disk, void *context)
 {
 	if ([EmuThread active] == YES) {
 		if (UsingIso()) {
-			SetIsoFile([[url path] fileSystemRepresentation]);
+			SetIsoFile([url fileSystemRepresentation]);
 			SetCdOpenCaseTime(time(NULL) + 2);
 			LidInterrupt();
 		} else {
@@ -312,7 +312,7 @@ static void PSXDiscAppearedCallback(DADiskRef disk, void *context)
 		} else {
 			[pluginList disableNetPlug];
 		}
-		SetIsoFile([[url path] fileSystemRepresentation]);
+		SetIsoFile([url fileSystemRepresentation]);
 		[EmuThread run];
 	}
 }
@@ -730,23 +730,23 @@ otherblock();\
 			[defaults setBool:YES forKey:@"DidMoveMemoryObjects"];
 		}
 		
-		str = [[[defaults URLForKey:@"Mcd1"] path] fileSystemRepresentation];
+		str = [[defaults URLForKey:@"Mcd1"] fileSystemRepresentation];
 		if (str) {
 			strlcpy(Config.Mcd1, str, MAXPATHLEN);
 		} else {
 			NSURL *url = [memoryURL URLByAppendingPathComponent:@"Mcd001.mcr"];
 			[defaults setURL:url forKey:@"Mcd1"];
-			str = [[url path] fileSystemRepresentation];
+			str = [url fileSystemRepresentation];
 			if (str != nil) strlcpy(Config.Mcd1, str, MAXPATHLEN);
 		}
 		
-		str = [[[defaults URLForKey:@"Mcd2"] path] fileSystemRepresentation];
+		str = [[defaults URLForKey:@"Mcd2"] fileSystemRepresentation];
 		if (str) {
 			strlcpy(Config.Mcd2, str, MAXPATHLEN);
 		} else {
 			NSURL *url = [memoryURL URLByAppendingPathComponent:@"Mcd002.mcr"];
 			[defaults setURL:url forKey:@"Mcd2"];
-			str = [[url path] fileSystemRepresentation];
+			str = [url  fileSystemRepresentation];
 			if (str != nil) strlcpy(Config.Mcd2, str, MAXPATHLEN);
 		}
 	}
@@ -879,22 +879,22 @@ otherblock();\
 			[manager createDirectoryAtPath:saveStatePath withIntermediateDirectories:YES attributes:nil error:NULL];
 
         url = [MemCardPath URLByAppendingPathComponent:@"Mcd001.mcr"];
-		str = [[url path] fileSystemRepresentation];
+		str = [url fileSystemRepresentation];
 		if (str != nil)
 			strlcpy(Config.Mcd1, str, MAXPATHLEN);
 
 		url = [MemCardPath URLByAppendingPathComponent:@"Mcd002.mcr"];
-		str = [[url path] fileSystemRepresentation];
+		str = [url fileSystemRepresentation];
 		if (str != nil)
 			strlcpy(Config.Mcd2, str, MAXPATHLEN);
 
 		url = [PcsxrAppSupport URLByAppendingPathComponent:@"Bios"];
-		str = [[url path] fileSystemRepresentation];
+		str = [url fileSystemRepresentation];
 		if (str != nil)
 			strlcpy(Config.BiosDir, str, MAXPATHLEN);
 
 		url = [PcsxrAppSupport URLByAppendingPathComponent:@"Patches"];
-		str = [[url path] fileSystemRepresentation];
+		str = [url fileSystemRepresentation];
 		if (str != nil) {
 			strlcpy(Config.PatchesDir, str, MAXPATHLEN);
 		}

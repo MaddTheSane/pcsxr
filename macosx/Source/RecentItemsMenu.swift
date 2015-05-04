@@ -67,7 +67,7 @@ final class RecentItemsMenu: NSMenu {
 	
 	private func findMenuItemByURL(url: NSURL) -> NSMenuItem? {
 		for item in itemArray as! [NSMenuItem] {
-			if item.representedObject as! NSURL == url {
+			if let repItem = item.representedObject as? NSURL where repItem == url {
 				return item
 			}
 		}

@@ -116,7 +116,7 @@ int SysInit()
 		//We use the log extension so that OS X's console app can open it by default.
 		NSURL *logFileURL = [logFolderURL URLByAppendingPathComponent:@"PCSX-R emuLog.log"];
 		
-		emuLog = fopen([[logFileURL path] fileSystemRepresentation], "wb");
+		emuLog = fopen([logFileURL fileSystemRepresentation], "wb");
 #else
 		emuLog = stdout;
 #endif
