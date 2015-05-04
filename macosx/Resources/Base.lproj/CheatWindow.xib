@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6254"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7702"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="CheatController">
@@ -47,7 +47,7 @@
                     </button>
                     <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="23">
                         <rect key="frame" x="20" y="61" width="658" height="276"/>
-                        <clipView key="contentView" misplaced="YES" id="6pF-og-es3">
+                        <clipView key="contentView" id="6pF-og-es3">
                             <rect key="frame" x="1" y="17" width="656" height="258"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
@@ -55,7 +55,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="656" height="19"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <size key="intercellSpacing" width="3" height="2"/>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                     <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                     <tableColumns>
                                         <tableColumn identifier="Enabled" width="48.40234375" minWidth="40" maxWidth="1000" id="29">
@@ -125,7 +125,7 @@
                         </tableHeaderView>
                     </scrollView>
                     <button toolTip="Clear all cheats" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="78">
-                        <rect key="frame" x="545" y="13" width="73" height="32"/>
+                        <rect key="frame" x="542" y="13" width="76" height="32"/>
                         <buttonCell key="cell" type="push" title="Clear" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="79">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -135,7 +135,7 @@
                         </connections>
                     </button>
                     <button toolTip="Apply Cheats" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="256">
-                        <rect key="frame" x="469" y="13" width="76" height="32"/>
+                        <rect key="frame" x="466" y="13" width="76" height="32"/>
                         <buttonCell key="cell" type="push" title="Apply" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="257">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -170,6 +170,7 @@
                         </buttonCell>
                         <connections>
                             <action selector="editCheat:" target="-2" id="8bd-ja-6Gx"/>
+                            <binding destination="237" name="enabled" keyPath="selection.count" id="Zbt-4l-pVz"/>
                         </connections>
                     </button>
                     <button toolTip="Remove Cheat" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="DBF-Fx-sqP">
@@ -184,6 +185,7 @@
                         </buttonCell>
                         <connections>
                             <action selector="removeCheats:" target="-2" id="are-w2-Cx9"/>
+                            <binding destination="237" name="enabled" keyPath="selection.count" id="rTW-Cg-MZt"/>
                         </connections>
                     </button>
                 </subviews>
@@ -203,6 +205,7 @@
                     <constraint firstItem="DBF-Fx-sqP" firstAttribute="leading" secondItem="xfd-rR-U91" secondAttribute="trailing" constant="-1" id="fQh-TQ-YzN"/>
                     <constraint firstItem="DBF-Fx-sqP" firstAttribute="top" secondItem="23" secondAttribute="bottom" constant="8" symbolic="YES" id="gcQ-KX-9BU"/>
                     <constraint firstAttribute="bottom" secondItem="6" secondAttribute="bottom" constant="20" symbolic="YES" id="lF8-2f-uaL"/>
+                    <constraint firstItem="256" firstAttribute="width" secondItem="78" secondAttribute="width" id="owC-m0-J8e"/>
                     <constraint firstItem="78" firstAttribute="leading" secondItem="256" secondAttribute="trailing" constant="12" symbolic="YES" id="pZV-X6-uam"/>
                     <constraint firstItem="78" firstAttribute="baseline" secondItem="256" secondAttribute="baseline" id="r4R-02-9tu"/>
                     <constraint firstItem="4" firstAttribute="baseline" secondItem="6" secondAttribute="baseline" id="rAO-NL-fo9"/>
@@ -223,7 +226,7 @@
                 <subviews>
                     <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="136">
                         <rect key="frame" x="20" y="53" width="302" height="192"/>
-                        <clipView key="contentView" misplaced="YES" id="COc-Cf-C5K">
+                        <clipView key="contentView" id="COc-Cf-C5K">
                             <rect key="frame" x="1" y="17" width="300" height="174"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
@@ -231,7 +234,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="300" height="19"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <size key="intercellSpacing" width="3" height="2"/>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                     <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                     <tableColumns>
                                         <tableColumn identifier="Address" width="150" minWidth="40" maxWidth="1000" id="141">
@@ -352,6 +355,7 @@ Gw
                         </buttonCell>
                         <connections>
                             <action selector="removeCheatValue:" target="-2" id="215"/>
+                            <binding destination="219" name="enabled" keyPath="selection.count" id="Mzy-uM-mhv"/>
                         </connections>
                     </button>
                 </subviews>
@@ -379,7 +383,7 @@ Gw
                 <string>cheatValue</string>
             </declaredKeys>
             <connections>
-                <binding destination="-2" name="contentArray" keyPath="self.tempCheatCodes" id="222"/>
+                <binding destination="-2" name="contentArray" keyPath="self.cheatValues" id="klx-Ag-sWh"/>
             </connections>
         </arrayController>
         <arrayController objectClassName="NSMutableArray" avoidsEmptySelection="NO" id="237" userLabel="Cheats">

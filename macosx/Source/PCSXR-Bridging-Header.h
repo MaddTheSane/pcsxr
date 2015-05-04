@@ -12,3 +12,4 @@
 #import "PcsxrFileHandle.h"
 #import "PcsxrHexadecimalFormatter.h"
 #import "PcsxrController.h"
+#import "PcsxrCheatHandler.h"

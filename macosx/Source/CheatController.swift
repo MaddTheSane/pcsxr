@@ -7,10 +7,12 @@
 //
 
 import Cocoa
+import SwiftAdditions
 
+let kTempCheatCodesName = "cheatValues"
 let kCheatsName = "cheats"
 
-final class CheatController: NSWindowController {
+final class CheatController: NSWindowController, NSWindowDelegate {
 	var cheats: [CheatObject]
 	var cheatValues = [CheatValue]()
 	@IBOutlet weak var cheatView: NSTableView!
@@ -54,23 +56,23 @@ final class CheatController: NSWindowController {
 		self.addObserver(self, forKeyPath: kCheatsName, options: .New | .Old, context: nil)
 	}
 	
-	func refreshCheatArray() {
+	private func refreshCheatArray() {
 		var tmpArray = [CheatObject]()
 		for i in 0..<Int(NumCheats) {
 			let tmpObj = CheatObject(cheat: Cheats[i])
 			tmpArray.append(tmpObj)
 		}
-		self.cheats = tmpArray
-		self.setDocumentEdited(false)
+		cheats = tmpArray
+		setDocumentEdited(false)
 	}
 	
 	override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<Void>) {
 		if keyPath == kCheatsName {
-			self.setDocumentEdited(true)
+			setDocumentEdited(true)
 		}
 	}
 	
-	func reloadCheats() {
+	private func reloadCheats() {
 		let manager = NSFileManager.defaultManager()
 		let tmpURL = manager.URLForDirectory(.ItemReplacementDirectory, inDomain: .UserDomainMask, appropriateForURL: NSBundle.mainBundle().bundleURL, create: true, error: nil)!.URLByAppendingPathComponent("temp.cht", isDirectory: false)
 		var tmpStr = ""
@@ -80,5 +82,158 @@ final class CheatController: NSWindowController {
 		(tmpStr as NSString).writeToURL(tmpURL, atomically: false, encoding: NSUTF8StringEncoding, error: nil)
 		LoadCheats(tmpURL.fileSystemRepresentation)
 		manager.removeItemAtURL(tmpURL, error: nil)
+	}
+	
+	@IBAction func loadCheats(sender: AnyObject?) {
+		let openDlg = NSOpenPanel()
+		openDlg.allowsMultipleSelection = false
+		openDlg.allowedFileTypes = PcsxrCheatHandler.supportedUTIs()
+		openDlg.beginSheetModalForWindow(window!, completionHandler: { (retVal) -> Void in
+			if retVal == NSFileHandlingPanelOKButton {
+				let file = openDlg.URL!
+				LoadCheats(file.fileSystemRepresentation)
+				self.refresh()
+			}
+		})
+	}
+	
+	@IBAction func saveCheats(sender: AnyObject?) {
+		let saveDlg = NSSavePanel()
+		saveDlg.allowedFileTypes = PcsxrCheatHandler.supportedUTIs()
+		saveDlg.canSelectHiddenExtension = true
+		saveDlg.canCreateDirectories = true
+		saveDlg.prompt = NSLocalizedString("Save Cheats", comment: "")
+		saveDlg.beginSheetModalForWindow(window!, completionHandler: { (retVal) -> Void in
+			let url = saveDlg.URL!
+			let saveString: NSString = {
+				var toRet = ""
+				for ss in self.cheats {
+					toRet += ss.description + "\n"
+				}
+				
+				return toRet as NSString
+			}()
+			//let saveString = (self.cheats as NSArray).componentsJoinedByString("\n") as NSString
+			saveString.writeToURL(url, atomically: true, encoding: NSUTF8StringEncoding, error: nil)
+		})
+	}
+	
+	@IBAction func clear(sender: AnyObject?) {
+		cheats = []
+	}
+	
+	@IBAction func closeCheatEdit(sender: NSButton) {
+		NSApplication.sharedApplication().endSheet(editCheatWindow, returnCode: sender.tag == 1 ? NSCancelButton : NSOKButton)
+	}
+	
+	@IBAction func changeCheat(sender: AnyObject?) {
+		self.setDocumentEdited(true)
+	}
+	
+	@IBAction func removeCheatValue(sender: AnyObject?) {
+		if editCheatView.selectedRow < 0 {
+			NSBeep()
+			return
+		}
+		
+		let toRemoveIndex = editCheatView.selectedRowIndexes
+		willChange(.Removal, valuesAtIndexes: toRemoveIndex, forKey: kTempCheatCodesName)
+		removeObjects(inArray: &cheatValues, atIndexes: toRemoveIndex)
+		didChange(.Removal, valuesAtIndexes: toRemoveIndex, forKey: kTempCheatCodesName)
+	}
+	
+	@IBAction func addCheatValue(sender: AnyObject?) {
+		let newSet = NSIndexSet(index: cheatValues.count)
+		willChange(.Insertion, valuesAtIndexes: newSet, forKey: kTempCheatCodesName)
+		cheatValues.append(CheatValue())
+		didChange(.Insertion, valuesAtIndexes: newSet, forKey: kTempCheatCodesName)
+	}
+	
+	
+	@IBAction func editCheat(sender: AnyObject?) {
+		if cheatView.selectedRow < 0 {
+			NSBeep();
+			return;
+		}
+		var tmpArray = cheats[cheatView.selectedRow].values
+		var newCheats: [CheatValue] = {
+			var tmpCheat = [CheatValue]()
+			for che in tmpArray {
+				tmpCheat.append(che.copy() as! CheatValue)
+			}
+			
+			return tmpCheat
+		}()
+		
+		cheatValues = newCheats
+		window!.beginSheet(editCheatWindow, completionHandler: { (returnCode) -> Void in
+			if returnCode == NSOKButton {
+				let tmpCheat = self.cheats[self.cheatView.selectedRow]
+				if tmpCheat.values != self.cheatValues {
+					tmpCheat.values = self.cheatValues
+					self.setDocumentEdited(true)
+				}
+			}
+			self.editCheatWindow.orderOut(nil)
+		})
+	}
+	
+	@IBAction func addCheat(sender: AnyObject?) {
+		let newSet = NSIndexSet(index: cheats.count)
+		willChange(.Insertion, valuesAtIndexes: newSet, forKey: kCheatsName)
+		let tmpCheat = CheatObject(name: NSLocalizedString("New Cheat", comment: "New Cheat Name"))
+		cheats.append(tmpCheat)
+		didChange(.Insertion, valuesAtIndexes: newSet, forKey: kCheatsName)
+		setDocumentEdited(true)
+	}
+	
+	@IBAction func applyCheats(sender: AnyObject?) {
+		reloadCheats()
+		setDocumentEdited(false)
+	}
+	
+	func windowShouldClose(sender: AnyObject) -> Bool {
+		if let windSender = sender as? NSWindow where (!windSender.documentEdited || windSender != window) {
+			return true
+		} else {
+			let alert = NSAlert()
+			alert.messageText = NSLocalizedString("Unsaved Changes", comment: "Unsaved changes")
+			alert.informativeText = NSLocalizedString("The cheat codes have not been applied. Unapplied cheats will not run nor be saved. Do you wish to save?", comment: "")
+			alert.addButtonWithTitle(NSLocalizedString("Save", comment: "Save"))
+			alert.addButtonWithTitle(NSLocalizedString("Don't Save", comment: "Don't Save"))
+			alert.addButtonWithTitle(NSLocalizedString("Cancel", comment:"Cancel"))
+			
+			alert.beginSheetModalForWindow(window!, completionHandler: { (response) -> Void in
+				switch response {
+				case NSAlertFirstButtonReturn:
+					self.reloadCheats()
+					self.close()
+					
+				case NSAlertThirdButtonReturn:
+					break
+					
+				case NSAlertSecondButtonReturn:
+					self.refreshCheatArray()
+					self.close()
+					
+				default:
+					break
+				}
+			})
+			return false
+		}
+	}
+	
+	@IBAction func removeCheats(sender: AnyObject?) {
+		if cheatView.selectedRow < 0 {
+			NSBeep()
+			return
+		}
+		
+		let toRemoveIndex = cheatView.selectedRowIndexes
+		willChange(.Removal, valuesAtIndexes: toRemoveIndex, forKey: kCheatsName)
+		removeObjects(inArray: &cheats, atIndexes: toRemoveIndex)
+		didChange(.Removal, valuesAtIndexes: toRemoveIndex, forKey: kCheatsName)
+		setDocumentEdited(true)
 	}
 }

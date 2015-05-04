@@ -915,8 +915,6 @@
 		71F4C5870FDED12800529849 /* spu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = spu.h; sourceTree = "<group>"; };
 		71F4C5880FDED12800529849 /* system.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = system.h; sourceTree = "<group>"; };
 		71F703A611B3A673007DD5C5 /* sjisfont.h */ = {isa = PBXFileReference; fileEncoding = 0; lastKnownFileType = sourcecode.c.h; path = sjisfont.h; sourceTree = "<group>"; };
-		D422E67816DC495800526DCF /* CheatController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheatController.h; sourceTree = "<group>"; };
-		D422E67916DC495800526DCF /* CheatController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheatController.m; sourceTree = "<group>"; usesTabs = 1; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1775,8 +1773,6 @@
 				55107BB71A11C9720031E40E /* CheatValue.swift */,
 				55107BB51A11C9620031E40E /* CheatObject.swift */,
 				552B4D841A1312B800C2F820 /* CheatController.swift */,
-				D422E67816DC495800526DCF /* CheatController.h */,
-				D422E67916DC495800526DCF /* CheatController.m */,
 				0280B7AB16764CC3007B8001 /* HotkeyController.h */,
 				0280B7AC16764CC3007B8001 /* HotkeyController.m */,
 			);
