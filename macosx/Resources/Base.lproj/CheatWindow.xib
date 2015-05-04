@@ -170,7 +170,6 @@
                         </buttonCell>
                         <connections>
                             <action selector="editCheat:" target="-2" id="8bd-ja-6Gx"/>
-                            <binding destination="237" name="enabled" keyPath="selection.count" id="Zbt-4l-pVz"/>
                         </connections>
                     </button>
                     <button toolTip="Remove Cheat" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="DBF-Fx-sqP">
@@ -185,7 +184,7 @@
                         </buttonCell>
                         <connections>
                             <action selector="removeCheats:" target="-2" id="are-w2-Cx9"/>
-                            <binding destination="237" name="enabled" keyPath="selection.count" id="rTW-Cg-MZt"/>
+                            <binding destination="237" name="enabled" keyPath="canRemove" id="ixY-uF-vBN"/>
                         </connections>
                     </button>
                 </subviews>
@@ -355,7 +354,7 @@ Gw
                         </buttonCell>
                         <connections>
                             <action selector="removeCheatValue:" target="-2" id="215"/>
-                            <binding destination="219" name="enabled" keyPath="selection.count" id="Mzy-uM-mhv"/>
+                            <binding destination="219" name="enabled" keyPath="canRemove" id="oK2-HL-ivB"/>
                         </connections>
                     </button>
                 </subviews>

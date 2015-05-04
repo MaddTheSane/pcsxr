@@ -123,7 +123,7 @@ final class CheatController: NSWindowController, NSWindowDelegate {
 	}
 	
 	@IBAction func closeCheatEdit(sender: NSButton) {
-		NSApplication.sharedApplication().endSheet(editCheatWindow, returnCode: sender.tag == 1 ? NSCancelButton : NSOKButton)
+		window!.endSheet(editCheatWindow, returnCode: sender.tag == 1 ? NSCancelButton : NSOKButton)
 	}
 	
 	@IBAction func changeCheat(sender: AnyObject?) {
@@ -166,6 +166,7 @@ final class CheatController: NSWindowController, NSWindowDelegate {
 		}()
 		
 		cheatValues = newCheats
+		editCheatView.reloadData()
 		window!.beginSheet(editCheatWindow, completionHandler: { (returnCode) -> Void in
 			if returnCode == NSOKButton {
 				let tmpCheat = self.cheats[self.cheatView.selectedRow]
