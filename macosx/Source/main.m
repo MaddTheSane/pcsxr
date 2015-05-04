@@ -166,8 +166,7 @@ static void AddStringToLogList(NSString *themsg)
 		if (tmpStr && ![tmpStr isEqualToString:@""]) {
 			NSLog(@"%@", tmpStr);
 		}
-		fullLineRange.location = 0;
-		fullLineRange.length = newlineRange.location + newlineRange.length;
+		fullLineRange = NSMakeRange(0, NSMaxRange(newlineRange));
 		fullLineRange = [theStr rangeOfComposedCharacterSequencesForRange:fullLineRange];
 		[theStr deleteCharactersInRange:fullLineRange];
 	}
