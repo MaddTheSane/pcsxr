@@ -88,12 +88,10 @@ class CheatObject: NSObject, Hashable, Printable, SequenceType {
 	}
 	
 	override var description: String {
-		let asterisk = "*"
-		let blank = ""
 		var valueString = ""
 		for aCheat in values {
 			valueString += aCheat.description + "\n"
 		}
-		return "\(enabled ? asterisk : blank)\(cheatName)\n" + valueString
+		return "[" + (enabled ? "*" : "") + cheatName + "]\n" + valueString
 	}
 }
