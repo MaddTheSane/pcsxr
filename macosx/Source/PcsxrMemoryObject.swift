@@ -67,12 +67,14 @@ private let MemLabelFree		= NSLocalizedString("MemCard_Free", comment: "MemCard_
 private let MemLabelUsed		= NSLocalizedString("MemCard_Used", comment: "MemCard_Used")
 private let MemLabelLink		= NSLocalizedString("MemCard_Link", comment: "MemCard_Link")
 private let MemLabelEndLink		= NSLocalizedString("MemCard_EndLink", comment: "MemCard_EndLink")
+private let MemLabelMultiSave	= NSLocalizedString("MemCard_MultiSave", comment: "MemCard_MultiSave")
 
 private var attribMemLabelDeleted	= NSAttributedString()
 private var attribMemLabelFree		= NSAttributedString()
 private var attribMemLabelUsed		= NSAttributedString()
 private var attribMemLabelLink		= NSAttributedString()
 private var attribMemLabelEndLink	= NSAttributedString()
+private var attribMemLabelMultiSave	= NSAttributedString()
 
 private var imageBlank: NSImage? = nil
 private func blankImage() -> NSImage {
@@ -214,7 +216,7 @@ final class PcsxrMemoryObject: NSObject {
 				SetupAttrStr(tmpStr, NSColor.controlTextColor())
 				attribMemLabelUsed = NSAttributedString(attributedString: tmpStr)
 				#else
-				tmpStr = NSMutableAttributedString(string: "Multi-save")
+				tmpStr = NSMutableAttributedString(string: MemLabelMultiSave)
 				SetupAttrStr(tmpStr, NSColor.blueColor())
 				attribMemLabelEndLink = NSAttributedString(attributedString: tmpStr)
 				attribMemLabelLink = attribMemLabelEndLink;
