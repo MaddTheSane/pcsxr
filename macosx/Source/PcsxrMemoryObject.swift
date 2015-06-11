@@ -173,9 +173,9 @@ final class PcsxrMemoryObject: NSObject {
 			return tmpBlank;
 		}
 		
-		var gifData = NSMutableData()
+		let gifData = NSMutableData()
 		
-		var dst = CGImageDestinationCreateWithData(gifData, kUTTypeGIF, self.iconCount, nil);
+		let dst = CGImageDestinationCreateWithData(gifData, kUTTypeGIF, self.iconCount, nil);
 		let gifPrep: NSDictionary = [kCGImagePropertyGIFDictionary as String: [kCGImagePropertyGIFDelayTime as String: Float(0.30)]];
 		for theImage in self.imageArray {
 			let imageRef = theImage.CGImageForProposedRect(nil, context: nil, hints: nil)?.takeUnretainedValue()
@@ -183,7 +183,7 @@ final class PcsxrMemoryObject: NSObject {
 		}
 		CGImageDestinationFinalize(dst);
 		
-		var _memImage = NSImage(data: gifData)!
+		let _memImage = NSImage(data: gifData)!
 		_memImage.size = NSMakeSize(32, 32);
 		return _memImage
 		}()
