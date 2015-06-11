@@ -14,7 +14,7 @@ import Cocoa
 	case PostRun = 400
 }
 
-final class LaunchArg: NSObject, Printable {
+final class LaunchArg: NSObject {
 	let launchOrder: UInt32
 	let theBlock: dispatch_block_t
 	let argument: String

@@ -9,7 +9,7 @@
 import Cocoa
 
 private func NSDocumentSharedController() -> NSDocumentController {
-	return (NSDocumentController.sharedDocumentController() as! NSDocumentController)
+	return (NSDocumentController.sharedDocumentController() as NSDocumentController)
 }
 
 final class RecentItemsMenu: NSMenu {
@@ -22,11 +22,10 @@ final class RecentItemsMenu: NSMenu {
 		autoenablesItems = true
 		
 		// Populate the menu
-		if let recentDocuments = NSDocumentSharedController().recentDocumentURLs as? [NSURL] {
-			for (i, url) in enumerate(recentDocuments) {
-				let tempItem = newMenuItem(url)
-				addMenuItem(tempItem, index: i)
-			}
+		let recentDocuments = NSDocumentSharedController().recentDocumentURLs
+		for (i, url) in recentDocuments.enumerate() {
+			let tempItem = newMenuItem(url)
+			addMenuItem(tempItem, index: i)
 		}
 	}
 	
@@ -66,7 +65,7 @@ final class RecentItemsMenu: NSMenu {
 	}
 	
 	private func findMenuItemByURL(url: NSURL) -> NSMenuItem? {
-		for item in itemArray as! [NSMenuItem] {
+		for item in itemArray as [NSMenuItem] {
 			if let repItem = item.representedObject as? NSURL where repItem == url {
 				return item
 			}
@@ -90,7 +89,7 @@ final class RecentItemsMenu: NSMenu {
 	// Document items are menu items with tag 0
 	private func removeDocumentItems() {
 		var removeItemsArray = [NSMenuItem]()
-		for item in itemArray as! [NSMenuItem] {
+		for item in itemArray as [NSMenuItem] {
 			if item.tag == 0 {
 				removeItemsArray.append(item)
 			}

@@ -53,7 +53,7 @@ final class CheatController: NSWindowController, NSWindowDelegate {
 		valueFormatter.hexPadding = 4
 		addressFormatter.hexPadding = 8
 		refreshCheatArray()
-		self.addObserver(self, forKeyPath: kCheatsName, options: .New | .Old, context: nil)
+		self.addObserver(self, forKeyPath: kCheatsName, options: [.New, .Old], context: nil)
 	}
 	
 	private func refreshCheatArray() {
@@ -66,7 +66,7 @@ final class CheatController: NSWindowController, NSWindowDelegate {
 		setDocumentEdited(false)
 	}
 	
-	override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<Void>) {
+	override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [NSObject : AnyObject]?, context: UnsafeMutablePointer<Void>) {
 		if keyPath == kCheatsName {
 			setDocumentEdited(true)
 		}
@@ -74,20 +74,26 @@ final class CheatController: NSWindowController, NSWindowDelegate {
 	
 	private func reloadCheats() {
 		let manager = NSFileManager.defaultManager()
-		let tmpURL = manager.URLForDirectory(.ItemReplacementDirectory, inDomain: .UserDomainMask, appropriateForURL: NSBundle.mainBundle().bundleURL, create: true, error: nil)!.URLByAppendingPathComponent("temp.cht", isDirectory: false)
+		let tmpURL = (try! manager.URLForDirectory(.ItemReplacementDirectory, inDomain: .UserDomainMask, appropriateForURL: NSBundle.mainBundle().bundleURL, create: true)).URLByAppendingPathComponent("temp.cht", isDirectory: false)
 		var tmpStr = ""
 		for aCheat in cheats {
 			tmpStr += aCheat.description + "\n"
 		}
-		(tmpStr as NSString).writeToURL(tmpURL, atomically: false, encoding: NSUTF8StringEncoding, error: nil)
+		do {
+			try (tmpStr as NSString).writeToURL(tmpURL, atomically: false, encoding: NSUTF8StringEncoding)
+		} catch _ {
+		}
 		LoadCheats(tmpURL.fileSystemRepresentation)
-		manager.removeItemAtURL(tmpURL, error: nil)
+		do {
+			try manager.removeItemAtURL(tmpURL)
+		} catch _ {
+		}
 	}
 	
 	@IBAction func loadCheats(sender: AnyObject?) {
 		let openDlg = NSOpenPanel()
 		openDlg.allowsMultipleSelection = false
-		openDlg.allowedFileTypes = PcsxrCheatHandler.supportedUTIs()
+		openDlg.allowedFileTypes = PcsxrCheatHandler.supportedUTIs() as! [String]
 		openDlg.beginSheetModalForWindow(window!, completionHandler: { (retVal) -> Void in
 			if retVal == NSFileHandlingPanelOKButton {
 				let file = openDlg.URL!
@@ -99,7 +105,7 @@ final class CheatController: NSWindowController, NSWindowDelegate {
 	
 	@IBAction func saveCheats(sender: AnyObject?) {
 		let saveDlg = NSSavePanel()
-		saveDlg.allowedFileTypes = PcsxrCheatHandler.supportedUTIs()
+		saveDlg.allowedFileTypes = PcsxrCheatHandler.supportedUTIs() as! [String]
 		saveDlg.canSelectHiddenExtension = true
 		saveDlg.canCreateDirectories = true
 		saveDlg.prompt = NSLocalizedString("Save Cheats", comment: "")
@@ -113,8 +119,11 @@ final class CheatController: NSWindowController, NSWindowDelegate {
 				
 				return toRet as NSString
 			}()
-			//let saveString = (self.cheats as NSArray).componentsJoinedByString("\n") as NSString
-			saveString.writeToURL(url, atomically: true, encoding: NSUTF8StringEncoding, error: nil)
+			do {
+				//let saveString = (self.cheats as NSArray).componentsJoinedByString("\n") as NSString
+				try saveString.writeToURL(url, atomically: true, encoding: NSUTF8StringEncoding)
+			} catch _ {
+			}
 		})
 	}
 	
@@ -155,8 +164,8 @@ final class CheatController: NSWindowController, NSWindowDelegate {
 			NSBeep();
 			return;
 		}
-		var tmpArray = cheats[cheatView.selectedRow].values
-		var newCheats: [CheatValue] = {
+		let tmpArray = cheats[cheatView.selectedRow].values
+		let newCheats: [CheatValue] = {
 			var tmpCheat = [CheatValue]()
 			for che in tmpArray {
 				tmpCheat.append(che.copy() as! CheatValue)

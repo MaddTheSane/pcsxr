@@ -55,7 +55,7 @@ final class PluginController: NSObject {
 	func setPluginsTo(list: [PcsxrPlugin], withType type: Int32) {
 		// remember the list
 		pluginType = type
-		plugins = list.sorted({ (lhs, rhs) -> Bool in
+		plugins = list.sort({ (lhs, rhs) -> Bool in
 			let sortOrder = lhs.description.localizedStandardCompare(rhs.description)
 			return sortOrder == .OrderedAscending
 		})
@@ -65,7 +65,7 @@ final class PluginController: NSObject {
 		pluginMenu.removeAllItems()
 		
 		// load the currently selected plugin
-		var sel = NSUserDefaults.standardUserDefaults().stringForKey(defaultKey)
+		let sel = NSUserDefaults.standardUserDefaults().stringForKey(defaultKey)
 		
 		// add the menu entries
 		for plug in plugins {

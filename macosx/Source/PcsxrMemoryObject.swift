@@ -175,10 +175,10 @@ final class PcsxrMemoryObject: NSObject {
 		
 		let gifData = NSMutableData()
 		
-		let dst = CGImageDestinationCreateWithData(gifData, kUTTypeGIF, self.iconCount, nil);
+		let dst = CGImageDestinationCreateWithData(gifData, kUTTypeGIF, self.iconCount, nil)!
 		let gifPrep: NSDictionary = [kCGImagePropertyGIFDictionary as String: [kCGImagePropertyGIFDelayTime as String: Float(0.30)]];
 		for theImage in self.imageArray {
-			let imageRef = theImage.CGImageForProposedRect(nil, context: nil, hints: nil)?.takeUnretainedValue()
+			let imageRef = theImage.CGImageForProposedRect(nil, context: nil, hints: nil)!.takeUnretainedValue()
 			CGImageDestinationAddImage(dst, imageRef, gifPrep)
 		}
 		CGImageDestinationFinalize(dst);
@@ -192,28 +192,28 @@ final class PcsxrMemoryObject: NSObject {
 	var attributedFlagName: NSAttributedString {
 		dispatch_once(&PcsxrMemoryObject.attribsInit) {
 			func SetupAttrStr(mutStr: NSMutableAttributedString, txtclr: NSColor) {
-				let wholeStrRange = NSMakeRange(0, count(mutStr.string));
+				let wholeStrRange = NSMakeRange(0, mutStr.string.characters.count);
 				let ourAttrs: [String: AnyObject] = [NSFontAttributeName : NSFont.systemFontOfSize(NSFont.systemFontSizeForControlSize(.SmallControlSize)),
 					NSForegroundColorAttributeName: txtclr]
 				mutStr.addAttributes(ourAttrs, range: wholeStrRange)
-				mutStr.setAlignment(.CenterTextAlignment, range: wholeStrRange)
+				mutStr.setAlignment(.Center, range: wholeStrRange)
 			}
 			
 			var tmpStr = NSMutableAttributedString(string: MemLabelFree)
-			SetupAttrStr(tmpStr, NSColor.greenColor())
+			SetupAttrStr(tmpStr, txtclr: NSColor.greenColor())
 			attribMemLabelFree = NSAttributedString(attributedString: tmpStr)
 			
 			#if DEBUG
 				tmpStr = NSMutableAttributedString(string: MemLabelEndLink)
-				SetupAttrStr(tmpStr, NSColor.blueColor())
+				SetupAttrStr(tmpStr, txtclr: NSColor.blueColor())
 				attribMemLabelEndLink = NSAttributedString(attributedString: tmpStr)
 				
 				tmpStr = NSMutableAttributedString(string: MemLabelLink)
-				SetupAttrStr(tmpStr, NSColor.blueColor())
+				SetupAttrStr(tmpStr, txtclr: NSColor.blueColor())
 				attribMemLabelLink = NSAttributedString(attributedString: tmpStr)
 				
 				tmpStr = NSMutableAttributedString(string: MemLabelUsed)
-				SetupAttrStr(tmpStr, NSColor.controlTextColor())
+				SetupAttrStr(tmpStr, txtclr: NSColor.controlTextColor())
 				attribMemLabelUsed = NSAttributedString(attributedString: tmpStr)
 				#else
 				tmpStr = NSMutableAttributedString(string: MemLabelMultiSave)
@@ -226,7 +226,7 @@ final class PcsxrMemoryObject: NSObject {
 				
 				#endif
 			tmpStr = NSMutableAttributedString(string: MemLabelDeleted)
-			SetupAttrStr(tmpStr, NSColor.redColor())
+			SetupAttrStr(tmpStr, txtclr: NSColor.redColor())
 			attribMemLabelDeleted = NSAttributedString(attributedString: tmpStr)
 		}
 		

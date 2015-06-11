@@ -65,14 +65,14 @@ final class PluginList: NSObject {
 		let fm = NSFileManager.defaultManager()
 		
 		// verify that the ones that are in list still works
-		pluginList = filter(pluginList, { (plugIn) -> Bool in
+		pluginList = pluginList.filter({ (plugIn) -> Bool in
 			return plugIn.verifyOK()
 		})
 		
 		// look for new ones in the plugin directory
 		for plugDir in PcsxrPlugin.pluginsPaths() as! [String] {
 			if let dirEnum = fm.enumeratorAtPath(plugDir) {
-				while var pName = dirEnum.nextObject() as? String {
+				while let pName = dirEnum.nextObject() as? String {
 					if pName.pathExtension == "psxplugin" ||
 						pName.pathExtension == "so" {
 							dirEnum.skipDescendants() /* don't enumerate this directory */
@@ -91,7 +91,7 @@ final class PluginList: NSObject {
 		// check the we have the needed plugins
 		missingPlugins = false
 		for i in 0..<4 {
-			var plugin = activePlugin(type: typeList[i])
+			let plugin = activePlugin(type: typeList[i])
 			if plugin == nil {
 				let list = pluginsForType(typeList[i])
 				var j = 0
@@ -108,7 +108,7 @@ final class PluginList: NSObject {
 	}
 
 	func pluginsForType(typeMask: Int32) -> [PcsxrPlugin] {
-		return filter(pluginList, { (plug) -> Bool in
+		return pluginList.filter({ (plug) -> Bool in
 			return (plug.type & typeMask) == typeMask
 		})
 	}
@@ -128,7 +128,7 @@ final class PluginList: NSObject {
 		return !missingPlugins
 	}
 	
-	@objc(activePluginForType:) func activePlugin(#type: Int32) -> PcsxrPlugin? {
+	@objc(activePluginForType:) func activePlugin(type type: Int32) -> PcsxrPlugin? {
 		switch (type) {
 		case PSE_LT_GPU:
 			return activeGpuPlugin
@@ -247,7 +247,7 @@ final class PluginList: NSObject {
 	
 	func enableNetPlug() {
 		if let netPlug = activePlugin(type: PSE_LT_NET) {
-			var str = netPlug.path.fileSystemRepresentation()
+			let str = netPlug.path.fileSystemRepresentation()
 			var dst = PcsxrPlugin.configEntriesForType(PSE_LT_NET)
 			while dst.memory != nil {
 				strlcpy(dst.memory, str, Int(MAXPATHLEN));
