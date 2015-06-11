@@ -2106,7 +2106,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0700;
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 0700;
 			};
 			buildConfigurationList = 71F353F80FD98DFE00CBEC28 /* Build configuration list for PBXProject "Pcsxr" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -3840,6 +3840,7 @@
 				DEAD_CODE_STRIPPING = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEBUG_PREPROCESSOR_DEFINITIONS = "DEBUG=1";
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu89;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = YES;

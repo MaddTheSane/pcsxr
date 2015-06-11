@@ -93,7 +93,7 @@ final class CheatController: NSWindowController, NSWindowDelegate {
 	@IBAction func loadCheats(sender: AnyObject?) {
 		let openDlg = NSOpenPanel()
 		openDlg.allowsMultipleSelection = false
-		openDlg.allowedFileTypes = PcsxrCheatHandler.supportedUTIs() as! [String]
+		openDlg.allowedFileTypes = (PcsxrCheatHandler.supportedUTIs() as! [String])
 		openDlg.beginSheetModalForWindow(window!, completionHandler: { (retVal) -> Void in
 			if retVal == NSFileHandlingPanelOKButton {
 				let file = openDlg.URL!
@@ -105,7 +105,7 @@ final class CheatController: NSWindowController, NSWindowDelegate {
 	
 	@IBAction func saveCheats(sender: AnyObject?) {
 		let saveDlg = NSSavePanel()
-		saveDlg.allowedFileTypes = PcsxrCheatHandler.supportedUTIs() as! [String]
+		saveDlg.allowedFileTypes = (PcsxrCheatHandler.supportedUTIs() as! [String])
 		saveDlg.canSelectHiddenExtension = true
 		saveDlg.canCreateDirectories = true
 		saveDlg.prompt = NSLocalizedString("Save Cheats", comment: "")
