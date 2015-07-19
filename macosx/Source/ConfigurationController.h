@@ -49,6 +49,6 @@ extern NSString *const __nonnull memCardChangeNumberKey;
 - (IBAction)mcdNewClicked:(nullable id)sender;
 - (IBAction)mcdChangeClicked:(nullable id)sender;
 
-- (void)tabView:(nonnull NSTabView *)tabView didSelectTabViewItem:(nullable NSTabViewItem *)tabViewItem;
+//- (void)tabView:(nonnull NSTabView *)tabView didSelectTabViewItem:(nullable NSTabViewItem *)tabViewItem;
 
 @end

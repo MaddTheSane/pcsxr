@@ -66,7 +66,7 @@ final class CheatController: NSWindowController, NSWindowDelegate {
 		setDocumentEdited(false)
 	}
 	
-	override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [NSObject : AnyObject]?, context: UnsafeMutablePointer<Void>) {
+	override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
 		if keyPath == kCheatsName {
 			setDocumentEdited(true)
 		}
@@ -82,6 +82,8 @@ final class CheatController: NSWindowController, NSWindowDelegate {
 		do {
 			try (tmpStr as NSString).writeToURL(tmpURL, atomically: false, encoding: NSUTF8StringEncoding)
 		} catch _ {
+			NSBeep()
+			return
 		}
 		LoadCheats(tmpURL.fileSystemRepresentation)
 		do {
@@ -93,7 +95,7 @@ final class CheatController: NSWindowController, NSWindowDelegate {
 	@IBAction func loadCheats(sender: AnyObject?) {
 		let openDlg = NSOpenPanel()
 		openDlg.allowsMultipleSelection = false
-		openDlg.allowedFileTypes = (PcsxrCheatHandler.supportedUTIs() as! [String])
+		openDlg.allowedFileTypes = PcsxrCheatHandler.supportedUTIs()
 		openDlg.beginSheetModalForWindow(window!, completionHandler: { (retVal) -> Void in
 			if retVal == NSFileHandlingPanelOKButton {
 				let file = openDlg.URL!
@@ -123,6 +125,7 @@ final class CheatController: NSWindowController, NSWindowDelegate {
 				//let saveString = (self.cheats as NSArray).componentsJoinedByString("\n") as NSString
 				try saveString.writeToURL(url, atomically: true, encoding: NSUTF8StringEncoding)
 			} catch _ {
+				NSBeep()
 			}
 		})
 	}

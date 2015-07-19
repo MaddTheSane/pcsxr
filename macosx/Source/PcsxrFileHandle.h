@@ -9,6 +9,6 @@
 #import <Foundation/Foundation.h>
 
 @protocol PcsxrFileHandle <NSObject>
-+ (nonnull NSArray *)supportedUTIs;
++ (nonnull NSArray<NSString*> *)supportedUTIs;
 - (BOOL)handleFile:(nonnull NSString *)theFile;
 @end

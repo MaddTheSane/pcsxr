@@ -12,7 +12,7 @@ extern BOOL wasFinderLaunch;
 
 @interface PcsxrController : NSObject <NSApplicationDelegate>
 @property (weak, null_unspecified) IBOutlet RecentItemsMenu *recentItems;
-@property (strong, readonly, nonnull) CheatController *cheatController;
+@property (strong, readonly, nullable) CheatController *cheatController;
 @property (readonly) BOOL endAtEmuClose;
 
 - (IBAction)ejectCD:(nullable id)sender;

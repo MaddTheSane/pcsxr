@@ -16,7 +16,7 @@
 + (nonnull NSString *)prefixForType:(int)type;
 + (nonnull NSString *)defaultKeyForType:(int)type;
 + (char *__nullable *__nonnull)configEntriesForType:(int)type;
-+ (nonnull NSArray *)pluginsPaths;
++ (nonnull NSArray<NSString*> *)pluginsPaths;
 
 - (nullable instancetype)initWithPath:(nonnull NSString *)aPath NS_DESIGNATED_INITIALIZER;
 
