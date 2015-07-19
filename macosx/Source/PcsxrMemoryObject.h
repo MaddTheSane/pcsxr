@@ -10,7 +10,7 @@
 #include "sio.h"
 
 typedef NS_ENUM(char, PCSXRMemFlag) {
-	PCSXRMemFlagDeleted = 0,
+	PCSXRMemFlagDeleted,
 	PCSXRMemFlagFree,
 	PCSXRMemFlagUsed,
 	PCSXRMemFlagLink,

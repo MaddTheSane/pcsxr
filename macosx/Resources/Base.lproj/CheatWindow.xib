@@ -184,7 +184,7 @@
                         </buttonCell>
                         <connections>
                             <action selector="removeCheats:" target="-2" id="are-w2-Cx9"/>
-                            <binding destination="237" name="enabled" keyPath="canRemove" id="ixY-uF-vBN"/>
+                            <binding destination="237" name="enabled" keyPath="canRemove" id="3pC-QD-cnV"/>
                         </connections>
                     </button>
                 </subviews>
@@ -354,7 +354,7 @@ Gw
                         </buttonCell>
                         <connections>
                             <action selector="removeCheatValue:" target="-2" id="215"/>
-                            <binding destination="219" name="enabled" keyPath="canRemove" id="oK2-HL-ivB"/>
+                            <binding destination="219" name="enabled" keyPath="canRemove" id="0Ve-Bf-kaw"/>
                         </connections>
                     </button>
                 </subviews>
