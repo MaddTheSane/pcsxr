@@ -70,7 +70,7 @@ final class PluginList: NSObject {
 		})
 		
 		// look for new ones in the plugin directory
-		for plugDir in PcsxrPlugin.pluginsPaths() as! [String] {
+		for plugDir in PcsxrPlugin.pluginsPaths() {
 			if let dirEnum = fm.enumeratorAtPath(plugDir) {
 				while let pName = dirEnum.nextObject() as? String {
 					if pName.pathExtension == "psxplugin" ||
