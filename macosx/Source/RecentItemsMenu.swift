@@ -9,7 +9,7 @@
 import Cocoa
 
 private func NSDocumentSharedController() -> NSDocumentController {
-	return (NSDocumentController.sharedDocumentController() as NSDocumentController)
+	return NSDocumentController.sharedDocumentController()
 }
 
 final class RecentItemsMenu: NSMenu {
@@ -65,7 +65,7 @@ final class RecentItemsMenu: NSMenu {
 	}
 	
 	private func findMenuItemByURL(url: NSURL) -> NSMenuItem? {
-		for item in itemArray as [NSMenuItem] {
+		for item in itemArray {
 			if let repItem = item.representedObject as? NSURL where repItem == url {
 				return item
 			}

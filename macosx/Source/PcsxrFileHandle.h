@@ -8,7 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 @protocol PcsxrFileHandle <NSObject>
-+ (nonnull NSArray<NSString*> *)supportedUTIs;
-- (BOOL)handleFile:(nonnull NSString *)theFile;
++ (NSArray<NSString*> *)supportedUTIs;
+- (BOOL)handleFile:(NSString *)theFile;
 @end
+
+NS_ASSUME_NONNULL_END

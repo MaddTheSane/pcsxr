@@ -3,8 +3,10 @@
 #import <Cocoa/Cocoa.h>
 #import "HotkeyController.h"
 
-extern NSString *const __nonnull memChangeNotifier;
-extern NSString *const __nonnull memCardChangeNumberKey;
+NS_ASSUME_NONNULL_BEGIN
+
+extern NSString *const memChangeNotifier;
+extern NSString *const memCardChangeNumberKey;
 
 @class PcsxrMemCardController;
 @class PluginController;
@@ -43,8 +45,8 @@ extern NSString *const __nonnull memCardChangeNumberKey;
 - (IBAction)setCheckboxInverse:(nullable id)sender;
 - (IBAction)setVideoType:(nullable id)sender;
 
-+ (void)setMemoryCard:(NSInteger)theCard toPath:(nonnull NSString *)theFile;
-+ (void)setMemoryCard:(NSInteger)theCard toURL:(nonnull NSURL *)theURL;
++ (void)setMemoryCard:(NSInteger)theCard toPath:(NSString *)theFile;
++ (void)setMemoryCard:(NSInteger)theCard toURL:(NSURL *)theURL;
 
 - (IBAction)mcdNewClicked:(nullable id)sender;
 - (IBAction)mcdChangeClicked:(nullable id)sender;
@@ -52,3 +54,5 @@ extern NSString *const __nonnull memCardChangeNumberKey;
 //- (void)tabView:(nonnull NSTabView *)tabView didSelectTabViewItem:(nullable NSTabViewItem *)tabViewItem;
 
 @end
+
+NS_ASSUME_NONNULL_END

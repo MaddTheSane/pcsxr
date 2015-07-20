@@ -8,19 +8,21 @@
 
 #import <Foundation/Foundation.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface PcsxrPlugin : NSObject
-@property (readonly, copy, nonnull) NSString *path;
+@property (readonly, copy) NSString *path;
 @property (readonly, copy, nullable) NSString *name;
 @property (readonly) int type;
 
-+ (nonnull NSString *)prefixForType:(int)type;
-+ (nonnull NSString *)defaultKeyForType:(int)type;
++ (NSString *)prefixForType:(int)type;
++ (NSString *)defaultKeyForType:(int)type;
 + (char *__nullable *__nonnull)configEntriesForType:(int)type;
-+ (nonnull NSArray<NSString*> *)pluginsPaths;
++ (NSArray<NSString*> *)pluginsPaths;
 
-- (nullable instancetype)initWithPath:(nonnull NSString *)aPath NS_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithPath:(NSString *)aPath NS_DESIGNATED_INITIALIZER;
 
-@property (readonly, copy, nonnull) NSString *displayVersion;
+@property (readonly, copy) NSString *displayVersion;
 - (BOOL)hasAboutAs:(int)type;
 - (BOOL)hasConfigureAs:(int)type;
 - (long)runAs:(int)aType;
@@ -30,3 +32,5 @@
 - (BOOL)verifyOK;
 
 @end
+
+NS_ASSUME_NONNULL_END

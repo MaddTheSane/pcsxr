@@ -76,9 +76,10 @@ final class CheatController: NSWindowController, NSWindowDelegate {
 		let manager = NSFileManager.defaultManager()
 		let tmpURL = (try! manager.URLForDirectory(.ItemReplacementDirectory, inDomain: .UserDomainMask, appropriateForURL: NSBundle.mainBundle().bundleURL, create: true)).URLByAppendingPathComponent("temp.cht", isDirectory: false)
 		var tmpStr = ""
-		for aCheat in cheats {
-			tmpStr += aCheat.description + "\n"
+		let tmp = cheats.map { (val) -> String in
+			return val.description
 		}
+		tmpStr = "\n".join(tmp)
 		do {
 			try (tmpStr as NSString).writeToURL(tmpURL, atomically: false, encoding: NSUTF8StringEncoding)
 		} catch _ {
@@ -107,25 +108,27 @@ final class CheatController: NSWindowController, NSWindowDelegate {
 	
 	@IBAction func saveCheats(sender: AnyObject?) {
 		let saveDlg = NSSavePanel()
-		saveDlg.allowedFileTypes = (PcsxrCheatHandler.supportedUTIs() as! [String])
+		saveDlg.allowedFileTypes = PcsxrCheatHandler.supportedUTIs()
 		saveDlg.canSelectHiddenExtension = true
 		saveDlg.canCreateDirectories = true
 		saveDlg.prompt = NSLocalizedString("Save Cheats", comment: "")
 		saveDlg.beginSheetModalForWindow(window!, completionHandler: { (retVal) -> Void in
-			let url = saveDlg.URL!
-			let saveString: NSString = {
-				var toRet = ""
-				for ss in self.cheats {
-					toRet += ss.description + "\n"
+			if retVal == NSFileHandlingPanelOKButton {
+				let url = saveDlg.URL!
+				let saveString: NSString = {
+					var toRet = ""
+					for ss in self.cheats {
+						toRet += ss.description + "\n"
+					}
+					
+					return toRet as NSString
+					}()
+				do {
+					//let saveString = (self.cheats as NSArray).componentsJoinedByString("\n") as NSString
+					try saveString.writeToURL(url, atomically: true, encoding: NSUTF8StringEncoding)
+				} catch _ {
+					NSBeep()
 				}
-				
-				return toRet as NSString
-			}()
-			do {
-				//let saveString = (self.cheats as NSArray).componentsJoinedByString("\n") as NSString
-				try saveString.writeToURL(url, atomically: true, encoding: NSUTF8StringEncoding)
-			} catch _ {
-				NSBeep()
 			}
 		})
 	}

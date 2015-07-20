@@ -28,22 +28,22 @@ private func imagesFromMcd(theBlock: UnsafePointer<McdBlock>) -> [NSImage] {
 	let unwrapped = theBlock.memory
 	let iconArray: [Int16] = getArrayFromMirror(reflect(unwrapped.Icon))
 	for i in 0..<unwrapped.IconCount {
-			if let imageRep = NSBitmapImageRep(bitmapDataPlanes: nil, pixelsWide: 16, pixelsHigh: 16, bitsPerSample: 8, samplesPerPixel: 3, hasAlpha: false, isPlanar: false, colorSpaceName: NSCalibratedRGBColorSpace, bytesPerRow: 16 * 3, bitsPerPixel: 24) {
-				let cocoaImageData = UnsafeMutablePointer<PSXRGBColor>(imageRep.bitmapData)
-				for v in 0..<256 {
-					//let x = v % 16
-					//let y = v / 16
-					let c = iconArray[Int(i * 256) + v]
-					let r: Int32 = Int32(c & 0x001F) << 3
-					let g: Int32 = (Int32(c & 0x03E0) >> 5) << 3
-					let b: Int32 = (Int32(c & 0x7C00) >> 10) << 3
-					cocoaImageData[v] = PSXRGBColor(r: UInt8(r), g: UInt8(g), b: UInt8(b))
-				}
-				let memImage = NSImage()
-				memImage.addRepresentation(imageRep)
-				memImage.size = NSSize(width: 32, height: 32)
-				toRet.append(memImage)
+		if let imageRep = NSBitmapImageRep(bitmapDataPlanes: nil, pixelsWide: 16, pixelsHigh: 16, bitsPerSample: 8, samplesPerPixel: 3, hasAlpha: false, isPlanar: false, colorSpaceName: NSCalibratedRGBColorSpace, bytesPerRow: 16 * 3, bitsPerPixel: 24) {
+			let cocoaImageData = UnsafeMutablePointer<PSXRGBColor>(imageRep.bitmapData)
+			for v in 0..<256 {
+				//let x = v % 16
+				//let y = v / 16
+				let c = iconArray[Int(i * 256) + v]
+				let r: Int32 = Int32(c & 0x001F) << 3
+				let g: Int32 = (Int32(c & 0x03E0) >> 5) << 3
+				let b: Int32 = (Int32(c & 0x7C00) >> 10) << 3
+				cocoaImageData[v] = PSXRGBColor(r: UInt8(r), g: UInt8(g), b: UInt8(b))
 			}
+			let memImage = NSImage()
+			memImage.addRepresentation(imageRep)
+			memImage.size = NSSize(width: 32, height: 32)
+			toRet.append(memImage)
+		}
 	}
 	return toRet
 }
