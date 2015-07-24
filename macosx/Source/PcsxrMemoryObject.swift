@@ -26,7 +26,7 @@ private func imagesFromMcd(theBlock: UnsafePointer<McdBlock>) -> [NSImage] {
 
 	var toRet = [NSImage]()
 	let unwrapped = theBlock.memory
-	let iconArray: [Int16] = getArrayFromMirror(reflect(unwrapped.Icon))
+	let iconArray: [Int16] = getArrayFromMirror(Mirror(reflecting: unwrapped.Icon))
 	for i in 0..<unwrapped.IconCount {
 		if let imageRep = NSBitmapImageRep(bitmapDataPlanes: nil, pixelsWide: 16, pixelsHigh: 16, bitsPerSample: 8, samplesPerPixel: 3, hasAlpha: false, isPlanar: false, colorSpaceName: NSCalibratedRGBColorSpace, bytesPerRow: 16 * 3, bitsPerPixel: 24) {
 			let cocoaImageData = UnsafeMutablePointer<PSXRGBColor>(imageRep.bitmapData)
@@ -141,11 +141,11 @@ final class PcsxrMemoryObject: NSObject {
 			identifier = ""
 			name = ""
 		} else {
-			let sjisName: [CChar] = getArrayFromMirror(reflect(unwrapped.sTitle), appendLastObject: 0)
+			let sjisName: [CChar] = getArrayFromMirror(Mirror(reflecting: unwrapped.sTitle), appendLastObject: 0)
 			if let aname = String(CString: sjisName, encoding:NSShiftJISStringEncoding) {
 				title = aname
 			} else {
-				let usName: [CChar] = getArrayFromMirror(reflect(unwrapped.Title), appendLastObject: 0)
+				let usName: [CChar] = getArrayFromMirror(Mirror(reflecting: unwrapped.Title), appendLastObject: 0)
 				title = String(CString: usName, encoding: NSASCIIStringEncoding)!
 			}
 			imageArray = imagesFromMcd(infoBlock)
@@ -154,8 +154,8 @@ final class PcsxrMemoryObject: NSObject {
 			} else {
 				hasImages = true
 			}
-			let memNameCArray: [CChar] = getArrayFromMirror(reflect(unwrapped.Name), appendLastObject: 0)
-			let memIDCArray: [CChar] = getArrayFromMirror(reflect(unwrapped.ID), appendLastObject: 0)
+			let memNameCArray: [CChar] = getArrayFromMirror(Mirror(reflecting: unwrapped.Name), appendLastObject: 0)
+			let memIDCArray: [CChar] = getArrayFromMirror(Mirror(reflecting: unwrapped.ID), appendLastObject: 0)
 			name = String(UTF8String: memNameCArray)!
 			identifier = String(UTF8String: memIDCArray)!
 		}
@@ -183,7 +183,7 @@ final class PcsxrMemoryObject: NSObject {
 		let dst = CGImageDestinationCreateWithData(gifData, kUTTypeGIF, self.iconCount, nil)!
 		let gifPrep: NSDictionary = [kCGImagePropertyGIFDictionary as String: [kCGImagePropertyGIFDelayTime as String: Float(0.30)]];
 		for theImage in self.imageArray {
-			let imageRef = theImage.CGImageForProposedRect(nil, context: nil, hints: nil)!.takeUnretainedValue()
+			let imageRef = theImage.CGImageForProposedRect(nil, context: nil, hints: nil)!
 			CGImageDestinationAddImage(dst, imageRef, gifPrep)
 		}
 		CGImageDestinationFinalize(dst);
