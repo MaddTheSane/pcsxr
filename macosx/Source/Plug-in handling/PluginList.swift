@@ -215,7 +215,8 @@ final class PluginList: NSObject {
 		var str: Array<Int8>
 		if let plugin = plugin {
 			let strA = (plugin.path as NSString).fileSystemRepresentation
-			let tmpStr = UnsafeBufferPointer(start: strA, count: Int(strlen(strA)))
+			// Include the null terminator
+			let tmpStr = UnsafeBufferPointer(start: strA, count: Int(strlen(strA)) + 1)
 			str = Array(tmpStr)
 		} else {
 			str = "Invalid Plugin".cStringUsingEncoding(NSUTF8StringEncoding)!
