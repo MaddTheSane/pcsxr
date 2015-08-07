@@ -73,13 +73,13 @@ final class PluginList: NSObject {
 		for plugDir in PcsxrPlugin.pluginsPaths() {
 			if let dirEnum = fm.enumeratorAtPath(plugDir) {
 				while let pName = dirEnum.nextObject() as? String {
-					if pName.pathExtension == "psxplugin" ||
-						pName.pathExtension == "so" {
+					if (pName as NSString).pathExtension == "psxplugin" ||
+						(pName as NSString).pathExtension == "so" {
 							dirEnum.skipDescendants() /* don't enumerate this directory */
-							if !(hasPluginAtPath(plugDir.stringByAppendingPathComponent(pName)) || hasPluginAtPath(pName)) {
+							if !(hasPluginAtPath((plugDir as NSString).stringByAppendingPathComponent(pName)) || hasPluginAtPath(pName)) {
 								if let plugin = PcsxrPlugin(path: pName) {
 									pluginList.append(plugin)
-								} else if let plugIn = PcsxrPlugin(path: plugDir.stringByAppendingPathComponent(pName)) {
+								} else if let plugIn = PcsxrPlugin(path: (plugDir as NSString).stringByAppendingPathComponent(pName)) {
 									pluginList.append(plugIn)
 								}
 							}
@@ -214,7 +214,9 @@ final class PluginList: NSObject {
 		// write path to the correct config entry
 		var str: Array<Int8>
 		if let plugin = plugin {
-			str = plugin.path.fileSystemRepresentation()
+			let strA = (plugin.path as NSString).fileSystemRepresentation
+			let tmpStr = UnsafeBufferPointer(start: strA, count: Int(strlen(strA)))
+			str = Array(tmpStr)
 		} else {
 			str = "Invalid Plugin".cStringUsingEncoding(NSUTF8StringEncoding)!
 		}
@@ -247,7 +249,7 @@ final class PluginList: NSObject {
 	
 	func enableNetPlug() {
 		if let netPlug = activePlugin(type: PSE_LT_NET) {
-			let str = netPlug.path.fileSystemRepresentation()
+			let str = (netPlug.path as NSString).fileSystemRepresentation
 			var dst = PcsxrPlugin.configEntriesForType(PSE_LT_NET)
 			while dst.memory != nil {
 				strlcpy(dst.memory, str, Int(MAXPATHLEN));

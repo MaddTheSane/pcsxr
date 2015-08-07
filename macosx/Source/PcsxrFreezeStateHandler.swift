@@ -14,7 +14,7 @@ final class PcsxrFreezeStateHandler: NSObject, PcsxrFileHandle {
 	}
 	
 	func handleFile(theFile: String) -> Bool {
-		if CheckState(theFile.fileSystemRepresentation()) != 0 {
+		if CheckState((theFile as NSString).fileSystemRepresentation) != 0 {
 			return false
 		}
 		

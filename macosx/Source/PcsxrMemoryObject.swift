@@ -222,7 +222,7 @@ final class PcsxrMemoryObject: NSObject {
 				attribMemLabelUsed = NSAttributedString(attributedString: tmpStr)
 				#else
 				tmpStr = NSMutableAttributedString(string: MemLabelMultiSave)
-				SetupAttrStr(tmpStr, NSColor.blueColor())
+				SetupAttrStr(tmpStr, txtclr: NSColor.blueColor())
 				attribMemLabelEndLink = NSAttributedString(attributedString: tmpStr)
 				attribMemLabelLink = attribMemLabelEndLink;
 
