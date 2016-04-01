@@ -2106,7 +2106,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0700;
-				LastUpgradeCheck = 0700;
+				LastUpgradeCheck = 0730;
 			};
 			buildConfigurationList = 71F353F80FD98DFE00CBEC28 /* Build configuration list for PBXProject "Pcsxr" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -3092,6 +3092,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "PCSXRPLUG=PsxQL";
 				INFOPLIST_FILE = "Pcsxr-QL/Pcsxr-QL-Info.plist";
 				INSTALL_PATH = /Library/QuickLook;
+				PRODUCT_BUNDLE_IDENTIFIER = "net.pcsxr.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRINGS_FILE_OUTPUT_ENCODING = "UTF-16";
 				SWIFT_OBJC_BRIDGING_HEADER = "Source/PCSXR-Bridging-Header.h";
@@ -3111,6 +3112,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "PCSXRPLUG=PsxQL";
 				INFOPLIST_FILE = "Pcsxr-QL/Pcsxr-QL-Info.plist";
 				INSTALL_PATH = /Library/QuickLook;
+				PRODUCT_BUNDLE_IDENTIFIER = "net.pcsxr.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRINGS_FILE_OUTPUT_ENCODING = "UTF-16";
 				SWIFT_OBJC_BRIDGING_HEADER = "Source/PCSXR-Bridging-Header.h";
@@ -3130,6 +3132,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "PCSXRPLUG=PsxQL";
 				INFOPLIST_FILE = "Pcsxr-QL/Pcsxr-QL-Info.plist";
 				INSTALL_PATH = /Library/QuickLook;
+				PRODUCT_BUNDLE_IDENTIFIER = "net.pcsxr.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRINGS_FILE_OUTPUT_ENCODING = "UTF-16";
 				SWIFT_OBJC_BRIDGING_HEADER = "Source/PCSXR-Bridging-Header.h";
@@ -3146,6 +3149,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "PCSXRPLUG=Bladesio1";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Playstation Emulator Plugins";
+				PRODUCT_BUNDLE_IDENTIFIER = net.pcsxr.Bladesio1;
 				WRAPPER_EXTENSION = psxplugin;
 			};
 			name = Debug;
@@ -3158,6 +3162,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "PCSXRPLUG=Bladesio1";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Playstation Emulator Plugins";
+				PRODUCT_BUNDLE_IDENTIFIER = net.pcsxr.Bladesio1;
 				WRAPPER_EXTENSION = psxplugin;
 			};
 			name = Release;
@@ -3171,6 +3176,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "PCSXRPLUG=DFCdrom";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Playstation Emulator Plugins";
+				PRODUCT_BUNDLE_IDENTIFIER = net.pcsxr.DFCdrom;
 				WRAPPER_EXTENSION = psxplugin;
 			};
 			name = Debug;
@@ -3183,6 +3189,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "PCSXRPLUG=DFCdrom";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Playstation Emulator Plugins";
+				PRODUCT_BUNDLE_IDENTIFIER = net.pcsxr.DFCdrom;
 				WRAPPER_EXTENSION = psxplugin;
 			};
 			name = Release;
@@ -3202,6 +3209,7 @@
 				);
 				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Playstation Emulator Plugins";
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = net.pcsxr.DFInputPlugin;
 				WRAPPER_EXTENSION = psxplugin;
 			};
 			name = Debug;
@@ -3220,6 +3228,7 @@
 				);
 				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Playstation Emulator Plugins";
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = net.pcsxr.DFInputPlugin;
 				WRAPPER_EXTENSION = psxplugin;
 			};
 			name = Release;
@@ -3238,6 +3247,7 @@
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Playstation Emulator Plugins";
 				OTHER_CFLAGS = "$(OPTIMIZATION_CFLAGS)";
+				PRODUCT_BUNDLE_IDENTIFIER = net.sf.peops.SoftGpuGLPlugin;
 				PRODUCT_NAME = PeopsSoftGPU;
 				WRAPPER_EXTENSION = psxplugin;
 			};
@@ -3257,6 +3267,7 @@
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Playstation Emulator Plugins";
 				OTHER_CFLAGS = "$(OPTIMIZATION_CFLAGS)";
+				PRODUCT_BUNDLE_IDENTIFIER = net.sf.peops.SoftGpuGLPlugin;
 				PRODUCT_NAME = PeopsSoftGPU;
 				WRAPPER_EXTENSION = psxplugin;
 			};
@@ -3281,6 +3292,7 @@
 				INFOPLIST_FILE = "plugins/DFSound/Resorces/SDL/Info-SDL.plist";
 				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Playstation Emulator Plugins";
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = net.sf.peops.SPUSDLPlugin;
 				SWIFT_OBJC_BRIDGING_HEADER = "plugins/DFSound/macsrc/PeopsSpuSDL-Bridging-Header.h";
 				WRAPPER_EXTENSION = psxplugin;
 			};
@@ -3304,6 +3316,7 @@
 				INFOPLIST_FILE = "plugins/DFSound/Resorces/SDL/Info-SDL.plist";
 				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Playstation Emulator Plugins";
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = net.sf.peops.SPUSDLPlugin;
 				SWIFT_OBJC_BRIDGING_HEADER = "plugins/DFSound/macsrc/PeopsSpuSDL-Bridging-Header.h";
 				WRAPPER_EXTENSION = psxplugin;
 			};
@@ -3323,6 +3336,7 @@
 				INFOPLIST_FILE = "plugins/DFSound/Resorces/OpenAL/Info-AL.plist";
 				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Playstation Emulator Plugins";
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = net.sf.peops.SPUALPlugin;
 				SWIFT_OBJC_BRIDGING_HEADER = "plugins/DFSound/macsrc/PeopsSpuAL-Bridging-Header.h";
 				WRAPPER_EXTENSION = psxplugin;
 			};
@@ -3341,6 +3355,7 @@
 				INFOPLIST_FILE = "plugins/DFSound/Resorces/OpenAL/Info-AL.plist";
 				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Playstation Emulator Plugins";
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = net.sf.peops.SPUALPlugin;
 				SWIFT_OBJC_BRIDGING_HEADER = "plugins/DFSound/macsrc/PeopsSpuAL-Bridging-Header.h";
 				WRAPPER_EXTENSION = psxplugin;
 			};
@@ -3361,6 +3376,7 @@
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Playstation Emulator Plugins";
 				OTHER_CFLAGS = "$(OPTIMIZATION_CFLAGS)";
+				PRODUCT_BUNDLE_IDENTIFIER = net.sf.peops.GpuOpenGLPlugin;
 				PRODUCT_NAME = PeopsXGL;
 				WRAPPER_EXTENSION = psxplugin;
 			};
@@ -3380,6 +3396,7 @@
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Playstation Emulator Plugins";
 				OTHER_CFLAGS = "$(OPTIMIZATION_CFLAGS)";
+				PRODUCT_BUNDLE_IDENTIFIER = net.sf.peops.GpuOpenGLPlugin;
 				PRODUCT_NAME = PeopsXGL;
 				WRAPPER_EXTENSION = psxplugin;
 			};
@@ -3394,6 +3411,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "PCSXRPLUG=DFNet";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Playstation Emulator Plugins";
+				PRODUCT_BUNDLE_IDENTIFIER = net.codeplex.pcsxr.DFNet;
 				WRAPPER_EXTENSION = psxplugin;
 			};
 			name = Debug;
@@ -3406,6 +3424,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "PCSXRPLUG=DFNet";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Playstation Emulator Plugins";
+				PRODUCT_BUNDLE_IDENTIFIER = net.codeplex.pcsxr.DFNet;
 				WRAPPER_EXTENSION = psxplugin;
 			};
 			name = Release;
@@ -3422,6 +3441,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "PCSXRPLUG=MDPsx";
 				INFOPLIST_FILE = "Psx-Memcard/Psx-Memcard-Info.plist";
 				INSTALL_PATH = "@executable_path/../Contents/Library/Spotlight";
+				PRODUCT_BUNDLE_IDENTIFIER = "net.pcsxr.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRINGS_FILE_OUTPUT_ENCODING = "UTF-16";
 				WRAPPER_EXTENSION = mdimporter;
@@ -3439,6 +3459,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "PCSXRPLUG=MDPsx";
 				INFOPLIST_FILE = "Psx-Memcard/Psx-Memcard-Info.plist";
 				INSTALL_PATH = "@executable_path/../Contents/Library/Spotlight";
+				PRODUCT_BUNDLE_IDENTIFIER = "net.pcsxr.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRINGS_FILE_OUTPUT_ENCODING = "UTF-16";
 				WRAPPER_EXTENSION = mdimporter;
@@ -3456,6 +3477,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "PCSXRPLUG=MDPsx";
 				INFOPLIST_FILE = "Psx-Memcard/Psx-Memcard-Info.plist";
 				INSTALL_PATH = "@executable_path/../Contents/Library/Spotlight";
+				PRODUCT_BUNDLE_IDENTIFIER = "net.pcsxr.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRINGS_FILE_OUTPUT_ENCODING = "UTF-16";
 				WRAPPER_EXTENSION = mdimporter;
@@ -3544,6 +3566,7 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -3610,6 +3633,7 @@
 				INFOPLIST_FILE = Info.plistvers.plist;
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks @executable_path/../Frameworks";
 				OTHER_CFLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.codeplex.pcsxr;
 				PRODUCT_NAME = PCSXR;
 				SKIP_INSTALL = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "Source/PCSXR-Bridging-Header.h";
@@ -3626,6 +3650,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "PCSXRPLUG=DFCdrom";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Playstation Emulator Plugins";
+				PRODUCT_BUNDLE_IDENTIFIER = net.pcsxr.DFCdrom;
 				WRAPPER_EXTENSION = psxplugin;
 			};
 			name = Instrument;
@@ -3644,6 +3669,7 @@
 				);
 				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Playstation Emulator Plugins";
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = net.pcsxr.DFInputPlugin;
 				WRAPPER_EXTENSION = psxplugin;
 			};
 			name = Instrument;
@@ -3662,6 +3688,7 @@
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Playstation Emulator Plugins";
 				OTHER_CFLAGS = "$(OPTIMIZATION_CFLAGS)";
+				PRODUCT_BUNDLE_IDENTIFIER = net.sf.peops.SoftGpuGLPlugin;
 				PRODUCT_NAME = PeopsSoftGPU;
 				WRAPPER_EXTENSION = psxplugin;
 			};
@@ -3681,6 +3708,7 @@
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Playstation Emulator Plugins";
 				OTHER_CFLAGS = "$(OPTIMIZATION_CFLAGS)";
+				PRODUCT_BUNDLE_IDENTIFIER = net.sf.peops.GpuOpenGLPlugin;
 				PRODUCT_NAME = PeopsXGL;
 				WRAPPER_EXTENSION = psxplugin;
 			};
@@ -3704,6 +3732,7 @@
 				INFOPLIST_FILE = "plugins/DFSound/Resorces/SDL/Info-SDL.plist";
 				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Playstation Emulator Plugins";
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = net.sf.peops.SPUSDLPlugin;
 				SWIFT_OBJC_BRIDGING_HEADER = "plugins/DFSound/macsrc/PeopsSpuSDL-Bridging-Header.h";
 				WRAPPER_EXTENSION = psxplugin;
 			};
@@ -3722,6 +3751,7 @@
 				INFOPLIST_FILE = "plugins/DFSound/Resorces/OpenAL/Info-AL.plist";
 				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Playstation Emulator Plugins";
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = net.sf.peops.SPUALPlugin;
 				SWIFT_OBJC_BRIDGING_HEADER = "plugins/DFSound/macsrc/PeopsSpuAL-Bridging-Header.h";
 				WRAPPER_EXTENSION = psxplugin;
 			};
@@ -3735,6 +3765,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "PCSXRPLUG=DFNet";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Playstation Emulator Plugins";
+				PRODUCT_BUNDLE_IDENTIFIER = net.codeplex.pcsxr.DFNet;
 				WRAPPER_EXTENSION = psxplugin;
 			};
 			name = Instrument;
@@ -3747,6 +3778,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "PCSXRPLUG=Bladesio1";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Playstation Emulator Plugins";
+				PRODUCT_BUNDLE_IDENTIFIER = net.pcsxr.Bladesio1;
 				WRAPPER_EXTENSION = psxplugin;
 			};
 			name = Instrument;
@@ -3777,6 +3809,7 @@
 				INFOPLIST_FILE = Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks @executable_path/../Frameworks";
 				OTHER_CFLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.codeplex.pcsxr;
 				PRODUCT_NAME = PCSXR;
 				SKIP_INSTALL = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "Source/PCSXR-Bridging-Header.h";
@@ -3812,6 +3845,7 @@
 					"-fomit-frame-pointer",
 					"$(inherited)",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.codeplex.pcsxr;
 				PRODUCT_NAME = PCSXR;
 				SKIP_INSTALL = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "Source/PCSXR-Bridging-Header.h";
@@ -3835,6 +3869,7 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				DEAD_CODE_STRIPPING = NO;
@@ -3897,6 +3932,7 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";

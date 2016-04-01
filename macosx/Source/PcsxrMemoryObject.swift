@@ -125,13 +125,15 @@ final class PcsxrMemoryObject: NSObject {
 	let identifier: String
 	let imageArray: [NSImage]
 	let flag: PCSXRMemFlag
-	let startingIndex: Int
-	let blockSize: Int
+	let indexes: NSIndexSet
 	let hasImages: Bool
 	
-	init(mcdBlock infoBlock: UnsafePointer<McdBlock>, startingIndex startIdx: Int, size memSize: Int) {
-		startingIndex = startIdx
-		blockSize = memSize
+	var blockSize: Int {
+		return indexes.count
+	}
+	
+	init(mcdBlock infoBlock: UnsafePointer<McdBlock>, blockIndexes: NSIndexSet) {
+		self.indexes = blockIndexes
 		let unwrapped = infoBlock.memory
 		flag = MemFlagsFromBlockFlags(unwrapped.Flags)
 		if flag == .Free {
@@ -161,6 +163,11 @@ final class PcsxrMemoryObject: NSObject {
 		}
 		
 		super.init()
+
+	}
+	
+	convenience init(mcdBlock infoBlock: UnsafePointer<McdBlock>, startingIndex startIdx: Int, size memSize: Int) {
+		self.init(mcdBlock: infoBlock, blockIndexes: NSIndexSet(indexesInRange: NSRange(location: startIdx, length: memSize)))
 	}
 	
 	var iconCount: Int {
@@ -269,7 +276,7 @@ final class PcsxrMemoryObject: NSObject {
 	}
 
 	override var description: String {
-		return "\(title): Name: \(name) ID: \(identifier), type: \(flagName), start: \(startingIndex) size: \(blockSize)"
+		return "\(title): Name: \(name) ID: \(identifier), type: \(flagName), indexes: \(indexes)"
 	}
 	
 	var showCount: Bool {
