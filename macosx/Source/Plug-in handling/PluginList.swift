@@ -95,10 +95,11 @@ final class PluginList: NSObject {
 			if plugin == nil {
 				let list = pluginsForType(typeList[i])
 				var j = 0
-				for j = 0; j < list.count; j++ {
+				while j < list.count {
 					if setActivePlugin(list[j], type: typeList[i]) {
 						break;
 					}
+					j += 1
 				}
 				if j == list.count {
 					missingPlugins = true
@@ -225,7 +226,7 @@ final class PluginList: NSObject {
 		var dst = PcsxrPlugin.configEntriesForType(type)
 		while dst.memory != nil {
 			strlcpy(dst.memory, str, Int(MAXPATHLEN))
-			dst++
+			dst = dst.successor()
 		}
 		
 		if active {
@@ -244,7 +245,7 @@ final class PluginList: NSObject {
 		var dst = PcsxrPlugin.configEntriesForType(PSE_LT_NET)
 		while dst.memory != nil {
 			strcpy(dst.memory, "Disabled");
-			dst++;
+			dst = dst.successor();
 		}
 	}
 	
@@ -254,10 +255,11 @@ final class PluginList: NSObject {
 			var dst = PcsxrPlugin.configEntriesForType(PSE_LT_NET)
 			while dst.memory != nil {
 				strlcpy(dst.memory, str, Int(MAXPATHLEN));
-				dst++;
+				dst = dst.successor();
 			}
 		}
 	}
+	
 	subscript(index: Int) -> PcsxrPlugin {
 		return pluginList[index]
 	}

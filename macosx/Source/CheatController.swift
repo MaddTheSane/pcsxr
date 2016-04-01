@@ -79,7 +79,7 @@ final class CheatController: NSWindowController, NSWindowDelegate {
 		let tmp = cheats.map { (val) -> String in
 			return val.description
 		}
-		tmpStr = "\n".join(tmp)
+		tmpStr = tmp.joinWithSeparator("\n")
 		do {
 			try (tmpStr as NSString).writeToURL(tmpURL, atomically: false, encoding: NSUTF8StringEncoding)
 		} catch _ {

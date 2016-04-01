@@ -45,7 +45,7 @@ final class RecentItemsMenu: NSMenu {
 		let fileImage = NSWorkspace.sharedWorkspace().iconForFile(documentPath)
 		fileImage.size = NSSize(width: 16, height: 16)
 		
-		let newItem = NSMenuItem(title: lastName, action: "openRecentItem:", keyEquivalent: "")
+		let newItem = NSMenuItem(title: lastName, action: #selector(RecentItemsMenu.openRecentItem(_:)), keyEquivalent: "")
 		newItem.representedObject = documentURL
 		newItem.image = fileImage
 		newItem.target = self
