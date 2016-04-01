@@ -143,11 +143,11 @@ final class PcsxrMemoryObject: NSObject {
 			identifier = ""
 			name = ""
 		} else {
-			let sjisName: [CChar] = getArrayFromMirror(Mirror(reflecting: unwrapped.sTitle), appendLastObject: 0)
+			let sjisName: [CChar] = try! arrayFromObject(reflecting: unwrapped.sTitle, appendLastObject: 0)
 			if let aname = String(CString: sjisName, encoding:NSShiftJISStringEncoding) {
 				title = aname
 			} else {
-				let usName: [CChar] = getArrayFromMirror(Mirror(reflecting: unwrapped.Title), appendLastObject: 0)
+				let usName: [CChar] = try! arrayFromObject(reflecting: unwrapped.Title, appendLastObject: 0)
 				title = String(CString: usName, encoding: NSASCIIStringEncoding)!
 			}
 			imageArray = imagesFromMcd(infoBlock)
@@ -156,8 +156,8 @@ final class PcsxrMemoryObject: NSObject {
 			} else {
 				hasImages = true
 			}
-			let memNameCArray: [CChar] = getArrayFromMirror(Mirror(reflecting: unwrapped.Name), appendLastObject: 0)
-			let memIDCArray: [CChar] = getArrayFromMirror(Mirror(reflecting: unwrapped.ID), appendLastObject: 0)
+			let memNameCArray: [CChar] = try! arrayFromObject(reflecting: unwrapped.Name, appendLastObject: 0)
+			let memIDCArray: [CChar] = try! arrayFromObject(reflecting: unwrapped.ID, appendLastObject: 0)
 			name = String(UTF8String: memNameCArray)!
 			identifier = String(UTF8String: memIDCArray)!
 		}

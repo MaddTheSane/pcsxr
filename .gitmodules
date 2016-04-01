@@ -3,4 +3,4 @@
 	url = https://github.com/MaddTheSane/SwiftMacTypes.git
 [submodule "macosx/Vendor/memorymapping"]
 	path = macosx/Vendor/memorymapping
-	url = https://github.com/NimbusKit/memorymapping.git
+	url = https://github.com/MaddTheSane/memorymapping.git
