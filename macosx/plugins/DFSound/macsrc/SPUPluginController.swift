@@ -44,7 +44,7 @@ class SPUPluginController: NSWindowController {
 	
 	func loadValues() {
 		let defaults = NSUserDefaults.standardUserDefaults()
-		ReadConfig();
+		ReadConfig()
 		
 		/* load from preferences */
 		keyValues = NSMutableDictionary(dictionary: defaults.dictionaryForKey(PrefsKey)!)

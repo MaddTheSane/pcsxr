@@ -22,11 +22,11 @@ private func imagesFromMcd(theBlock: UnsafePointer<McdBlock>) -> [NSImage] {
 		var r: UInt8
 		var g: UInt8
 		var b: UInt8
-	};
+	}
 
 	var toRet = [NSImage]()
 	let unwrapped = theBlock.memory
-	let iconArray: [Int16] = getArrayFromMirror(Mirror(reflecting: unwrapped.Icon))
+	let iconArray: [Int16] = try! arrayFromObject(reflecting: unwrapped.Icon)
 	for i in 0..<unwrapped.IconCount {
 		if let imageRep = NSBitmapImageRep(bitmapDataPlanes: nil, pixelsWide: 16, pixelsHigh: 16, bitsPerSample: 8, samplesPerPixel: 3, hasAlpha: false, isPlanar: false, colorSpaceName: NSCalibratedRGBColorSpace, bytesPerRow: 16 * 3, bitsPerPixel: 24) {
 			let cocoaImageData = UnsafeMutablePointer<PSXRGBColor>(imageRep.bitmapData)
@@ -115,7 +115,7 @@ func MemFlagsFromBlockFlags(blockFlags: UInt8) -> PCSXRMemFlag {
 	}
 	
 	//Xcode complains unless we do this...
-	NSLog("Unknown flag %x", blockFlags);
+	NSLog("Unknown flag %x", blockFlags)
 	return .Free;
 }
 
@@ -163,7 +163,6 @@ final class PcsxrMemoryObject: NSObject {
 		}
 		
 		super.init()
-
 	}
 	
 	convenience init(mcdBlock infoBlock: UnsafePointer<McdBlock>, startingIndex startIdx: Int, size memSize: Int) {
@@ -181,8 +180,8 @@ final class PcsxrMemoryObject: NSObject {
 	private(set) lazy var image: NSImage = {
 		if (self.hasImages == false) {
 			let tmpBlank = blankImage()
-			tmpBlank.size = NSMakeSize(32, 32);
-			return tmpBlank;
+			tmpBlank.size = NSMakeSize(32, 32)
+			return tmpBlank
 		}
 		
 		let gifData = NSMutableData()
@@ -196,7 +195,7 @@ final class PcsxrMemoryObject: NSObject {
 		CGImageDestinationFinalize(dst);
 		
 		let _memImage = NSImage(data: gifData)!
-		_memImage.size = NSMakeSize(32, 32);
+		_memImage.size = NSMakeSize(32, 32)
 		return _memImage
 		}()
 	
@@ -227,16 +226,16 @@ final class PcsxrMemoryObject: NSObject {
 				tmpStr = NSMutableAttributedString(string: MemLabelUsed)
 				SetupAttrStr(tmpStr, txtclr: NSColor.controlTextColor())
 				attribMemLabelUsed = NSAttributedString(attributedString: tmpStr)
-				#else
+			#else
 				tmpStr = NSMutableAttributedString(string: MemLabelMultiSave)
 				SetupAttrStr(tmpStr, txtclr: NSColor.blueColor())
 				attribMemLabelEndLink = NSAttributedString(attributedString: tmpStr)
-				attribMemLabelLink = attribMemLabelEndLink;
+				attribMemLabelLink = attribMemLabelEndLink
 
 				//display nothing
 				attribMemLabelUsed = NSAttributedString(string: "")
-				
-				#endif
+			#endif
+			
 			tmpStr = NSMutableAttributedString(string: MemLabelDeleted)
 			SetupAttrStr(tmpStr, txtclr: NSColor.redColor())
 			attribMemLabelDeleted = NSAttributedString(attributedString: tmpStr)
